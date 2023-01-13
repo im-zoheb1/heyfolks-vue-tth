@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "autoprefixer": "^10.4.13",
+    "node-sass": "^8.0.0",
     "pinia": "^2.0.28",
     "postcss": "^8.4.21",
     "tailwindcss": "^3.2.4",
