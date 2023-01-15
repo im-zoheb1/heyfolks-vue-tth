@@ -8,7 +8,7 @@ const props = defineProps<{
 </script>
 
 <template>
-  <div class="input">
+  <div class="input__holder">
     <input
       class="input--field"
       :placeholder="props.placeholder"
@@ -22,56 +22,46 @@ const props = defineProps<{
 
 <style lang="scss" scoped>
 // tailwind.scss
-.input {
-  @apply w-full;
-  &--field {
-    @apply 
-    letter-spacing: 0.5px;
-    padding: 10px 5px;
-    @apply border-0 outline-0 w-full relative block bg-transparent font-semibold text-xl;
+.input__holder {
+  width: 100%;
+}
+.input--field {
+  @apply relative block bg-transparent tracking-wide border-0 outline-0 w-full text-xl font-semibold px-1 py-2.5;
 
-    &::placeholder {
-      @apply font-semibold text-gray-500;
-    }
-
-    &:focus:not(:valid) ~ .input_border::after,
-    &:focus:valid ~ .input_border::before {
-      @apply w-0 r-0;
-      left: auto;
-    }
-
-    &:focus:valid ~ .input_border::after,
-    &:focus:not(:valid) ~ .input_border::before,
-    &:valid:not(:placeholder-shown) ~ .input_border::after,
-    &:not(:placeholder-shown):not(:valid) ~ .input_border::before {
-      @apply w-full;
-    }
-
-    &:placeholder-shown ~ .input_label {
-      @apply opacity-0 hidden -translate-y-60;
-    }
+  &::placeholder {
+    @apply text-gray-500 font-semibold;
   }
-
-  &--border {
-    @apply relative w-full h-0.5 mt-px bg-gray-500;
-
-    &::after,
-    &::before {
-      @apply content-[''] table w-0 h-full absolute top-0 left-0;
-      transition: width 0.5s cubic-bezier(0.74, 0.73, 0.23, 1);
-    }
-    &::after {
-      @apply bg-gradient-to-r from-primary to-secondary;
-    }
-    &::before {
-      @apply bg-gradient-to-r from-red-700 to-red-600;
-    }
+  &:focus:not(:valid) ~ .input--border::after,
+  &:focus:valid ~ .input--border::before {
+    @apply left-auto right-0 w-full;
   }
-
-  &--label {
-    @apply block text-base text-primary -translate-y-75 font-bold ml-5 mt-5;
-    transition: all 0.3s;
+  &:focus:valid ~ .input--border::after,
+  &:focus:not(:valid) ~ .input--border::before,
+  &:valid:not(:placeholder-shown) ~ .input--border::after,
+  &:not(:placeholder-shown):not(:valid) ~ .input--border::before {
+    @apply w-full;
+  }
+  &:placeholder-shown ~ .input--label {
+    @apply opacity-0 -translate-y-[60px] invisible;
   }
 }
 
+.input--border {
+  @apply relative mt-px h-[3px] w-full bg-gray-500;
+  &::after, &::before {
+    transition: width 0.5s cubic-bezier(0.74, 0.73, 0.23, 1);
+    @apply absolute content-[''] table w-0 h-full top-0 left-0;
+  }
+  &::after {
+    @apply bg-gradient-to-r from-primary to-secondary;
+  }
+  &::before {
+    @apply bg-gradient-to-r from-red-700 to-red-600;
+  }
+}
+
+.input--label {
+  transition: all 0.3s;
+  @apply block text-base text-primary -translate-y-[75px] font-semibold ml-[5px] mt-[7px];
+}
 </style>
