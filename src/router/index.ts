@@ -4,15 +4,12 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/auth',
     name: 'auth',
-    component: () => import('../modules/auth/SignIn/index.vue'),
-    meta: {
-      isAuthLayout: true
-    }
+    component: () => import('@/modules/auth/SignIn/index.vue'),
   },
   {
     path: '/',
     name: 'home',
-    component: () => import('../modules/dashboard/Home/index.vue'),
+    component: () => import('@/modules/dashboard/Home/index.vue'),
   },
 ]
 
