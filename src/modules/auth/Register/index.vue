@@ -13,13 +13,13 @@ import Input from '@/components/Elements/Form/Input.vue'
       </Button>
     </template>
     <!-- SIGNUP FORM START -->
-    <form>
+    <form @submit.prevent="$router.push({ name: 'home' })">
       <Input class="mb-10" label="Fullname" placeholder="Fullname" type="text" required />
       <Input class="mb-10" label="Username" placeholder="Username" type="text" required />
       <Input class="mb-10" label="Email Address" placeholder="Email Address" type="email" required />
       <Input class="mb-10" label="Password" placeholder="Password" type="text" required />
       <Input class="mb-10" label="Confirm Password" placeholder="Confirm Password" type="text" required />
-      <Button class="px-10 py-4" type="submit" pilled @click="$router.push({ name: 'home' })">Sign Up</Button>
+      <Button class="px-10 py-4" type="submit" pilled>Sign Up</Button>
     </form>
     <!-- SIGNUP FORM END -->
   </AuthLayout>
