@@ -3,11 +3,12 @@ import Logo from '@/components/Elements/Logo.vue'
 
 const props = defineProps<{
   title: string;
+  isReverse?: boolean;
 }>()
 </script>
 
 <template>
-  <div class="h-screen flex">
+  <div class="h-screen flex" :class="{ 'flex-row-reverse': isReverse }">
     <!-- helper section with logo and description -->
     <section class="hidden md:grid place-content-center bg-folks bg-cover bg-center bg-no-repeat h-full w-5/12 text-center">
       <Logo />

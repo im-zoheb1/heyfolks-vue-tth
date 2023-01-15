@@ -8,31 +8,21 @@ import Input from '@/components/Elements/Form/Input.vue'
   <AuthLayout title="Log In">
     <template #description>
       <p class="mt-4">Don't have an account?</p>
-      <Button class="mt-9" variant="light" pilled transform-on-hover>
+      <Button class="mt-9" variant="light" pilled transform-on-hover @click="$router.push({ name: 'register' })">
         Join Now
       </Button>
     </template>
+    <!-- FORM SECTION START -->
     <form>
-      <Input 
-        class="mb-14" 
-        label="Username" 
-        placeholder="Username" 
-        type="email" 
-        required 
-      ></Input>
-      <Input 
-        class="mb-14" 
-        label="Password" 
-        placeholder="Password" 
-        type="password" 
-        required 
-      ></Input>
-      <div class="text-base mb-8 font-bold text-primary pointer text-right">
-        <a class="cursor-pointer hover:underline">Forgot Password?</a>
-      </div>
+      <Input class="mb-14" label="Email" placeholder="Email" type="email" required />
+      <Input class="mb-14" label="Password" placeholder="Password" type="password" required />
+      <a class="text-base mb-8 font-bold text-primary text-right cursor-pointer hover:underline block">
+        Forgot Password?
+      </a>
       <Button class="px-10 py-4" type="submit" pilled>
         Sign In
       </Button>
     </form>
+    <!-- FORM SECTION END -->
   </AuthLayout>
 </template>

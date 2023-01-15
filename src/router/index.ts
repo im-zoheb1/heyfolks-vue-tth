@@ -7,6 +7,11 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import('@/modules/auth/SignIn/index.vue'),
   },
   {
+    path: '/register',
+    name: 'register',
+    component: () => import('@/modules/auth/Register/index.vue')
+  },
+  {
     path: '/',
     name: 'home',
     component: () => import('@/modules/dashboard/Home/index.vue'),
