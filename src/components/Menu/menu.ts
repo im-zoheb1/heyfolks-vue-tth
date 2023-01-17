@@ -14,7 +14,7 @@ interface MenuItem {
 }
 
 const menu: MenuItem[] = [
-  { link: '/', label: 'Feed', icon: Square2StackIcon },
+  { link: '/', label: 'Home', icon: Square2StackIcon },
   { link: '/', label: 'Friends', icon: UserIcon },
   { link: '/', label: 'Messages', icon: InboxIcon },
   { link: '/', label: 'Notifications', icon: BellIcon },
