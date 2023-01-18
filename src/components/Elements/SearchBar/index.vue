@@ -40,8 +40,8 @@ const search = (event: Event): void => {
           leave-to-class="transform scale-95 opacity-0"
         >
           <ComboboxOptions
-            class="absolute mt-1 max-h-60 min-w-[380px] overflow-auto rounded-md bg-white py-2 
-              px-3 text-base shadow-lg ring-1 ring-slate-500 ring-opacity-5"
+            class="absolute mt-1 max-h-60 min-w-[380px] overflow-auto rounded-md bg-white 
+            py-2 px-3 text-base shadow-lg ring-1 ring-slate-500 ring-opacity-5"
           >
             <ComboboxOption
               v-for="item in options"

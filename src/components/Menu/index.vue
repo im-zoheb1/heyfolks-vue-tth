@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import Avatar from '@/components/Elements/Avatar.vue'
+import Separator from '@/components/Elements/Separator.vue'
 import navigations from './menu'
 </script>
 
@@ -16,7 +17,7 @@ import navigations from './menu'
       </span>
     </a>
     <!-- user profile : end -->
-    <div class="h-px bg-gray-100 mx-5"></div>
+    <Separator class="mx-4" />
     <!-- navigation : start -->
     <nav class="w-full overflow-y-auto mt-6">
       <ul>
