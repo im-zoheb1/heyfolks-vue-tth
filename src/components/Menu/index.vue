@@ -23,8 +23,8 @@ import navigations from './menu'
         <li v-for="(navigation, index) in navigations" :key="`nav-menu-item-${index}`">
           <a 
             href="#" 
-            class="flex items-center pl-8 py-[14px] hover:bg-indigo-50 transition duration-300 font-bold" 
-            :class="{ 'bg-indigo-100': !index }"
+            class="flex items-center pl-8 py-[14px] hover:bg-indigo-50 transition duration-300 font-bold mx-3 mb-1 rounded-2xl" 
+            :class="{ 'bg-indigo-50': !index }"
           >
             <component class="h-6 mr-3" :is="navigation.icon"></component> 
             {{ navigation.label }}

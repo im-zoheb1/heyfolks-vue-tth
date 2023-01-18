@@ -23,12 +23,13 @@ const search = (event: Event): void => {
       <div class="relative">
         <div class="flex bg-blue-50 py-2 px-4 rounded-full">
           <ComboboxInput
+            v-model="value"
             class="outline-0 bg-transparent w-64 mr-2 px-1 text-md"
             placeholder="Search"
             autocomplete="off"
             @change="search"
           ></ComboboxInput>
-          <MagnifyingGlassIcon class="h-7 w-7 text-gray-600"></MagnifyingGlassIcon>
+          <MagnifyingGlassIcon class="h-7 w-7 text-gray-600 cursor-pointer"></MagnifyingGlassIcon>
         </div>
         <transition
           enter-active-class="transition duration-100 ease-out"
