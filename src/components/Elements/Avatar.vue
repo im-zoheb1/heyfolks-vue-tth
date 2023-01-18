@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 const props = defineProps<{
-  size?: 'xs' | 'sm' | 'md' | 'lg'
+  size?: 'xs' | 'sm' | 'md' | 'lg',
+  clickable?: boolean
 }>()
 
 const size = {
@@ -12,7 +13,7 @@ const size = {
 </script>
 
 <template>
-  <span :class="size" class="rounded-full overflow-hidden ring-offset-2 ring-1 
+  <span :class="[size, clickable && 'cursor-pointer']" class="rounded-full overflow-hidden ring-offset-2 ring-1 
     ring-slate-300 [&>*]:w-full [&>*]:h-full [&>*]:object-cover">
     <slot></slot>
   </span>

@@ -16,7 +16,7 @@ import { BellIcon, ChatBubbleOvalLeftIcon } from '@heroicons/vue/24/solid'
         <BellIcon class="w-7"></BellIcon>
       </Button>
       <div class="w-px h-8 mx-4 bg-gray-200 "></div> <!-- vertical separator -->
-      <Avatar class="mr-3" size="sm">
+      <Avatar class="mr-3" size="sm" clickable>
         <img src="@/assets/img/user.png" />
       </Avatar>
     </div>
