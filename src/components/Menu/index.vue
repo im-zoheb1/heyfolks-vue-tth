@@ -16,14 +16,15 @@ import navigations from './menu'
       </span>
     </a>
     <!-- user profile : end -->
-    <div class="h-px bg-gray-100"></div>
+    <div class="h-px bg-gray-100 mx-5"></div>
     <!-- navigation : start -->
     <nav class="w-full overflow-y-auto mt-6">
       <ul>
         <li v-for="(navigation, index) in navigations" :key="`nav-menu-item-${index}`">
           <a 
             href="#" 
-            class="flex items-center pl-8 py-[14px] hover:bg-indigo-50 transition duration-300 font-bold mx-3 mb-1 rounded-2xl" 
+            class="flex items-center pl-8 py-[14px] hover:bg-indigo-50 
+              transition duration-300 font-bold mx-3 mb-1 rounded-2xl active:scale-95"
             :class="{ 'bg-indigo-50': !index }"
           >
             <component class="h-6 mr-3" :is="navigation.icon"></component> 
