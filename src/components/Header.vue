@@ -7,8 +7,11 @@ import Separator from '@/components/Elements/Separator.vue'
 import { 
   BellIcon, 
   ChatBubbleOvalLeftIcon,
-  Cog6ToothIcon
 } from '@heroicons/vue/20/solid'
+
+const props = defineProps<{
+  userData: any
+}>()
 </script>
 
 <template>
@@ -36,7 +39,7 @@ import {
       <Separator is-vertical class="mx-4 h-8" />
       <!-- user profile menu -->
       <Avatar class="mr-3" size="sm" clickable>
-        <img src="@/assets/img/user.png" />
+        <img :src="userData.avatar" />
       </Avatar>
     </div>
   </header>

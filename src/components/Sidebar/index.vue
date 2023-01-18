@@ -2,18 +2,22 @@
 import Avatar from '@/components/Elements/Avatar.vue'
 import Separator from '@/components/Elements/Separator.vue'
 import navigations from './menu'
+
+const props = defineProps<{
+  userData?: any
+}>()
 </script>
 
 <template>
   <aside class="menu flex flex-col">
     <!-- user profile : start -->
-    <a href="#" class="flex items-center px-7 py-3 hover:bg-slate-200 transition duration-300 rounded-3xl mx-4 mb-3">
+    <a href="#" class="flex items-center px-3 py-3 hover:bg-slate-200 transition duration-300 rounded-3xl mx-4 mb-3">
       <Avatar>
-        <img src="@/assets/img/user.png" />
+        <img :src="userData.avatar" />
       </Avatar>
       <span class="ml-3 font-medium text-black leading-none">
-        <div class="text-medium mb-1">Emilia Mark</div>
-        <div class="text-gray-500">@emilia_mark</div>
+        <div class="text-medium mb-1">{{ userData.fullname }}</div>
+        <div class="text-gray-500">@{{ userData.username }}</div>
       </span>
     </a>
     <!-- user profile : end -->
