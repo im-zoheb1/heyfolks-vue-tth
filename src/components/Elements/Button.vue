@@ -9,7 +9,7 @@ const props = defineProps<{
 
 const variant: string = {
   primary: "bg-gradient-to-br from-primary to-secondary text-white",
-  light: "bg-white hover:bg-blue-50 text-primary",
+  light: "bg-blue-50 hover:bg-blue-100 text-primary",
 }[props.variant ?? "primary"];
 
 const spacing: string = {

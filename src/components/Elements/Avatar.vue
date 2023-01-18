@@ -12,8 +12,8 @@ const size = {
 </script>
 
 <template>
-  <div :class="size" class="rounded-full overflow-hidden ring-offset-2 ring-1 
+  <span :class="size" class="rounded-full overflow-hidden ring-offset-2 ring-1 
     ring-slate-300 [&>*]:w-full [&>*]:h-full [&>*]:object-cover">
     <slot></slot>
-  </div>
+  </span>
 </template>
