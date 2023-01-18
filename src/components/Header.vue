@@ -7,13 +7,13 @@ import { BellIcon, ChatBubbleOvalLeftIcon } from '@heroicons/vue/24/solid'
 
 <template>
   <header class="bg-white absolute top-0 left-0 right-0 w-full shadow-sm flex items-center justify-between">
-    <SearchBar class="ml-4"></SearchBar>
+    <SearchBar class="ml-3"></SearchBar>
     <div class="flex items-center">
-      <Button compact variant="light" pilled class="p-2 mx-3 text-gray-700">
-        <ChatBubbleOvalLeftIcon class="w-7" />
+      <Button compact variant="light" pilled class="p-2 mx-3">
+        <ChatBubbleOvalLeftIcon class="w-7 text-gray-700" />
       </Button>
-      <Button compact variant="light" pilled class="p-2 text-gray-700">
-        <BellIcon class="w-7"></BellIcon>
+      <Button compact variant="light" pilled class="p-2">
+        <BellIcon class="w-7 text-gray-700"></BellIcon>
       </Button>
       <div class="w-px h-8 mx-4 bg-gray-200 "></div> <!-- vertical separator -->
       <Avatar class="mr-3" size="sm" clickable>

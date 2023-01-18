@@ -10,7 +10,7 @@ import {
 } from "@headlessui/vue";
 
 const value = ref<any>(null);
-const options = ["Durward Reynolds", "Kenton Towne"];
+const options = ["Durward Reynolds", "Kenton Towne", "Arlene Mccoy", "Devon Webb", "Tom Cook", "Tanya Fox", "Hellen Schmidt"];
 
 const search = (event: Event): void => {
   console.log("on change", event);
