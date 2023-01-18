@@ -1,9 +1,9 @@
 import { 
-  Square2StackIcon, 
-  UserIcon, 
-  InboxIcon, 
-  BellIcon, 
-  BoltIcon,
+  Square2StackIcon as HomeIcon,
+  UsersIcon as FriendsIcon, 
+  InboxIcon as MessagesIcon,
+  BellIcon as NotificationIcon, 
+  UserIcon as ProfileIcon,
 } from '@heroicons/vue/24/solid'
 import type { FunctionalComponent } from 'vue';
 
@@ -14,11 +14,11 @@ interface MenuItem {
 }
 
 const menu: MenuItem[] = [
-  { link: '/', label: 'Home', icon: Square2StackIcon },
-  { link: '/', label: 'Friends', icon: UserIcon },
-  { link: '/', label: 'Messages', icon: InboxIcon },
-  { link: '/', label: 'Notifications', icon: BellIcon },
-  { link: '/', label: 'Profile', icon: BoltIcon },
+  { link: '/', label: 'Home', icon: HomeIcon },
+  { link: '/', label: 'Friends', icon: FriendsIcon },
+  { link: '/', label: 'Messages', icon: MessagesIcon },
+  { link: '/', label: 'Notifications', icon: NotificationIcon },
+  { link: '/', label: 'Profile', icon: ProfileIcon },
 ]
 
 export default menu 
