@@ -3,9 +3,9 @@ import { Popover, PopoverButton, PopoverPanel } from "@headlessui/vue";
 </script>
 
 <template>
-  <Popover class="relative">
+  <Popover v-slot="{ open }" class="relative">
     <PopoverButton class="outline-0">
-      <slot></slot>
+      <slot :open="open"></slot>
     </PopoverButton>
     <transition
         enter-active-class="transition duration-200 ease-out"

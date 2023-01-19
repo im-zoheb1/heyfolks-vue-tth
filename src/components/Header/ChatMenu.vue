@@ -1,0 +1,18 @@
+<script lang="ts" setup>
+import Button from "@/components/Elements/Button.vue";
+import Popover from "@/components/Elements/Popover.vue";
+import { ChatBubbleOvalLeftIcon } from "@heroicons/vue/20/solid";
+</script>
+
+<template>
+  <Popover>
+    <template #default="{ open }">
+      <Button compact variant="light" pilled class="p-2 mx-3">
+        <ChatBubbleOvalLeftIcon class="w-7" :class="{ 'text-gray-600': !open }" />
+      </Button>
+    </template>
+    <template #content>
+      <h3 class="text-lg tracking-wide font-bold">Messages</h3>
+    </template>
+  </Popover>
+</template>

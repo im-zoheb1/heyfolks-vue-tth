@@ -37,7 +37,7 @@ const search = (event: Event): void => {
             class="outline-0 bg-transparent w-64 mr-2 px-1 text-md"
             placeholder="Search"
             autocomplete="off"
-            @change="search"
+            @input="search"
           ></ComboboxInput>
           <MagnifyingGlassIcon class="h-7 w-7 text-gray-600 cursor-pointer"></MagnifyingGlassIcon>
         </div>

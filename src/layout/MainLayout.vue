@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Header from "@/components/Header.vue";
+import Header from "@/components/Header/index.vue";
 import Sidenav from "@/components/Sidenav/index.vue";
 import { faker } from "@faker-js/faker";
 import { reactive } from "vue";
