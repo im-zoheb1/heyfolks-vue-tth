@@ -5,7 +5,7 @@ import { BellIcon } from "@heroicons/vue/20/solid";
 </script>
 
 <template>
-  <Popover>
+  <Popover :panel-class="'w-96'">
     <template #default="{ open }">
       <Button compact variant="light" pilled class="p-2">
         <BellIcon class="w-7" :class="{ 'text-gray-600': !open }"></BellIcon>

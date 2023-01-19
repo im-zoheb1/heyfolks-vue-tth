@@ -1,5 +1,9 @@
 <script lang="ts" setup>
 import { Popover, PopoverButton, PopoverPanel } from "@headlessui/vue";
+
+const props = defineProps<{
+  panelClass?: string
+}>()
 </script>
 
 <template>
@@ -15,7 +19,10 @@ import { Popover, PopoverButton, PopoverPanel } from "@headlessui/vue";
         leave-from-class="translate-y-0 opacity-100"
         leave-to-class="translate-y-1 opacity-0"
       >
-      <PopoverPanel class="absolute right-0 bg-white shadow-md w-96 rounded-lg ring-1 ring-slate-500 ring-opacity-5 py-3 px-4">
+      <PopoverPanel 
+        class="absolute right-0 bg-white shadow-md min-w-min rounded-lg ring-1 ring-slate-500 ring-opacity-5 py-3 px-4"
+        :class="props.panelClass"
+      >
         <slot name="content"></slot>
       </PopoverPanel>
     </transition>

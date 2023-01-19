@@ -47,8 +47,8 @@ const search = (event: Event): void => {
           enter-to-class="transform scale-100 opacity-100"
         >
           <ComboboxOptions
-            class="absolute mt-1 min-w-[380px] overflow-auto rounded-md bg-white 
-              py-2 px-3 text-base shadow-lg ring-1 ring-slate-500 ring-opacity-5"
+            class="absolute mt-1 min-w-[380px] overflow-auto rounded-xl bg-white 
+              p-2 text-base shadow-lg ring-1 ring-slate-500 ring-opacity-5 max-h-[500px]"
           >
             <ComboboxOption
               v-for="item in options"
@@ -57,16 +57,16 @@ const search = (event: Event): void => {
             >
               <li
                 class="relative select-none py-3 px-3 cursor-pointer rounded-xl transition duration-200"
-                :class="{ 'bg-gray-200': active, 'text-gray-900': !active, }"
+                :class="{ 'bg-blue-50': active, 'text-gray-900': !active, }"
               >
                 <span
-                  class="flex items-center truncate"
+                  class="flex items-center truncate p-1"
                   :class="{ 'font-medium': selected, 'font-normal': !selected }"
                 >
                   <Avatar size="sm">
                     <img :src="item.avatar" />
                   </Avatar>
-                  <div class="ml-4 leading-none font-semibold">
+                  <div class="ml-3 leading-none font-semibold">
                     <h3 class="text-base">{{ item.name }}</h3>
                     <h4 class="text-sm text-gray-400">{{ item.bio }}</h4>
                   </div>
