@@ -8,7 +8,7 @@ import Input from '@/components/Elements/Form/Input.vue'
   <AuthLayout title="Sign Up" is-reverse>
     <template #description>
       <p class="mt-4">Already have an account?</p>
-      <Button class="mt-9" variant="light" pilled transform-on-hover @click="$router.push({ name: 'auth' })">
+      <Button class="mt-9" variant="light" size="xl" pilled transform-on-hover @click="$router.push({ name: 'auth' })">
         Sign In
       </Button>
     </template>
@@ -19,7 +19,7 @@ import Input from '@/components/Elements/Form/Input.vue'
       <Input class="mb-10" label="Email Address" placeholder="Email Address" type="email" required />
       <Input class="mb-10" label="Password" placeholder="Password" type="text" required />
       <Input class="mb-10" label="Confirm Password" placeholder="Confirm Password" type="text" required />
-      <Button class="px-10 py-4" type="submit" pilled>Sign Up</Button>
+      <Button class="px-10 py-4" type="submit" size="xl" pilled>Sign Up</Button>
     </form>
     <!-- SIGNUP FORM END -->
   </AuthLayout>

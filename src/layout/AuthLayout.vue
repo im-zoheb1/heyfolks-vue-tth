@@ -12,7 +12,7 @@ const props = defineProps<{
     <!-- helper section with logo and description -->
     <section class="hidden md:grid place-content-center bg-folks bg-cover bg-center bg-no-repeat h-full w-5/12 text-center">
       <Logo />
-      <div class="text-white text-2xl font-semibold">
+      <div class="text-white text-2xl text-center font-semibold">
         <slot name="description"></slot>
       </div>
     </section>

@@ -8,7 +8,7 @@ import Input from '@/components/Elements/Form/Input.vue'
   <AuthLayout title="Log In">
     <template #description>
       <p class="mt-4">Don't have an account?</p>
-      <Button class="mt-9" variant="light" pilled transform-on-hover @click="$router.push({ name: 'register' })">
+      <Button class="mt-9" variant="light" size="xl" pilled transform-on-hover @click="$router.push({ name: 'register' })">
         Join Now
       </Button>
     </template>
@@ -19,7 +19,7 @@ import Input from '@/components/Elements/Form/Input.vue'
       <a class="text-base mb-8 font-bold text-primary text-right cursor-pointer hover:underline block">
         Forgot Password?
       </a>
-      <Button class="px-10 py-4" type="submit" pilled>
+      <Button class="px-10 py-4" type="submit" size="xl" pilled>
         Sign In
       </Button>
     </form>
