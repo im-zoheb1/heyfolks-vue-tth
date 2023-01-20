@@ -11,7 +11,7 @@ const props = defineProps<{
 <template>
   <aside class="menu flex flex-col">
     <!-- user profile : start -->
-    <a href="#" class="flex items-center px-3 py-3 hover:bg-slate-200 transition duration-300 rounded-3xl mx-4 mb-3">
+    <a href="#" class="flex items-center px-3 py-3 hover:bg-blue-50 transition duration-300 rounded-3xl mx-4 mb-3">
       <Avatar>
         <img :src="userData.avatar" />
       </Avatar>
@@ -30,7 +30,7 @@ const props = defineProps<{
             href="#" 
             class="flex items-center pl-8 py-[14px] hover:bg-indigo-50 
               transition duration-300 font-bold mx-3 mb-1 rounded-2xl active:scale-95"
-            :class="{ 'bg-indigo-50': !index }"
+            :class="{ 'bg-blue-50 text-primary': !index }"
           >
             <component class="h-6 mr-3" :is="navigation.icon"></component> 
             {{ navigation.label }}
@@ -45,8 +45,6 @@ const props = defineProps<{
 <style lang="scss" scoped>
 .menu {
   @apply bg-white fixed top-0 left-0 bottom-0 shadow-sm pt-4;
-  &__user {
-
-  }
+  &__user { }
 }
 </style>
