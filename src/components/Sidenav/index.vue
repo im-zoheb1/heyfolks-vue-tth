@@ -28,7 +28,7 @@ const props = defineProps<{
         <li v-for="(navigation, index) in navigations" :key="`nav-menu-item-${index}`">
           <a 
             href="#" 
-            class="flex items-center pl-8 py-[14px] hover:bg-indigo-50 
+            class="flex items-center pl-8 py-[14px] hover:bg-blue-50 
               transition duration-300 font-bold mx-3 mb-1 rounded-2xl active:scale-95"
             :class="{ 'bg-blue-50 text-primary': !index }"
           >
