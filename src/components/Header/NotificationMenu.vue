@@ -64,7 +64,7 @@ notifications.value.unshift({
         <a 
           href="#" 
           v-for="(notification, index) in notifications"
-          class="flex p-3 pr-6 hover:bg-blue-50 hover:border-transparent transition duration-300 relative" 
+          class="flex p-3 pr-8 hover:bg-blue-50 hover:border-transparent transition duration-300 relative" 
           :class="{ 
             'border-t': index ,
             'after:content-[\'\'] after:w-2.5 after:h-2.5 after:bg-primary after:absolute after:right-2 after:top-3 after:rounded-full': notification.isNew
@@ -74,7 +74,14 @@ notifications.value.unshift({
             <img :src="notification.avatar" />
           </Avatar>
           <div class="pl-4">
-            <span class="font-bold">{{ notification.name }}</span> {{ notification.comment }}
+            <div>
+              <span class="font-bold">{{ notification.name }}</span> {{ notification.comment }}
+            </div>
+            <div v-if="notification.type === 'follow-request'" class="flex items-center mt-1">
+              <Button class="mr-3" size="sm">Accept</Button>
+              <Button variant="light" size="sm">Decline</Button>
+            </div>
+            <div class="text-gray-400 font-semibold text-md mt-1">testing</div>
           </div>
         </a>
         <!-- notification item: end -->
