@@ -12,7 +12,8 @@ const getFakeData = (): any => {
   const name: string = faker.name.fullName({ sex })
   const avatar: string = faker.image.avatar();
   const message: string = faker.lorem.words(+faker.random.numeric())
-  return { name, avatar, message }
+  const date: Date  = faker.date.past()
+  return { name, avatar, message, date }
 }
 
 const messages = ref<any[]>([])
@@ -36,15 +37,28 @@ onMounted(() => {
       <h3 class="text-xl tracking-wide font-bold py-3 px-4">Messages</h3>
       <Separator />
       <div class="py-3 px-2">
-        <a href="#" v-for="message in messages" class="flex items-center rounded-xl px-4 py-3 transition duration-300 hover:bg-blue-50">
+        <a 
+          href="#" 
+          v-for="message in messages" 
+          class="flex items-center px-3 py-4 transition duration-300 rounded-xl hover:bg-blue-100 [&+*]:mt-1.5"
+          :class="{ 'bg-blue-50': message.unread }"
+        >
           <Avatar size="sm">
             <img :src="message.avatar" />
           </Avatar>
           <span class="ml-3">
             <div class="font-bold text-md">{{ message.name }}</div>
-            <div class="line-clamp-2 leading-tight text-md text-gray-400">{{ message.message }}</div>
+            <div class="line-clamp-1 leading-tight text-[15px] text-gray-500">{{ message.message }}</div>
           </span>
+          <div class="ml-auto pl-2 text-xs font-semibold text-gray-500 flex-col">
+            <div class="whitespace-nowrap mb-2">{{ $moment(message.date).format('LT') }}</div>
+            <span v-if="message.unread" class="flex items-center justify-center bg-primary w-5 h-5 text-white ml-auto rounded-md">{{ message.unread }}</span>
+          </div>
         </a>
+      </div>
+      <Separator />
+      <div class="my-2 mx-3">
+        <Button class="w-full" size="sm" variant="light">See all</Button>
       </div>
     </template>
   </Popover>
