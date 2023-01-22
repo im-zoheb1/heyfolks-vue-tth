@@ -20,7 +20,7 @@ const props = defineProps<{
       leave-to-class="translate-y-1 opacity-0"
     >
       <PopoverPanel
-        class="absolute right-0 bg-white shadow-md min-w-min rounded-lg ring-1 ring-slate-500 ring-opacity-5"
+        class="absolute right-0 bg-white shadow-md rounded-lg ring-1 ring-slate-500 ring-opacity-5 min-w-fit"
         :class="props.panelClass"
       >
         <slot name="content"></slot>

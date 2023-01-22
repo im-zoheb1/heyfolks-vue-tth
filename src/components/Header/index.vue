@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import SearchBar from './SearchBar.vue'
 import NotificationMenu from './NotificationMenu.vue'
 import MessageMenu from './MessageMenu.vue'
+import SearchBar from '@/components/Elements/SearchBar.vue'
 import Avatar from '@/components/Elements/Avatar.vue'
 import Separator from '@/components/Elements/Separator.vue'
 
