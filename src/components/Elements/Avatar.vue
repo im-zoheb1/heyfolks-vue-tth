@@ -22,7 +22,7 @@ const border = props.rounded ? "rounded-md" : "rounded-full";
 <template>
   <span
     :class="[size, border, clickable && 'cursor-pointer']"
-    class="overflow-hidden ring-offset-2 ring-1 ring-slate-300 [&>*]:w-full [&>*]:h-full [&>*]:object-cover"
+    class="overflow-hidden min-w-fit ring-offset-2 ring-1 ring-slate-300 [&>*]:w-full [&>*]:h-full [&>*]:object-cover"
   >
     <slot></slot>
   </span>
