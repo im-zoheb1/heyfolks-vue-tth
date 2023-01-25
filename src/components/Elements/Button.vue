@@ -6,6 +6,7 @@ const props = defineProps<{
   variant?: "primary" | "light";
   size?: "sm" | "md" | "lg" | "xl";
   transformOnHover?: boolean;
+  noPointerEvents?: boolean;
 }>();
 
 const variant: string = {
@@ -29,6 +30,8 @@ const size = ((S: string): string => {
   normal: "py-3.5 px-9 text-xl",
 }[props.compact ? "compact" : "normal"]; */
 
+const pointerEvents = props.noPointerEvents ? 'pointer-events-none' : ''
+
 const border: string = {
   pilled: "rounded-full",
   rounded: "rounded-lg",
@@ -40,7 +43,7 @@ const transform: string = props.transformOnHover
 
 const defaultStyles = "font-bold transition duration-300 ease-in-out";
 
-const style: string = `${variant} ${size} ${border} ${defaultStyles} ${transform}`;
+const style: string = `${variant} ${size} ${border} ${defaultStyles} ${transform} ${pointerEvents}`;
 </script>
 
 <template>

@@ -8,7 +8,7 @@ import Input from '@/components/Elements/Form/Input.vue'
   <AuthLayout title="Sign Up" is-reverse>
     <template #description>
       <p class="mt-4">Already have an account?</p>
-      <Button class="mt-9" variant="light" size="xl" pilled transform-on-hover @click="$router.push({ name: 'auth' })">
+      <Button class="mt-9" variant="light-primary" size="xl" pilled transform-on-hover @click="$router.push({ name: 'auth' })">
         Sign In
       </Button>
     </template>
