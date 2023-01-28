@@ -20,7 +20,7 @@ const messages = ref<any[]>([])
 
 onMounted(() => {
   for (let i = 0; i < +faker.random.numeric(); i++) {
-    const unread: number = i < 2 ? +faker.random.numeric() : 0
+    const unread: number = i < 1 ? +faker.random.numeric() : 0
     messages.value.push({ ...getFakeData() , unread })
   }
 })

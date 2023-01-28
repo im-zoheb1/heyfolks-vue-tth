@@ -11,7 +11,7 @@ const props = defineProps<{
 </script>
 
 <template>
-  <header class="bg-white absolute top-0 left-0 right-0 w-full flex items-center justify-between">
+  <header class="bg-white fixed top-0 left-0 right-0 w-full flex items-center justify-between shadow-sm">
     <SearchBar class="ml-3"></SearchBar>
     <div class="flex items-center">
       <MessageMenu /> 
