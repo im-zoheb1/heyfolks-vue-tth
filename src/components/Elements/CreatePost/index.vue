@@ -3,7 +3,7 @@ import Separator from '@/components/Elements/Separator.vue'
 import Button from '@/components/Elements/Button.vue'
 import InputFile from '@/components/Elements/Form/InputFile.vue'
 import { faker } from '@faker-js/faker'
-import { PhotoIcon, TrashIcon } from '@heroicons/vue/24/solid';
+import { PhotoIcon, TrashIcon, XMarkIcon } from '@heroicons/vue/24/solid';
 import { ref } from 'vue';
 
 const firstName: string = faker.name.firstName()
@@ -24,6 +24,11 @@ const onChange = (e: Event): void => {
     photos.value.push(URL.createObjectURL(file))
   }
 }
+
+const removePhoto = (photo: File): void => {
+  const index: number = photos.value.indexOf(photo)
+  if (index !== -1) photos.value.splice(index, 1)
+}
 </script>
 
 <template>
@@ -38,8 +43,8 @@ const onChange = (e: Event): void => {
         v-for="photo in photos"
       >
         <img class="w-full h-full object-cover rounded-lg" :src="photo" />
-        <Button variant="light" class="absolute top-1 right-1 p-1 shadow-sm" size="sm" compact pilled>
-          <TrashIcon class="w-5 h-5 cursor-pointer font-bold" />
+        <Button variant="light" class="absolute top-1 right-1 p-1 shadow-sm" size="sm" compact pilled @click="removePhoto(photo)">
+          <XMarkIcon class="w-4 h-4 cursor-pointer font-bold" />
         </Button>
       </div>
       <!-- end: selected-photos -->
