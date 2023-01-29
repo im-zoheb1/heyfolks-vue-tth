@@ -1,22 +1,82 @@
 <script lang="ts" setup>
 import Card from '@/components/Elements/Cards/index.vue'
 import Avatar from '@/components/Elements/Avatar.vue'
+import Separator from '@/components/Elements/Separator.vue';
+import NoUserPhoto from '@/assets/img/no-user-photo.png' 
+import { computed } from 'vue'
+
+import { 
+  HandThumbUpIcon as LikeIcon, 
+  ChatBubbleOvalLeftEllipsisIcon as CommentIcon, 
+  BookmarkIcon as SaveIcon 
+} from '@heroicons/vue/24/outline';
+import { 
+  HandThumbUpIcon as LikeSolidIcon, 
+  BookmarkIcon as SaveSolidIcon 
+} from '@heroicons/vue/24/solid';
+
 
 const props = defineProps<{
   value: any
 }>()
+
+const likesCount = computed(() => props.value.interactions.likes)
+const commentsCount = computed(() => props.value.interactions.comments)
+const isLiked = computed(() => props.value.interactions.isLiked)
+const isSaved = computed(() => props.value.interactions.isSaved)
+
+const onImgError = (event: Event) => {
+  (event.target as HTMLImageElement).src = NoUserPhoto
+}
+
+const toggleLike = (): void => {
+  props.value.interactions.isLiked = !props.value.interactions.isLiked
+  if (!props.value.interactions.isLiked) props.value.interactions.likes--
+  else props.value.interactions.likes++
+}
+
+const toggleSave = (): void => {
+  props.value.interactions.isSaved = !props.value.interactions.isSaved
+}
 </script>
 
 <template>
-  <Card class="p-3">
-    <div class="flex items-center">
-      <Avatar size="sm">
-        <img :src="value.avatar" />
-      </Avatar>
-      <span class="leading-tight ml-3">
-        <div class="text-md">{{ value.fullname }}</div>
-        <div class="text-gray-400 text-sm">{{ value.city }}</div>
-      </span>
+  <Card>
+    <div class="p-3">
+      <div class="flex items-center mb-3">
+        <Avatar size="sm">
+          <img :src="value.avatar" @error="onImgError" />
+        </Avatar>
+        <span class="leading-tight ml-3">
+          <div class="text-md">{{ value.fullname }}</div>
+          <div class="text-gray-400 text-sm">{{ value.city }}</div>
+        </span>
+      </div>
+      <div class="leading-normal text-base">
+        {{ value.content.text }}
+      </div>
+      <div v-if="value.content.photo" class="mt-3 max-h-64 w-full overflow-hidden rounded-md">
+        <img class="w-full h-full object-cover" :src="value.content.photo" />
+      </div>
     </div>
+    <Separator />
+    <div class="flex py-2 px-3 text-sm font-semibold">
+      <div class="flex items-center mr-6 cursor-pointer" :class="{ 'font-bold text-primary': isLiked }" @click="toggleLike">
+        <LikeSolidIcon v-if="isLiked" class="w-6" />
+        <LikeIcon v-else class="w-6" />
+        <div class="ml-2">{{ likesCount }} Likes</div>
+      </div>
+      <div class="flex items-center mr-6 cursor-pointer">
+        <CommentIcon class="w-6" />
+        <div class="ml-2">{{ commentsCount }} comments</div>
+      </div>
+      <div class="flex items-center cursor-pointer" @click="toggleSave">
+        <SaveSolidIcon v-if="isSaved" class="w-6"/>
+        <SaveIcon v-else class="w-6"/>
+        <div class="ml-2">Save</div>
+      </div>
+    </div>
+    <Separator />
+    testing
   </Card>
 </template>
