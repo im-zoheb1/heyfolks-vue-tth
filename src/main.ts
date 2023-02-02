@@ -6,6 +6,7 @@ import router from './router'
 import moment from 'moment'
 import injectKey from './config/injectKey'
 import '@/assets/scss/main.scss'
+import 'vue3-emoji-picker/css'
 
 const app = createApp(App)
 
