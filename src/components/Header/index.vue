@@ -38,7 +38,7 @@ const props = defineProps<{
           <Cog6ToothIcon class="w-6 mr-3" /> Settings
         </MenuItem>
         <Separator class="my-3" />
-        <MenuItem class="flex items-center text-red-600">
+        <MenuItem class="flex items-center text-red-600" @click="$router.push('/auth')">
           <ArrowLeftOnRectangleIcon class="w-6 mr-3" /> Logout
         </MenuItem>
       </Menu>

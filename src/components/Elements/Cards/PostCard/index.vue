@@ -21,9 +21,6 @@ const props = defineProps<{
   value: any
 }>()
 
-const comment = ref<string>('')
-const isCommentActive = ref<boolean>(false)
-
 const likesCount = computed(() => props.value.interactions.likes)
 const commentsCount = computed(() => props.value.interactions.comments)
 const isLiked = computed(() => props.value.interactions.isLiked)
@@ -37,10 +34,6 @@ const toggleLike = (): void => {
   props.value.interactions.isLiked = !props.value.interactions.isLiked
   if (!props.value.interactions.isLiked) props.value.interactions.likes--
   else props.value.interactions.likes++
-}
-
-const toggleComment = (): void => {
-  isCommentActive.value =! isCommentActive.value
 }
 
 const toggleSave = (): void => {
@@ -83,7 +76,7 @@ const toggleSave = (): void => {
         <LikeIcon v-else class="w-6" />
         <div class="ml-2">{{ likesCount }} Likes</div>
       </div>
-      <div class="flex items-center mr-6 cursor-pointer" @click="toggleComment">
+      <div class="flex items-center mr-6 cursor-pointer">
         <CommentIcon class="w-6" />
         <div class="ml-2">{{ commentsCount }} comments</div>
       </div>
@@ -94,11 +87,5 @@ const toggleSave = (): void => {
       </div>
     </div>
     <!-- end: interactions end -->
-    <div v-if="isCommentActive">
-      <Separator />
-      <div class="p-3">
-        <Input v-model="comment" />
-      </div>
-    </div>
   </Card>
 </template>
