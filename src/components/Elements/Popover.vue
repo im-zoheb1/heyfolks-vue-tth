@@ -7,7 +7,7 @@ const props = defineProps<{
 </script>
 
 <template>
-  <Popover v-slot="{ open }" class="relative">
+  <Popover v-slot="{ open }" class="relative flex">
     <PopoverButton class="outline-0">
       <slot :open="open"></slot>
     </PopoverButton>
