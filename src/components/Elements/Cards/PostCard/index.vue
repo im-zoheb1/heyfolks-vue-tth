@@ -69,7 +69,7 @@ const toggleSave = (): void => {
       <div class="leading-normal text-base mb-3">
         {{ value.content.text }}
       </div>
-      <div v-if="value.content.photo" class="mb-3 max-h-64 w-full overflow-hidden rounded-md">
+      <div v-if="value.content.photo" class="mb-3 max-h-[300px] min-h-[300px] w-full overflow-hidden rounded-md">
         <img class="w-full h-full object-cover" :src="value.content.photo" />
       </div>
     </div>
