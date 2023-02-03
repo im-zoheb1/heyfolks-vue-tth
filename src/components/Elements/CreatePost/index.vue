@@ -13,6 +13,7 @@ import { FaceSmileIcon } from '@heroicons/vue/20/solid'
 const firstName: string = faker.name.firstName()
 const placeholder: string = `What's been on your mind lately, ${firstName}?`
 
+const text = ref<string>('')
 const photos = ref<any>([])
 
 const onLoad = (e: Event): void => {
@@ -33,12 +34,21 @@ const removePhoto = (photo: File): void => {
   const index: number = photos.value.indexOf(photo)
   if (index !== -1) photos.value.splice(index, 1)
 }
+
+const onSelectEmoji = (emoji: any): void => {
+  text.value = text.value + emoji.i
+}
 </script>
 
 <template>
   <Card>
     <div class="px-4 py-2">
-      <textarea class="w-full bg-white outline-0 text-gray-700 text-lg resize-none tracking-wide" :placeholder="placeholder" rows="3"></textarea>
+      <textarea 
+        v-model="text"
+        class="w-full bg-white outline-0 text-gray-700 text-lg resize-none tracking-wide" 
+        :placeholder="placeholder" 
+        rows="3"
+      ></textarea>
       <div class="flex mb-3">
         <!-- start: selected photos -->
         <div 
@@ -73,7 +83,14 @@ const removePhoto = (photo: File): void => {
               </div>
             </template>
             <template #content>
-              <EmojiPicker :native="true" />
+              <EmojiPicker 
+                :native="true"
+                hide-search
+                hide-group-icons
+                display-recent
+                :disabled-groups="['activities', 'travel_places', 'objects', 'symbols', 'flags']" 
+                @select="onSelectEmoji"
+              />
             </template>
           </Popover>
         </div>
