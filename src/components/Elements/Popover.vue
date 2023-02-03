@@ -7,8 +7,8 @@ const props = defineProps<{
 </script>
 
 <template>
-  <Popover v-slot="{ open }" class="relative flex">
-    <PopoverButton class="outline-0">
+  <Popover v-slot="{ open }" class="relative">
+    <PopoverButton class="outline-0 flex">
       <slot :open="open"></slot>
     </PopoverButton>
     <transition
@@ -20,7 +20,7 @@ const props = defineProps<{
       leave-to-class="translate-y-1 opacity-0"
     >
       <PopoverPanel
-        class="absolute right-0 bg-white shadow-md rounded-lg ring-1 ring-slate-500 ring-opacity-5 min-w-fit"
+        class="absolute right-0 bg-white shadow-md rounded-lg ring-1 ring-slate-500 ring-opacity-5 min-w-fit z-popover"
         :class="props.panelClass"
       >
         <slot name="content"></slot>

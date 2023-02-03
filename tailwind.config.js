@@ -16,6 +16,11 @@ module.exports = {
       },
       fontFamily: {
         'logo': "'Anton', sans-serif",
+      },
+      zIndex: {
+        'header': 1000,
+        'sidenav': 2000,
+        'popover': 3000
       }
     },
   },

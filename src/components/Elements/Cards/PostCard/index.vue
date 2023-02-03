@@ -71,16 +71,16 @@ const toggleSave = (): void => {
     <!-- start: interactions start -->
     <Separator />
     <div class="flex py-2 px-3 text-sm font-semibold">
-      <div class="flex items-center mr-6 cursor-pointer" :class="{ 'font-bold text-primary': isLiked }" @click="toggleLike">
+      <div class="flex items-center mr-6 cursor-pointer w-24" :class="{ 'font-bold text-primary': isLiked }" @click="toggleLike">
         <LikeSolidIcon v-if="isLiked" class="w-6" />
         <LikeIcon v-else class="w-6" />
         <div class="ml-2">{{ likesCount }} Likes</div>
       </div>
-      <div class="flex items-center mr-6 cursor-pointer">
+      <div class="flex items-center mr-6 cursor-pointer w-32">
         <CommentIcon class="w-6" />
         <div class="ml-2">{{ commentsCount }} comments</div>
       </div>
-      <div class="flex items-center cursor-pointer" @click="toggleSave">
+      <div class="flex items-center cursor-pointer w-28" @click="toggleSave">
         <SaveSolidIcon v-if="isSaved" class="w-6"/>
         <SaveIcon v-else class="w-6"/>
         <div class="ml-2">Save</div>
