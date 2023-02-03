@@ -27,7 +27,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <Popover panel-class="w-[400px]">
+  <Popover panel-class="w-[400px]" panel-position="bottom-left">
     <template #default="{ open }">
       <Button compact variant="light" pilled class="p-2 mx-3">
         <ChatBubbleOvalLeftIcon class="w-7" :class="{ 'text-gray-600': !open }" />
