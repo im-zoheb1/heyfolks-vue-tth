@@ -2,7 +2,7 @@
 import Card from '@/components/Elements/Cards/index.vue'
 import Avatar from '@/components/Elements/Avatar.vue'
 import Separator from '@/components/Elements/Separator.vue';
-import Input from '@/components/Elements/Form/Input.vue'
+import Dialog from '@/components/Elements/Dialog.vue'
 import NoUserPhoto from '@/assets/img/no-user-photo.png' 
 import { ref, computed } from 'vue'
 
@@ -43,6 +43,7 @@ const toggleSave = (): void => {
 
 <template>
   <Card>
+  <Dialog></Dialog>
     <!-- start: header  -->
     <div class="p-3">
       <div class="flex items-center">
