@@ -34,7 +34,7 @@ const search = (event: Event): void => {
         <div class="flex bg-light-1 py-2.5 px-4 rounded-full">
           <ComboboxInput
             v-model="value"
-            class="outline-0 bg-transparent w-full max-w-64 mr-2 px-1 text-md"
+            class="outline-0 bg-transparent w-full mr-2 px-1 text-md lg:w-[250px]"
             placeholder="Search"
             autocomplete="off"
             @input="search"
