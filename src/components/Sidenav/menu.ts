@@ -1,5 +1,5 @@
 import { 
-  Square2StackIcon as HomeIcon,
+  HomeIcon as HomeIcon,
   UsersIcon as FriendsIcon, 
   InboxIcon as MessagesIcon,
   BellIcon as NotificationIcon, 

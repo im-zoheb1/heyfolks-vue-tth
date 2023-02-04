@@ -74,7 +74,7 @@ const props = defineProps<{
       @apply lg:px-5;
     }
     &__icon {
-      @apply h-6 mx-auto lg:mx-0 lg:h-6;
+      @apply h-[26px] mx-auto lg:mx-0 lg:h-6;
     }
     &__text {
       @apply ml-3 hidden lg:inline-block; 
