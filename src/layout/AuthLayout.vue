@@ -17,7 +17,7 @@ const props = defineProps<{
       </div>
     </section>
     <!-- section with title and form -->
-    <section class="w-full md:w-7/12 bg-blue-50 px-6 py-14 lg:px-20 lg:py-16 flex 
+    <section class="w-full md:w-7/12 bg-light-1 px-6 py-14 lg:px-20 lg:py-16 flex 
       items-center text-grey overflow-y-auto h-full flex-col scroll-p-0 scroll-smooth">
       <div class="w-full my-auto">
         <h1 class="font-bold text-5xl mb-16">

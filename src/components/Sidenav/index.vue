@@ -11,7 +11,7 @@ const props = defineProps<{
 <template>
   <aside class="menu flex flex-col">
     <!-- user profile : start -->
-    <a href="#" class="flex items-center px-3 py-3 hover:bg-blue-50 transition duration-300 rounded-3xl mx-4 mb-3">
+    <a href="#" class="flex items-center px-3 py-3 hover:bg-light-1 transition duration-300 rounded-3xl mx-4 mb-3">
       <Avatar>
         <img :src="userData.avatar" />
       </Avatar>
@@ -28,9 +28,9 @@ const props = defineProps<{
         <li v-for="(navigation, index) in navigations" :key="`nav-menu-item-${index}`">
           <a 
             href="#" 
-            class="flex items-center pl-8 py-[14px] hover:bg-blue-50 
+            class="flex items-center pl-8 py-[14px] hover:bg-light-1 
               transition duration-300 font-bold mx-3 mb-1 rounded-2xl active:scale-95"
-            :class="{ 'bg-blue-50 text-primary': !index }"
+            :class="{ 'bg-light-1 text-primary': !index }"
           >
             <component class="h-6 mr-3" :is="navigation.icon"></component> 
             {{ navigation.label }}

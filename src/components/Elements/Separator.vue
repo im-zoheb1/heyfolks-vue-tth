@@ -5,6 +5,6 @@ const props = defineProps<{
 </script>
 
 <template>
-  <div v-if="props.isVertical" class="w-px min-h-full bg-blue-100"></div> <!-- vertical separator -->
-  <div v-else class="h-px bg-blue-100"></div>
+  <div v-if="props.isVertical" class="w-px min-h-full bg-light-2"></div> <!-- vertical separator -->
+  <div v-else class="h-px bg-light-2"></div>
 </template>

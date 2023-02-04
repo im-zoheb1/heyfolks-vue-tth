@@ -64,9 +64,9 @@ notifications.value.unshift({
         <a 
           href="#" 
           v-for="(notification, index) in notifications"
-          class="flex p-3 pr-8 hover:bg-blue-100 hover:border-transparent transition duration-300 relative" 
+          class="flex p-3 pr-8 hover:bg-light-2 hover:border-transparent transition duration-300 relative" 
           :class="{ 
-            'bg-blue-50': notification.isNew,
+            'bg-light-1': notification.isNew,
             'border-t': index ,
             'after:content-[\'\'] after:w-2.5 after:h-2.5 after:bg-primary after:absolute after:right-2 after:top-3 after:rounded-full': notification.isNew
           }"

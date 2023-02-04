@@ -40,7 +40,7 @@ onMounted(() => {
         <a 
           href="#" 
           v-for="message in messages" 
-          class="flex items-center px-3 py-4 transition duration-300 rounded-xl hover:bg-blue-100 [&+*]:mt-1.5"
+          class="flex items-center px-3 py-4 transition duration-300 rounded-xl hover:bg-light-2 [&+*]:mt-1.5"
           :class="{ 'bg-blue-50': message.unread }"
         >
           <Avatar size="sm">

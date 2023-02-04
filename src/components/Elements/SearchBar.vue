@@ -31,7 +31,7 @@ const search = (event: Event): void => {
   <div>
     <Combobox v-model="value">
       <div class="relative">
-        <div class="flex bg-blue-50 py-2.5 px-4 rounded-full">
+        <div class="flex bg-light-1 py-2.5 px-4 rounded-full">
           <ComboboxInput
             v-model="value"
             class="outline-0 bg-transparent w-64 mr-2 px-1 text-md"
@@ -57,7 +57,7 @@ const search = (event: Event): void => {
             >
               <li
                 class="relative select-none py-3 px-3 cursor-pointer rounded-xl transition duration-200"
-                :class="{ 'bg-blue-50': active, 'text-gray-900': !active, }"
+                :class="{ 'bg-light-1': active, 'text-gray-900': !active, }"
               >
                 <span
                   class="flex items-center truncate p-1"

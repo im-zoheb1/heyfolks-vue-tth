@@ -6,7 +6,7 @@ import { MenuItem } from '@headlessui/vue'
   <MenuItem v-slot="{ active }">
     <button
       :class="[
-        active ? 'bg-blue-50' : 'text-gray-900',
+        active ? 'bg-light-1' : 'text-gray-900',
         'group w-full rounded-md p-3 text-md',
       ]"
     >

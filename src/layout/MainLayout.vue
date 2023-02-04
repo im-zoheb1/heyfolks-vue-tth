@@ -23,7 +23,7 @@ const userData: any = reactive<any>({
 <template>
   <Header class="h-16 pl-72 z-header" :user-data="userData" />
   <Sidenav class="w-72 z-sidenav" :user-data="userData" />
-  <main class="w-full bg-blue-50 pl-72 pt-16 min-h-screen">
+  <main class="w-full bg-light-1 pl-72 pt-16 min-h-screen">
     <div class="p-3">
       <slot></slot>
     </div>
