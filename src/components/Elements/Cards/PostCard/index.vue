@@ -5,7 +5,6 @@ import Separator from '@/components/Elements/Separator.vue';
 import Dialog from '@/components/Elements/Dialog.vue'
 import NoUserPhoto from '@/assets/img/no-user-photo.png' 
 import { ref, computed } from 'vue'
-
 import { 
   HandThumbUpIcon as LikeIcon, 
   ChatBubbleOvalLeftEllipsisIcon as CommentIcon, 
@@ -20,6 +19,8 @@ import {
 const props = defineProps<{
   value: any
 }>()
+
+const isCommentsActive = ref<boolean>(false)
 
 const likesCount = computed(() => props.value.interactions.likes)
 const commentsCount = computed(() => props.value.interactions.comments)
@@ -43,7 +44,6 @@ const toggleSave = (): void => {
 
 <template>
   <Card>
-  <Dialog></Dialog>
     <!-- start: header  -->
     <div class="p-3">
       <div class="flex items-center">
@@ -63,7 +63,7 @@ const toggleSave = (): void => {
       <div class="leading-normal text-base mb-3">
         {{ value.content.text }}
       </div>
-      <div v-if="value.content.photo" class="mb-3 max-h-[300px] min-h-[300px] w-full overflow-hidden rounded-md">
+      <div v-if="value.content.photo" class="mb-3 h-[300px] w-full overflow-hidden rounded-md">
         <img class="w-full h-full object-cover" :src="value.content.photo" />
       </div>
     </div>
@@ -72,22 +72,31 @@ const toggleSave = (): void => {
     <!-- start: interactions start -->
     <Separator />
     <div class="flex text-sm font-semibold">
-      <div class="flex items-center justify-center cursor-pointer w-4/12 hover:bg-light-1 py-2" :class="{ 'font-bold text-primary': isLiked }" @click="toggleLike">
+      <button class="flex items-center justify-center cursor-pointer w-4/12 hover:bg-light-1 py-2" :class="{ 'font-bold text-primary': isLiked }" @click="toggleLike">
         <component :is="isLiked ? LikeSolidIcon : LikeIcon" class="w-6"></component>
         <div class="ml-2">{{ likesCount }} Likes</div>
-      </div>
-      <div class="flex items-center justify-center cursor-pointer w-4/12 hover:bg-light-1 py-2">
+      </button>
+      <button class="flex items-center justify-center cursor-pointer w-4/12 hover:bg-light-1 py-2" @click="isCommentsActive = true">
         <CommentIcon class="w-6" />
         <div class="ml-2">{{ commentsCount }} comments</div>
-      </div>
-      <div class="flex items-center justify-center cursor-pointer w-4/12 hover:bg-light-1 py-2" @click="toggleSave">
+      </button>
+      <button class="flex items-center justify-center cursor-pointer w-4/12 hover:bg-light-1 py-2" @click="toggleSave">
         <component :is="isSaved ? SaveSolidIcon : SaveIcon" class="w-6"></component>
         <div class="ml-2">Save</div>
-      </div>
+      </button>
     </div>
     <!-- end: interactions end -->
+    <Dialog 
+      v-model="isCommentsActive"
+      size="max-w-2xl"
+      no-padding
+      hide-header
+    ></Dialog>
   </Card>
 </template>
 
 <style lang="scss" scoped>
+body {
+  display: none;
+}
 </style>

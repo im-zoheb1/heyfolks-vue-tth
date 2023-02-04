@@ -21,9 +21,29 @@ const userData: any = reactive<any>({
 </script>
 
 <template>
-  <Header class="h-16 pl-72 z-header" :user-data="userData" />
-  <Sidenav class="w-72 z-sidenav" :user-data="userData" />
-  <main class="w-full bg-light-1 pl-72 pt-16 min-h-screen">
+  <Header 
+    class="
+      h-16 pl-20 z-header
+      lg:pl-64
+      xl:pl-72
+    " 
+    :user-data="userData" 
+  />
+  <Sidenav 
+    class="
+      w-20 z-sidenav 
+      lg:w-64
+      xl:w-72
+    " 
+    :user-data="userData" 
+  />
+  <main 
+    class="
+      w-full bg-light-1 pt-16 min-h-screen pl-20
+      lg:pl-64
+      xl:pl-72
+    "
+  >
     <div class="p-3">
       <slot></slot>
     </div>

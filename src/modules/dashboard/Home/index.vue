@@ -39,7 +39,13 @@ onMounted(() => {
 
 <template>
   <MainLayout>
-    <div class="gap-3 columns-[30rem] [&>*]:mb-3 [&>*]:break-inside-avoid-column">
+    <div class="
+      gap-3 columns-[25rem] 
+      [&>*]:mb-3 [&>*]:break-inside-avoid-column
+      lg:colums-[30rem]
+      xl:columns-[32rem]
+      2xl:columns-[37rem]
+    ">
       <CreatePost />
       <PostCard v-for="post in posts" :value="post" />
     </div>
