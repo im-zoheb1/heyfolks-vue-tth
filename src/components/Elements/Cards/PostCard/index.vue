@@ -91,7 +91,8 @@ const toggleSave = (): void => {
       size="max-w-2xl"
       no-padding
       hide-header
-    ></Dialog>
+      hide-footer
+    >testing</Dialog>
   </Card>
 </template>
 

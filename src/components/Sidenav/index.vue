@@ -49,20 +49,20 @@ const props = defineProps<{
   @apply flex-col bg-white fixed top-0 left-0 bottom-0 shadow-sm pt-20;
   @apply lg:pt-4;
   &__user-profile {
-    @apply transition duration-300 rounded-3xl mb-3 hidden;
+    @apply transition duration-300 rounded-3xl mb-3 hidden relative;
     @apply lg:flex lg:items-center lg:mx-4 lg:px-3 lg:py-3 lg:hover:bg-light-1 ;
     &__avatar {
       @apply mx-auto lg:mx-0;
     }
     &__info {
-      @apply ml-3 text-black leading-none font-semibold hidden;
+      @apply ml-3 text-black leading-none hidden line-clamp-1 text-base;
       @apply lg:inline-block;
     }
     &__full-name {
-      @apply mb-1.5 line-clamp-1;
+      @apply mb-1.5;
     }
     &__username {
-      @apply text-gray-500 line-clamp-1;
+      @apply text-gray-500;
     }
   }
 
