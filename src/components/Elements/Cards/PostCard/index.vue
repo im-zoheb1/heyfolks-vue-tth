@@ -2,7 +2,7 @@
 import Card from '@/components/Elements/Cards/index.vue'
 import Avatar from '@/components/Elements/Avatar.vue'
 import Separator from '@/components/Elements/Separator.vue';
-import Dialog from '@/components/Elements/Dialog.vue'
+import PostDialog from './PostDialog.vue'
 import NoUserPhoto from '@/assets/img/no-user-photo.png' 
 import { ref, computed } from 'vue'
 import { 
@@ -86,13 +86,14 @@ const toggleSave = (): void => {
       </button>
     </div>
     <!-- end: interactions end -->
-    <Dialog 
+    <PostDialog 
       v-model="isCommentsActive"
+      :data="value"
       size="max-w-2xl"
       no-padding
       hide-header
       hide-footer
-    >testing</Dialog>
+    />
   </Card>
 </template>
 
