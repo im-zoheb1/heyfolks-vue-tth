@@ -21,7 +21,7 @@ const props = defineProps<{
       </span>
     </a>
     <!-- user profile : end -->
-    <Separator class="mx-4" />
+    <Separator class="mx-4 hidden lg:block" />
     <!-- navigation : start -->
     <nav class="sidebar__navigation">
       <ul>
@@ -46,11 +46,11 @@ const props = defineProps<{
 
 <style lang="scss" scoped>
 .sidebar {
-  @apply flex flex-col bg-white fixed top-0 left-0 bottom-0 shadow-sm pt-4;
-
+  @apply flex-col bg-white fixed top-0 left-0 bottom-0 shadow-sm pt-20;
+  @apply lg:pt-4;
   &__user-profile {
-    @apply flex items-center transition duration-300 rounded-3xl mb-3;
-    @apply lg:mx-4 lg:px-3 lg:py-3 lg:hover:bg-light-1 ;
+    @apply transition duration-300 rounded-3xl mb-3 hidden;
+    @apply lg:flex lg:items-center lg:mx-4 lg:px-3 lg:py-3 lg:hover:bg-light-1 ;
     &__avatar {
       @apply mx-auto lg:mx-0;
     }
@@ -67,7 +67,8 @@ const props = defineProps<{
   }
 
   &__navigation {
-    @apply w-full overflow-y-auto mt-6;
+    @apply w-full overflow-y-auto;
+    @apply lg:mt-6;
     &__link {
       @apply flex items-center py-[14px] hover:bg-light-1 hover:text-primary transition duration-300 font-bold mx-3 mb-1 rounded-md active:scale-95;
       @apply lg:px-5;

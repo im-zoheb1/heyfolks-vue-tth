@@ -22,7 +22,8 @@ module.exports = {
       zIndex: {
         'header': 1000,
         'sidenav': 2000,
-        'popover': 3000,
+        'header-tab': 3000,
+        'popover': 4000,
         'dialog': 10000
       }
     },
