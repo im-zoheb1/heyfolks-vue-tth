@@ -16,8 +16,8 @@ const props = defineProps<{
         <img :src="userData.avatar" />
       </Avatar>
       <span class="ml-3 font-medium text-black leading-none">
-        <div class="text-medium mb-1">{{ userData.fullname }}</div>
-        <div class="text-gray-500">@{{ userData.username }}</div>
+        <div class="text-medium mb-1 line-clamp-1">{{ userData.fullname }}</div>
+        <div class="text-gray-500 line-clamp-1">@{{ userData.username }}</div>
       </span>
     </a>
     <!-- user profile : end -->
@@ -28,8 +28,8 @@ const props = defineProps<{
         <li v-for="(navigation, index) in navigations" :key="`nav-menu-item-${index}`">
           <a 
             href="#" 
-            class="flex items-center pl-8 py-[14px] hover:bg-light-1 
-              transition duration-300 font-bold mx-3 mb-1 rounded-2xl active:scale-95"
+            class="flex items-center pl-8 py-[14px] hover:bg-light-1 hover:text-primary transition 
+            duration-300 font-bold mx-3 mb-1 rounded-md active:scale-95"
             :class="{ 'bg-light-1 text-primary': !index }"
           >
             <component class="h-6 mr-3" :is="navigation.icon"></component> 

@@ -73,8 +73,7 @@ const toggleSave = (): void => {
     <Separator />
     <div class="flex text-sm font-semibold">
       <div class="flex items-center justify-center cursor-pointer w-4/12 hover:bg-light-1 py-2" :class="{ 'font-bold text-primary': isLiked }" @click="toggleLike">
-        <LikeSolidIcon v-if="isLiked" class="w-6" />
-        <LikeIcon v-else class="w-6" />
+        <component :is="isLiked ? LikeSolidIcon : LikeIcon" class="w-6"></component>
         <div class="ml-2">{{ likesCount }} Likes</div>
       </div>
       <div class="flex items-center justify-center cursor-pointer w-4/12 hover:bg-light-1 py-2">
@@ -82,8 +81,7 @@ const toggleSave = (): void => {
         <div class="ml-2">{{ commentsCount }} comments</div>
       </div>
       <div class="flex items-center justify-center cursor-pointer w-4/12 hover:bg-light-1 py-2" @click="toggleSave">
-        <SaveSolidIcon v-if="isSaved" class="w-6"/>
-        <SaveIcon v-else class="w-6"/>
+        <component :is="isSaved ? SaveSolidIcon : SaveIcon" class="w-6"></component>
         <div class="ml-2">Save</div>
       </div>
     </div>
