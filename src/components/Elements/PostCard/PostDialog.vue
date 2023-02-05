@@ -79,7 +79,7 @@ onMounted(() => {
   >
     <div class="relative flex flex-col">
       <!-- start: header  -->
-      <div class="p-3 sticky top-0 bg-white">
+      <div class="px-3 py-2 sticky top-0 bg-white shadow-sm">
         <div class="flex items-center">
           <Avatar size="sm">
             <img :src="data.avatar" @error="onImgError" />
@@ -93,7 +93,7 @@ onMounted(() => {
       <!-- end: header -->
 
       <!-- start: content -->
-      <div class="px-3">
+      <div class="px-3 pt-2">
         <div class="leading-normal text-base mb-3">
           {{ data.content.text }}
         </div>
@@ -119,6 +119,8 @@ onMounted(() => {
           <div class="ml-2">Save</div>
         </button>
       </div>
+      <Separator />
+      <!-- end: interactions start -->
 
       <!-- start: comments -->
       <Comments class="flex-1" />
