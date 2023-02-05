@@ -10,14 +10,14 @@ export const getFakePost = (): any => {
     text: faker.lorem.sentences(),
     photo: faker.datatype.boolean() ? faker.image.people(600, 400, true) : null
   }
+  const responses: any[] = getComments()
   const interactions: any = {
     likes: faker.random.numeric(faker.datatype.boolean() ? 2 : 1),
-    comments: faker.random.numeric(faker.datatype.boolean() ? 2 : 1),
+    comments: responses.length,
     isLiked: faker.datatype.boolean(),
     isSaved: faker.datatype.boolean()
   }
-  const comments: any[] = getComments()
-  return { avatar, fullname, username, date, content, interactions, comments }
+  return { avatar, fullname, username, date, content, responses, interactions }
 }
 
 export const getPosts = (): any =>  {

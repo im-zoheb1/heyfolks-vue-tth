@@ -6,6 +6,10 @@ import { PaperAirplaneIcon } from '@heroicons/vue/24/outline';
 import { faker } from '@faker-js/faker';
 import { ref, onMounted } from 'vue';
 
+const props = defineProps<{
+  data: any
+}>()
+
 const avatar: string = faker.internet.avatar()
 
 const isCommentActive = ref<boolean>(false)
@@ -18,8 +22,9 @@ onMounted(() => {
 
 <template>
   <div class="bg-light-1 h-full relative">
-    <div class="p-2 text-center">
-      <div class="my-3">
+    <div class="p-3 text-center">
+      <div v-if="data.length"></div>
+      <div v-else class="my-3">
         <img src="@/assets/illustration/no-results.svg" class="w-32 mx-auto" />
         <div class="text-gray-500 mt-2">No comments available</div>
       </div>

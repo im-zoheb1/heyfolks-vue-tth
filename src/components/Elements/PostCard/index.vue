@@ -78,7 +78,7 @@ const toggleSave = (): void => {
       </button>
       <button class="flex items-center justify-center cursor-pointer w-4/12 hover:bg-light-1 py-2" @click="isCommentsActive = true">
         <CommentIcon class="w-6" />
-        <div class="ml-2">{{ commentsCount }} comments</div>
+        <div class="ml-2">{{ commentsCount || '' }} comments</div>
       </button>
       <button class="flex items-center justify-center cursor-pointer w-4/12 hover:bg-light-1 py-2" @click="toggleSave">
         <component :is="isSaved ? SaveSolidIcon : SaveIcon" class="w-6"></component>

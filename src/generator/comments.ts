@@ -1,11 +1,11 @@
 import { faker } from "@faker-js/faker"
 
-export const getFakeReplies = (): any => {
-  const replies: any[] = []
+export const getFakeresponses = (): any => {
+  const responses: any[] = []
   if (faker.datatype.boolean()) {
     const loopCount: number = Math.floor(Math.random() * 4)
   }
-  return replies
+  return responses
 }
 
 export const getFakeComment = (): any => {
@@ -13,11 +13,11 @@ export const getFakeComment = (): any => {
   const avatar: string = faker.internet.avatar()
   const date: Date = faker.date.past();
   const text: any = faker.lorem.sentence()
-  const replies: any[] = []
+  const responses: any[] = []
   if (faker.datatype.boolean()) {
     const loopCount: number = Math.floor(Math.random() * 3)
     for (let i = 0; i < loopCount; i++) {
-      replies.push(getFakeComment())
+      responses.push(getFakeComment())
     }
   }
 
@@ -26,7 +26,7 @@ export const getFakeComment = (): any => {
     avatar,
     date,
     text,
-    replies
+    responses
   }
 }
 

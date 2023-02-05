@@ -66,7 +66,6 @@ const toggleSave = (): void => {
 
 onMounted(() => {
   isOpen.value = props.modelValue
-  console.log(props.data.comments)
 })
 </script>
 
@@ -123,7 +122,7 @@ onMounted(() => {
       <!-- end: interactions start -->
 
       <!-- start: comments -->
-      <Comments class="flex-1" />
+      <Comments class="flex-1" :data="data.responses" />
       <!-- end: comments -->
     </div>
     
