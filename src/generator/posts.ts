@@ -1,6 +1,18 @@
 import { faker } from '@faker-js/faker'
 import { getComments } from './comments';
 
+/* const getResponsesCount = (responses: any[], count: number = 0, index: number = 0): any => {
+  if (!responses.length) return count
+} */
+function countComment(comments: any): number {
+  let count: number = 0
+  for (let comment of comments) {
+    count = count + 1
+    count += countComment(comment.responses)
+  }
+  return count
+}
+
 export const getFakePost = (): any => {
   const fullname: string =  faker.name.fullName();
   const username: string = faker.internet.userName(fullname)
@@ -13,7 +25,7 @@ export const getFakePost = (): any => {
   const responses: any[] = getComments()
   const interactions: any = {
     likes: faker.random.numeric(faker.datatype.boolean() ? 2 : 1),
-    comments: responses.length,
+    comments: countComment(responses),
     isLiked: faker.datatype.boolean(),
     isSaved: faker.datatype.boolean()
   }

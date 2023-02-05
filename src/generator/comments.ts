@@ -15,7 +15,7 @@ export const getFakeComment = (): any => {
   const text: any = faker.lorem.sentence()
   const responses: any[] = []
   if (faker.datatype.boolean()) {
-    const loopCount: number = Math.floor(Math.random() * 3)
+    const loopCount: number = Math.floor(Math.random() * 4)
     for (let i = 0; i < loopCount; i++) {
       responses.push(getFakeComment())
     }
