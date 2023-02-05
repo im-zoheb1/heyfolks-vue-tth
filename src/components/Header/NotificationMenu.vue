@@ -4,41 +4,10 @@ import Button from "@/components/Elements/Button.vue";
 import Separator from "@/components/Elements/Separator.vue";
 import Avatar from "@/components/Elements/Avatar.vue"
 import { BellIcon, CheckIcon } from "@heroicons/vue/20/solid";
-import { faker } from "@faker-js/faker";
 import { ref } from 'vue'
+import { getNotifications } from "@/generator/notifications";
 
-const getFakeData = (): any => {
-  const sex: any = faker.name.sex();
-  const name: string = faker.name.fullName({ sex })
-  const avatar: string = faker.image.avatar();
-  return { name, avatar }
-}
-
-const notifications = ref<any[]>([])
-
-notifications.value.unshift({
-  ...getFakeData(),
-  type: 'text',
-  date: faker.date.past(),
-  comment: 'commented on your post.',
-  isNew: false
-})
-
-notifications.value.unshift({
-  ...getFakeData(),
-  type: 'follow-request',
-  date: faker.date.past(),
-  comment: 'has requested to follow you.',
-  isNew: true
-})
-
-notifications.value.unshift({
-  ...getFakeData(),
-  type: 'text',
-  date: faker.date.past(),
-  comment: 'has liked your post.',
-  isNew: true
-})
+const notifications = ref<any[]>(getNotifications())
 </script>
 
 <template>

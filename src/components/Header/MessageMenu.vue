@@ -4,26 +4,10 @@ import Popover from "@/components/Elements/Popover.vue";
 import Separator from "@/components/Elements/Separator.vue"
 import Avatar from '@/components/Elements/Avatar.vue'
 import { ChatBubbleOvalLeftIcon } from "@heroicons/vue/20/solid";
-import { faker } from '@faker-js/faker'
 import { ref, onMounted } from 'vue'
+import { getMessages } from "@/generator/messages";
 
-const getFakeData = (): any => {
-  const sex: any = faker.name.sex();
-  const name: string = faker.name.fullName({ sex })
-  const avatar: string = faker.image.avatar();
-  const message: string = faker.lorem.words(+faker.random.numeric())
-  const date: Date  = faker.date.past()
-  return { name, avatar, message, date }
-}
-
-const messages = ref<any[]>([])
-
-onMounted(() => {
-  for (let i = 0; i < +faker.random.numeric(); i++) {
-    const unread: number = i < 1 ? +faker.random.numeric() : 0
-    messages.value.push({ ...getFakeData() , unread })
-  }
-})
+const messages = ref<any[]>(getMessages())
 </script>
 
 <template>
@@ -36,11 +20,11 @@ onMounted(() => {
     <template #content>
       <h3 class="text-xl tracking-wide font-bold py-3 px-4">Messages</h3>
       <Separator />
-      <div class="py-3 px-2">
+      <div class="p-2">
         <a 
           href="#" 
           v-for="message in messages" 
-          class="flex items-center px-3 py-4 transition duration-300 rounded-xl hover:bg-light-2 [&+*]:mt-1.5"
+          class="flex items-center p-3 transition duration-300 rounded-xl hover:bg-light-2 [&+*]:mt-1.5"
           :class="{ 'bg-blue-50': message.unread }"
         >
           <Avatar size="sm">
