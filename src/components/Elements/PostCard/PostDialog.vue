@@ -2,6 +2,7 @@
 import Dialog from '@/components/Elements/Dialog.vue';
 import Avatar from '@/components/Elements/Avatar.vue'
 import Separator from '@/components/Elements/Separator.vue';
+import Comments from '@/components/Elements/Comments/index.vue'
 import NoUserPhoto from '@/assets/img/no-user-photo.png' 
 import { ref, computed, watch, onMounted } from 'vue'
 import { 
@@ -120,8 +121,7 @@ onMounted(() => {
       </div>
 
       <!-- start: comments -->
-      <div class="bg-light-1 w-full h-32 shadow-inner">
-      </div>
+      <Comments />
       <!-- end: comments -->
     </div>
     

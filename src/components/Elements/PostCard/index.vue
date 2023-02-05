@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import Card from '@/components/Elements/Cards/index.vue'
+import Card from '@/components/Elements/Card.vue'
 import Avatar from '@/components/Elements/Avatar.vue'
 import Separator from '@/components/Elements/Separator.vue';
 import PostDialog from './PostDialog.vue'

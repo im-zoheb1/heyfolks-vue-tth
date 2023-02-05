@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import MainLayout from "@/layout/MainLayout.vue";
 import CreatePost from "@/components/Elements/CreatePost/index.vue";
-import PostCard from "@/components/Elements/Cards/PostCard/index.vue"
+import PostCard from "@/components/Elements/PostCard/index.vue"
 import { faker } from "@faker-js/faker";
 import { ref, onMounted } from "vue";
 

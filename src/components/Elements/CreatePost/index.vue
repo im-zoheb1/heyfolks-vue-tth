@@ -2,13 +2,12 @@
 import Separator from '@/components/Elements/Separator.vue'
 import Button from '@/components/Elements/Button.vue'
 import InputFile from '@/components/Elements/Form/InputFile.vue'
-import Card from '@/components/Elements/Cards/index.vue'
+import Card from '@/components/Elements/Card.vue'
 import Popover from "@/components/Elements/Popover.vue";
 import EmojiPicker from 'vue3-emoji-picker'
 import { faker } from '@faker-js/faker'
-import { XMarkIcon, CameraIcon } from '@heroicons/vue/24/solid';
+import { XMarkIcon } from '@heroicons/vue/24/solid';
 import { ref } from 'vue';
-import { FaceSmileIcon } from '@heroicons/vue/20/solid'
 
 const firstName: string = faker.name.firstName()
 const placeholder: string = `What's been on your mind lately, ${firstName}?`
