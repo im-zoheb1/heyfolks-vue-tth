@@ -77,7 +77,7 @@ onMounted(() => {
     hide-header
     hide-footer
   >
-    <div class="relative">
+    <div class="relative flex flex-col">
       <!-- start: header  -->
       <div class="p-3 sticky top-0 bg-white">
         <div class="flex items-center">
@@ -121,7 +121,7 @@ onMounted(() => {
       </div>
 
       <!-- start: comments -->
-      <Comments />
+      <Comments class="flex-1" />
       <!-- end: comments -->
     </div>
     
