@@ -13,13 +13,18 @@ const isCommentActive = ref<boolean>(false)
 
 <template>
   <div class="bg-light-1 h-full relative">
-    <div class="shadow-inner"></div>
+    <div class="p-2 text-center">
+      <div class="my-3">
+        <img src="@/assets/illustration/no-results.svg" class="w-32 mx-auto" />
+        <div class="text-gray-500 mt-2">No comments available</div>
+      </div>
+    </div>
     <div class="flex items-center p-2 sticky bottom-0 bg-white">
       <Avatar size="xs">
         <img :src="avatar" />
       </Avatar>
       <a 
-        class="flex items-center rounded-lg w-full ml-2 bg-white p-1 border"
+        class="flex items-center rounded-lg w-full ml-2 p-1 border"
         :class="{ 'ring-2': isCommentActive }"
       >
         <input 

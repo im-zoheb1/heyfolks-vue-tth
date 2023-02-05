@@ -119,7 +119,6 @@ onMounted(() => {
           <div class="ml-2">Save</div>
         </button>
       </div>
-      <Separator />
       <!-- end: interactions start -->
 
       <!-- start: comments -->
