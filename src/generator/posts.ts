@@ -1,4 +1,5 @@
 import { faker } from '@faker-js/faker'
+import { getComments } from './comments';
 
 export const getFakePost = (): any => {
   const fullname: string =  faker.name.fullName();
@@ -15,7 +16,8 @@ export const getFakePost = (): any => {
     isLiked: faker.datatype.boolean(),
     isSaved: faker.datatype.boolean()
   }
-  return { avatar, fullname, username, date, content, interactions }
+  const comments: any[] = getComments()
+  return { avatar, fullname, username, date, content, interactions, comments }
 }
 
 export const getPosts = (): any =>  {

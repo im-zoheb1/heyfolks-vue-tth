@@ -66,6 +66,7 @@ const toggleSave = (): void => {
 
 onMounted(() => {
   isOpen.value = props.modelValue
+  console.log(props.data.comments)
 })
 </script>
 
@@ -79,7 +80,7 @@ onMounted(() => {
   >
     <div class="relative flex flex-col">
       <!-- start: header  -->
-      <div class="px-3 py-2 sticky top-0 bg-white shadow-sm">
+      <div class="px-3 py-2 sticky top-0 bg-white">
         <div class="flex items-center">
           <Avatar size="sm">
             <img :src="data.avatar" @error="onImgError" />
