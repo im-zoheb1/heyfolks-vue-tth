@@ -86,7 +86,7 @@ onMounted(() => {
           </Avatar>
           <span class="leading-tight ml-3">
             <div class="text-md">{{ data.fullname }}</div>
-            <div class="text-gray-400 text-sm">{{ data.city }}</div>
+            <div class="text-gray-400 text-sm">{{ $moment(data.date).fromNow() }}</div>
           </span>
         </div>
       </div>

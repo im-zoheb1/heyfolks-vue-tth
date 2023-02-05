@@ -4,7 +4,7 @@ export const getFakePost = (): any => {
   const fullname: string =  faker.name.fullName();
   const username: string = faker.internet.userName(fullname)
   const avatar: string = faker.image.avatar();
-  const city: string = faker.address.city()
+  const date: Date = faker.date.past();
   const content: any = {
     text: faker.lorem.sentences(),
     photo: faker.datatype.boolean() ? faker.image.people(600, 400, true) : null
@@ -15,7 +15,7 @@ export const getFakePost = (): any => {
     isLiked: faker.datatype.boolean(),
     isSaved: faker.datatype.boolean()
   }
-  return { avatar, fullname, username, city, content, interactions }
+  return { avatar, fullname, username, date, content, interactions }
 }
 
 export const getPosts = (): any =>  {

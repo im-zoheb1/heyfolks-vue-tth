@@ -52,7 +52,7 @@ const toggleSave = (): void => {
         </Avatar>
         <span class="leading-tight ml-3">
           <div class="text-md">{{ value.fullname }}</div>
-          <div class="text-gray-400 text-sm">{{ value.city }}</div>
+          <div class="text-gray-400 text-sm">{{ $moment(value.date).fromNow() }}</div>
         </span>
       </div>
     </div>
