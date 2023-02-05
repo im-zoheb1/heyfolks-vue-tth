@@ -7,6 +7,7 @@ import { ref, onMounted } from "vue";
 
 const getFakePost = (): any => {
   const fullname: string =  faker.name.fullName();
+  const username: string = faker.internet.userName(fullname)
   const avatar: string = faker.image.avatar();
   const city: string = faker.address.city()
   const content: any = {
@@ -22,6 +23,7 @@ const getFakePost = (): any => {
   return {
     avatar,
     fullname,
+    username,
     city,
     content,
     interactions
@@ -42,7 +44,7 @@ onMounted(() => {
     <div class="
       gap-3 columns-[25rem] 
       [&>*]:mb-3 [&>*]:break-inside-avoid-column
-      lg:colums-[30rem]
+      lg:colums-[28rem]
       xl:columns-[32rem]
       2xl:columns-[37rem]
     ">

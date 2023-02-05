@@ -71,7 +71,7 @@ onMounted(() => {
             leave-to="opacity-0 -translate-y-10"
           >
             <DialogPanel
-              class="w-full transform overflow-hidden rounded-lg bg-white text-left align-middle shadow-xl transition-all max-h-[95vh]"
+              class="w-full transform overflow-hidden rounded-lg bg-white text-left align-middle shadow-xl transition-all max-h-[95vh] overflow-y-auto"
               :class="[
                 size ?? 'max-w-md',
                 { 'p-3': !noPadding }
