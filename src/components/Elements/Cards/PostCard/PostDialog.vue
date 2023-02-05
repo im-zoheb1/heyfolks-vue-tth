@@ -2,7 +2,7 @@
 import Dialog from '@/components/Elements/Dialog.vue';
 import Avatar from '@/components/Elements/Avatar.vue'
 import NoUserPhoto from '@/assets/img/no-user-photo.png' 
-import { ref, computed, watch, onMounted } from 'vue'
+import { ref, watch, onMounted } from 'vue'
 
 const props = defineProps<{
   modelValue: boolean;
@@ -52,6 +52,7 @@ onMounted(() => {
     hide-header
     hide-footer
   >
+    <!-- start: header  -->
     <div class="p-3">
       <div class="flex items-center">
         <Avatar size="sm">
@@ -63,5 +64,17 @@ onMounted(() => {
         </span>
       </div>
     </div>
+    <!-- end: header -->
+
+    <!-- start: content -->
+    <div class="px-3">
+      <div class="leading-normal text-base mb-3">
+        {{ data.content.text }}
+      </div>
+      <div v-if="data.content.photo" class="mb-3 h-[300px] w-full overflow-hidden rounded-md">
+        <img class="w-full h-full object-cover" :src="data.content.photo" />
+      </div>
+    </div>
+    <!-- end: content  -->
   </Dialog>
 </template>
