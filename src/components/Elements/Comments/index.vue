@@ -12,7 +12,8 @@ const isCommentActive = ref<boolean>(false)
 </script>
 
 <template>
-  <div class="bg-light-1 h-full shadow-inner relative">
+  <div class="bg-light-1 h-full relative">
+    <div class="shadow-inner"></div>
     <div class="flex items-center p-2 sticky bottom-0 bg-white">
       <Avatar size="xs">
         <img :src="avatar" />
