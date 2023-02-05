@@ -4,11 +4,16 @@ import Button from '@/components/Elements/Button.vue'
 import Avatar from '@/components/Elements/Avatar.vue';
 import { PaperAirplaneIcon } from '@heroicons/vue/24/outline';
 import { faker } from '@faker-js/faker';
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
 
 const avatar: string = faker.internet.avatar()
 
 const isCommentActive = ref<boolean>(false)
+const commentInputRef = ref<null | HTMLInputElement>(null)
+
+onMounted(() => {
+  setTimeout(() => commentInputRef.value?.focus())
+})
 </script>
 
 <template>
@@ -28,6 +33,7 @@ const isCommentActive = ref<boolean>(false)
         :class="{ 'ring-2': isCommentActive }"
       >
         <input 
+          ref="commentInputRef"
           class="w-full outline-none text-base rounded-lg px-2" 
           placeholder="Share your thoughts" 
           @focus="isCommentActive = true" 
