@@ -1,10 +1,10 @@
 <script lang="ts" setup>
-import Separator from '@/components/Elements/Separator.vue';
 import Button from '@/components/Elements/Button.vue'
 import Avatar from '@/components/Elements/Avatar.vue';
 import { PaperAirplaneIcon } from '@heroicons/vue/24/outline';
 import { faker } from '@faker-js/faker';
 import { ref, onMounted } from 'vue';
+import Nested from './NestedThread.vue';
 
 const props = defineProps<{
   data: any
@@ -22,14 +22,16 @@ onMounted(() => {
 
 <template>
   <div class="bg-light-1 h-full relative">
-    <div class="p-3 text-center">
-      <div v-if="data.length"></div>
-      <div v-else class="my-3">
+    <div>
+      <div v-if="data.length" class="p-3">
+        <Nested :level="0" :data="data"></Nested>
+      </div>
+      <div v-else class="my-3 text-center">
         <img src="@/assets/illustration/no-results.svg" class="w-32 mx-auto" />
         <div class="text-gray-500 mt-2">No comments available</div>
       </div>
     </div>
-    <div class="flex items-center p-2 sticky bottom-0 bg-white">
+    <div class="flex items-center py-2 px-3 sticky bottom-0 bg-white">
       <Avatar size="xs">
         <img :src="avatar" />
       </Avatar>
