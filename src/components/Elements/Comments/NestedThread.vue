@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import Avatar from '@/components/Elements/Avatar.vue';
-import { ArrowUturnLeftIcon } from '@heroicons/vue/20/solid';
+import { ArrowUturnLeftIcon, HandThumbUpIcon, ChatBubbleLeftEllipsisIcon } from '@heroicons/vue/24/outline';
 import { ref } from 'vue'
 
 const props = defineProps<{
@@ -41,12 +41,20 @@ const toggleThread = (): void => {
           <div class="ml-3 text-gray-700">
             <h3 class="font-bold">{{ item.fullname }}</h3>
             <p class="leading-tight">{{ item.text }}</p>
-            <div class="flex mt-1">
-              <button v-if="item.responses?.length && !isThreadOpen" class="flex items-center text-primary text-sm hover:underline" @click="toggleThread">
-                <ArrowUturnLeftIcon class="w-[12px] mr-1.5" />
-                {{ countComment(item.responses) }} Replies
+            <div class="flex mt-1 my-2 text-sm font-semibold text-gray-600">
+              <button class="mr-5 flex items-center">
+                <HandThumbUpIcon class="w-5 mr-1" />
+                Like
+              </button>
+              <button class="flex items-center">
+                <ChatBubbleLeftEllipsisIcon class="w-5 mr-1" />
+                Comment
               </button>
             </div>
+            <button v-if="item.responses?.length && !isThreadOpen" class="flex items-center text-primary text-sm hover:underline" @click="toggleThread">
+              <ArrowUturnLeftIcon class="w-[12px] mr-1.5" />
+              {{ countComment(item.responses) }} Replies
+            </button>
           </div>
         </div>
         <!-- comment: end -->
