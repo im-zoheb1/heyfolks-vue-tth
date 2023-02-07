@@ -36,17 +36,17 @@ onMounted(() => {
         <img :src="avatar" />
       </Avatar>
       <a 
-        class="flex items-center rounded-lg w-full ml-2 p-1 border"
+        class="flex items-center w-full ml-2 p-1 border rounded-full"
         :class="{ 'ring-2': isCommentActive }"
       >
         <input 
           ref="commentInputRef"
-          class="w-full outline-none text-base rounded-lg px-2" 
+          class="w-full outline-none text-base rounded-lg px-2 bg-transparent" 
           placeholder="Share your thoughts" 
           @focus="isCommentActive = true" 
           @blur="isCommentActive = false" 
         />
-        <Button compact class="p-1.5">
+        <Button compact pilled class="p-1.5">
           <PaperAirplaneIcon class="h-6" />
         </Button>
       </a>
