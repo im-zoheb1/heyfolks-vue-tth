@@ -33,7 +33,7 @@ const toggleThread = (): void => {
         :class="{ 'connection-line': item.responses.length }"
       >
         <!-- comment: start  -->
-        <div class="flex mb-4 relative" >
+        <div class="flex mb-2 relative" >
           <span :class="{ 'connection-line__curved': level }"></span>
           <Avatar size="xs">
             <img :src="item.avatar" />
