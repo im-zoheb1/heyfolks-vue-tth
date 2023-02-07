@@ -33,15 +33,18 @@ const toggleThread = (): void => {
         :class="{ 'connection-line': item.responses.length }"
       >
         <!-- comment: start  -->
-        <div class="flex mb-4">
+        <div 
+          class="flex mb-4 relative"
+        >
+          <span :class="{ 'connection-line__curved': level }"></span>
           <Avatar size="xs">
             <img :src="item.avatar" />
           </Avatar>
-          <div class="ml-3 text-[15px] text-gray-700">
+          <div class="ml-3 text-gray-700">
             <h3 class="font-bold">{{ item.fullname }}</h3>
             <p class="leading-tight">{{ item.text }}</p>
             <div class="flex mt-1">
-              <button v-if="item.responses?.length" class="flex items-center text-primary text-sm hover:underline" @click="toggleThread">
+              <button v-if="item.responses?.length && !isThreadVisible" class="flex items-center text-primary text-sm hover:underline" @click="toggleThread">
                 <ArrowUturnLeftIcon class="w-[12px] mr-1.5" />
                 {{ countComment(item.responses) }} Replies
               </button>
@@ -66,8 +69,11 @@ const toggleThread = (): void => {
 .connection-line {
   @apply relative;
   &::after {
-    @apply absolute top-[50px] left-5 content-[''] w-[1px] bg-gray-900/20;
-    height: calc(100% - 55px);
+    @apply absolute top-[50px] left-5 content-[''] w-[1px] bg-gray-300;
+    height: calc(100% - 40px);
+  }
+  &__curved {
+    @apply absolute top-0 -left-7 w-5 h-6 content-[''] rounded-bl-full border-gray-300 border-l border-b;
   }
 }
 </style>
