@@ -8,7 +8,7 @@ const props = defineProps<{
   level: number;
 }>()
 
-const isThreadVisible = ref<boolean>(false)
+const isThreadOpen = ref<boolean>(false)
 
 function countComment(comments: any): number {
   let count: number = 0
@@ -20,7 +20,7 @@ function countComment(comments: any): number {
 }
 
 const toggleThread = (): void => {
-  isThreadVisible.value = !isThreadVisible.value
+  isThreadOpen.value = !isThreadOpen.value
 }
 </script>
 
@@ -33,9 +33,7 @@ const toggleThread = (): void => {
         :class="{ 'connection-line': item.responses.length }"
       >
         <!-- comment: start  -->
-        <div 
-          class="flex mb-4 relative"
-        >
+        <div class="flex mb-4 relative" >
           <span :class="{ 'connection-line__curved': level }"></span>
           <Avatar size="xs">
             <img :src="item.avatar" />
@@ -44,7 +42,7 @@ const toggleThread = (): void => {
             <h3 class="font-bold">{{ item.fullname }}</h3>
             <p class="leading-tight">{{ item.text }}</p>
             <div class="flex mt-1">
-              <button v-if="item.responses?.length && !isThreadVisible" class="flex items-center text-primary text-sm hover:underline" @click="toggleThread">
+              <button v-if="item.responses?.length && !isThreadOpen" class="flex items-center text-primary text-sm hover:underline" @click="toggleThread">
                 <ArrowUturnLeftIcon class="w-[12px] mr-1.5" />
                 {{ countComment(item.responses) }} Replies
               </button>
@@ -54,7 +52,7 @@ const toggleThread = (): void => {
         <!-- comment: end -->
         <!-- thread: start -->
         <NestedThread 
-          v-if="item.responses?.length && isThreadVisible" 
+          v-if="item.responses?.length && isThreadOpen" 
           :level="level + 1"
           :data="item.responses"
           class="pl-12"
@@ -73,7 +71,7 @@ const toggleThread = (): void => {
     height: calc(100% - 40px);
   }
   &__curved {
-    @apply absolute top-0 -left-7 w-5 h-6 content-[''] rounded-bl-full border-gray-300 border-l border-b;
+    @apply absolute top-0 -left-7 w-5 h-6 content-[''] rounded-bl-2xl border-gray-300 border-l border-b;
   }
 }
 </style>
