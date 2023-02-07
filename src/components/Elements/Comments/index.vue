@@ -23,7 +23,7 @@ onMounted(() => {
 <template>
   <div class="bg-light-1 h-full relative">
     <div>
-      <div v-if="data.length" class="p-3">
+      <div v-if="data.length" class="px-3 pt-4">
         <Nested :level="0" :data="data"></Nested>
       </div>
       <div v-else class="my-3 text-center">
