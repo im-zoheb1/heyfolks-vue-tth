@@ -28,25 +28,27 @@ function countComment(comments: any): number {
   return count
 }
 
-const hideThread = (): void => {
+const openThread = (): void => {
   isThreadOpen.value = true
 }
 
 const showComment = (): void => {
   isCommentOpen.value = true
   commentInputRef.value?.scrollIntoView({ behavior: 'smooth' })
-  console.log(commentInputRef.value)
-  // commentInputRef.value?.focusInput()
 }
 </script>
 
 <template>
   <ul class="w-full">
-    <li class="relative" :class="{ 'connection-line': isThreadOpen || isCommentOpen }">
+    <li class="relative">
+
       <!-- comment: start  -->
       <div 
-        class="flex mb-2 relative" 
-        :class="{ 'connection-line__curved': level }"
+        class="flex py-1.5"
+        :class="{
+          'connection-line-root': !level,
+          'connection-line-descendant': level
+        }"
       >
         <Avatar size="xs">
           <img :src="data.avatar" />
@@ -54,7 +56,7 @@ const showComment = (): void => {
         <div class="ml-3 text-gray-700">
           <h3 class="font-bold">{{ data.fullname }}</h3>
           <p class="leading-tight">{{ data.text }}</p>
-          <div class="flex mt-1 my-2 text-sm font-semibold text-gray-600">
+          <div class="flex text-sm font-semibold text-gray-600 pt-1">
             <button class="mr-5 flex items-center">
               <HandThumbUpIcon class="w-5 mr-1" /> Like
             </button>
@@ -62,7 +64,11 @@ const showComment = (): void => {
               <ChatBubbleLeftEllipsisIcon class="w-5 mr-1" /> Comment
             </button>
           </div>
-          <button v-if="data.responses?.length && !isThreadOpen" class="flex items-center text-primary text-sm hover:underline" @click="hideThread">
+          <button 
+            v-if="!isThreadOpen && data.responses.length" 
+            class="flex items-center text-primary text-sm hover:underline pt-1.5 font-semibold" 
+            @click="openThread"
+          >
             <ArrowUturnLeftIcon class="w-[12px] mr-1.5" />
             {{ countComment(data.responses) }} Replies
           </button>
@@ -71,7 +77,6 @@ const showComment = (): void => {
       <!-- comment: end -->
 
       <!-- thread: start -->
-      <!-- <div v-if="isThreadOpen">{{ data.responses }}</div> -->
       <template v-for="response in data.responses" v-if="isThreadOpen">
         <NestedThread 
           :level="level + 1"
@@ -80,28 +85,46 @@ const showComment = (): void => {
         ></NestedThread>
       </template>
       <!-- thread: end -->
-      <div class="pl-12 mb-3">
+
+      <!-- comment input: start -->
+      <div v-if="isCommentOpen" class="pl-12 py-1.5">
         <CommentInput
           ref="commentInputRef"
-          v-if="isCommentOpen" 
           v-model="comment"
-          class="connection-line__curved"
         ></CommentInput>
       </div>
+      <!-- comment input: end -->
+
     </li>
   </ul>
 </template>
 
 <style lang="scss" scoped>
-.connection-line {
-  @apply relative;
-  &::after {
-    @apply absolute top-[50px] left-5 content-[''] w-[1px] bg-gray-300;
-    height: calc(100% - 85px);
+.connection-line-root {
+  position: relative;
+  &::before {
+    position: absolute;
+    top: 4px;
+    left: 18px;
+    content: '';
+    height: 100%;
+    width: 2px;
+    z-index: -1;
+    @apply bg-gray-200;
   }
-  &__curved {
-    @apply relative;
-    @apply after:absolute after:top-0 after:-left-7 after:w-5 after:h-6 after:content-[''] after:rounded-bl-2xl after:border-gray-300 after:border-l after:border-b;
+}
+.connection-line-descendant {
+  position: relative;
+  &::before {
+    position: absolute;
+    top: 0px;
+    left: -30px;
+    content: '';
+    height: 26px;
+    width: 20px;
+    z-index: -1;
+    border-bottom-left-radius: 8px;
+    @apply border-b-[2px] border-l-[2px];
   }
 }
 </style>

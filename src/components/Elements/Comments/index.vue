@@ -12,8 +12,8 @@ const comment = ref<string>('')
 
 <template>
   <div class="h-full relative">
-    <div>
-      <div v-if="data.length" class="px-3 pt-4">
+    <div class="px-3 py-2">
+      <div v-if="data.length">
         <Nested 
           v-for="item in data" 
           :level="0" 
