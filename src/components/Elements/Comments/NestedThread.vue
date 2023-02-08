@@ -8,7 +8,6 @@ import {
   ChatBubbleLeftEllipsisIcon, 
 } from '@heroicons/vue/24/outline';
 import { ref } from 'vue'
-import { faker } from '@faker-js/faker';
 
 const props = defineProps<{
   data: any;
@@ -18,6 +17,7 @@ const props = defineProps<{
 const isThreadOpen = ref<boolean>(false)
 const isCommentOpen = ref<boolean>(false)
 const comment = ref<string>('')
+const commentInputRef = ref<null | HTMLElement>(null)
 
 function countComment(comments: any): number {
   let count: number = 0
@@ -32,8 +32,11 @@ const hideThread = (): void => {
   isThreadOpen.value = true
 }
 
-const hideComment = (): void => {
+const showComment = (): void => {
   isCommentOpen.value = true
+  commentInputRef.value?.scrollIntoView({ behavior: 'smooth' })
+  console.log(commentInputRef.value)
+  // commentInputRef.value?.focusInput()
 }
 </script>
 
@@ -55,7 +58,7 @@ const hideComment = (): void => {
             <button class="mr-5 flex items-center">
               <HandThumbUpIcon class="w-5 mr-1" /> Like
             </button>
-            <button class="flex items-center" @click="hideComment">
+            <button class="flex items-center" @click="showComment">
               <ChatBubbleLeftEllipsisIcon class="w-5 mr-1" /> Comment
             </button>
           </div>
@@ -79,6 +82,7 @@ const hideComment = (): void => {
       <!-- thread: end -->
       <div class="pl-12 mb-3">
         <CommentInput
+          ref="commentInputRef"
           v-if="isCommentOpen" 
           v-model="comment"
           class="connection-line__curved"

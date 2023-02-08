@@ -26,10 +26,14 @@ watch(() => props.modelValue, (value: string) => {
   comment.value = value 
 })
 
-onMounted(() => {
-  comment.value = props.modelValue
+const focusInput = (): void => {
   isCommentActive.value = true
   setTimeout(() => commentInputRef.value?.focus())
+}
+
+onMounted(() => {
+  comment.value = props.modelValue
+  focusInput()
 })
 </script>
 
