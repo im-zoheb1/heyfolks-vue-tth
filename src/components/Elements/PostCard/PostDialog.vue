@@ -1,8 +1,9 @@
 <script lang="ts" setup>
 import Dialog from '@/components/Elements/Dialog.vue';
 import Comments from '@/components/Elements/Comments/index.vue'
+import Separator from '@/components/Elements/Separator.vue';
 import Post from './Post.vue'
-import { ref, computed, watch, onMounted } from 'vue'
+import { ref, watch, onMounted } from 'vue'
 
 const props = defineProps<{
   modelValue: boolean;
@@ -50,8 +51,8 @@ onMounted(() => {
   >
     <div class="relative flex flex-col">
       <Post :data="data" />
+      <Separator />
       <Comments class="flex-1" :data="data.responses" />
     </div>
-    
   </Dialog>
 </template>

@@ -1,7 +1,12 @@
 <script lang="ts" setup>
 import Avatar from '@/components/Elements/Avatar.vue';
 import Button from '@/components/Elements/Button.vue';
-import { ArrowUturnLeftIcon, HandThumbUpIcon, ChatBubbleLeftEllipsisIcon, PaperAirplaneIcon } from '@heroicons/vue/24/outline';
+import CommentInput from './CommentInput.vue';
+import { 
+  ArrowUturnLeftIcon, 
+  HandThumbUpIcon, 
+  ChatBubbleLeftEllipsisIcon, 
+} from '@heroicons/vue/24/outline';
 import { ref } from 'vue'
 import { faker } from '@faker-js/faker';
 
@@ -10,9 +15,9 @@ const props = defineProps<{
   level: number;
 }>()
 
-const avatar = faker.internet.avatar()
 const isThreadOpen = ref<boolean>(false)
 const isCommentOpen = ref<boolean>(false)
+const comment = ref<string>('')
 
 function countComment(comments: any): number {
   let count: number = 0
@@ -34,10 +39,12 @@ const hideComment = (): void => {
 
 <template>
   <ul class="w-full">
-    <li class="relative" :class="{ 'connection-line': data.responses.length }">
+    <li class="relative" :class="{ 'connection-line': isThreadOpen || isCommentOpen }">
       <!-- comment: start  -->
-      <div class="flex mb-2 relative" >
-        <span :class="{ 'connection-line__curved': level }"></span>
+      <div 
+        class="flex mb-2 relative" 
+        :class="{ 'connection-line__curved': level }"
+      >
         <Avatar size="xs">
           <img :src="data.avatar" />
         </Avatar>
@@ -70,25 +77,13 @@ const hideComment = (): void => {
         ></NestedThread>
       </template>
       <!-- thread: end -->
-      
-      <!-- comment input: start -->
-      <div v-if="isCommentOpen" class="flex items-center pl-12 sticky bottom-0 mb-2">
-        <Avatar size="xs">
-          <img :src="avatar" />
-        </Avatar>
-        <a class="flex items-center w-full ml-2 p-1 border rounded-full bg-gray-100">
-          <input 
-            ref="commentInputRef"
-            class="w-full outline-none text-base rounded-lg px-2 bg-transparent" 
-            placeholder="Share your thoughts" 
-          />
-          <Button compact pilled class="p-1.5">
-            <PaperAirplaneIcon class="h-6" />
-          </Button>
-        </a>
+      <div class="pl-12 mb-3">
+        <CommentInput
+          v-if="isCommentOpen" 
+          v-model="comment"
+          class="connection-line__curved"
+        ></CommentInput>
       </div>
-      <!-- comment input: end -->
-      
     </li>
   </ul>
 </template>
@@ -98,10 +93,11 @@ const hideComment = (): void => {
   @apply relative;
   &::after {
     @apply absolute top-[50px] left-5 content-[''] w-[1px] bg-gray-300;
-    height: calc(100% - 40px);
+    height: calc(100% - 85px);
   }
   &__curved {
-    @apply absolute top-0 -left-7 w-5 h-6 content-[''] rounded-bl-2xl border-gray-300 border-l border-b;
+    @apply relative;
+    @apply after:absolute after:top-0 after:-left-7 after:w-5 after:h-6 after:content-[''] after:rounded-bl-2xl after:border-gray-300 after:border-l after:border-b;
   }
 }
 </style>

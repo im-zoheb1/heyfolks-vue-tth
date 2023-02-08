@@ -9,7 +9,7 @@ const props = defineProps<{
 
 const size = ref<string>(
   {
-    xs: "w-10 h-10",
+    xs: "w-9 h-9",
     sm: "w-12 h-12",
     md: "w-16 h-16",
     lg: "w-18 h-18",

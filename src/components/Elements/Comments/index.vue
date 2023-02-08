@@ -1,23 +1,13 @@
 <script lang="ts" setup>
-import Button from '@/components/Elements/Button.vue'
-import Avatar from '@/components/Elements/Avatar.vue';
-import { PaperAirplaneIcon } from '@heroicons/vue/24/outline';
-import { faker } from '@faker-js/faker';
 import { ref, onMounted } from 'vue';
 import Nested from './NestedThread.vue';
+import CommentInput from './CommentInput.vue';
 
 const props = defineProps<{
   data: any
 }>()
 
-const avatar: string = faker.internet.avatar()
-
-const isCommentActive = ref<boolean>(false)
-const commentInputRef = ref<null | HTMLInputElement>(null)
-
-onMounted(() => {
-  setTimeout(() => commentInputRef.value?.focus())
-})
+const comment = ref<string>('')
 </script>
 
 <template>
@@ -35,25 +25,6 @@ onMounted(() => {
         <div class="text-gray-500 mt-2">No comments available</div>
       </div>
     </div>
-    <div class="flex items-center py-2 px-3 sticky bottom-0 bg-white">
-      <Avatar size="xs">
-        <img :src="avatar" />
-      </Avatar>
-      <a 
-        class="flex items-center w-full ml-2 p-1 border rounded-full bg-gray-100"
-        :class="{ 'ring-2': isCommentActive }"
-      >
-        <input 
-          ref="commentInputRef"
-          class="w-full outline-none text-base rounded-lg px-2 bg-transparent" 
-          placeholder="Share your thoughts" 
-          @focus="isCommentActive = true" 
-          @blur="isCommentActive = false" 
-        />
-        <Button compact pilled class="p-1.5">
-          <PaperAirplaneIcon class="h-6" />
-        </Button>
-      </a>
-    </div>
+    <CommentInput v-model="comment" class="sticky bottom-0 px-3 py-2" />
   </div>
 </template>
