@@ -1,14 +1,18 @@
 <script lang="ts" setup>
 import Avatar from '@/components/Elements/Avatar.vue';
-import { ArrowUturnLeftIcon, HandThumbUpIcon, ChatBubbleLeftEllipsisIcon } from '@heroicons/vue/24/outline';
+import Button from '@/components/Elements/Button.vue';
+import { ArrowUturnLeftIcon, HandThumbUpIcon, ChatBubbleLeftEllipsisIcon, PaperAirplaneIcon } from '@heroicons/vue/24/outline';
 import { ref } from 'vue'
+import { faker } from '@faker-js/faker';
 
 const props = defineProps<{
   data: any;
   level: number;
 }>()
 
+const avatar = faker.internet.avatar()
 const isThreadOpen = ref<boolean>(false)
+const isCommentOpen = ref<boolean>(false)
 
 function countComment(comments: any): number {
   let count: number = 0
@@ -19,56 +23,79 @@ function countComment(comments: any): number {
   return count
 }
 
-const toggleThread = (): void => {
-  isThreadOpen.value = !isThreadOpen.value
+const hideThread = (): void => {
+  isThreadOpen.value = true
+}
+
+const hideComment = (): void => {
+  isCommentOpen.value = true
 }
 </script>
 
 <template>
-  <section class="w-full">
-    <ul>
-      <li 
-        v-for="(item, index) in data"
-        class="relative"
-        :class="{ 'connection-line': item.responses.length }"
-      >
-        <!-- comment: start  -->
-        <div class="flex mb-2 relative" >
-          <span :class="{ 'connection-line__curved': level }"></span>
-          <Avatar size="xs">
-            <img :src="item.avatar" />
-          </Avatar>
-          <div class="ml-3 text-gray-700">
-            <h3 class="font-bold">{{ item.fullname }}</h3>
-            <p class="leading-tight">{{ item.text }}</p>
-            <div class="flex mt-1 my-2 text-sm font-semibold text-gray-600">
-              <button class="mr-5 flex items-center">
-                <HandThumbUpIcon class="w-5 mr-1" />
-                Like
-              </button>
-              <button class="flex items-center">
-                <ChatBubbleLeftEllipsisIcon class="w-5 mr-1" />
-                Comment
-              </button>
-            </div>
-            <button v-if="item.responses?.length && !isThreadOpen" class="flex items-center text-primary text-sm hover:underline" @click="toggleThread">
-              <ArrowUturnLeftIcon class="w-[12px] mr-1.5" />
-              {{ countComment(item.responses) }} Replies
+  <ul class="w-full">
+    <li 
+      v-for="(item, index) in data"
+      class="relative"
+      :class="{ 'connection-line': item.responses.length }"
+    >
+      <!-- comment: start  -->
+      <div class="flex mb-2 relative" >
+        <!-- <span :class="{ 'connection-line__curved': level }"></span> -->
+        <Avatar size="xs">
+          <img :src="item.avatar" />
+        </Avatar>
+        <div class="ml-3 text-gray-700">
+          <h3 class="font-bold">{{ item.fullname }}</h3>
+          <p class="leading-tight">{{ item.text }}</p>
+          <div class="flex mt-1 my-2 text-sm font-semibold text-gray-600">
+            <button class="mr-5 flex items-center">
+              <HandThumbUpIcon class="w-5 mr-1" />
+              Like
+            </button>
+            <button class="flex items-center" @click="hideComment">
+              <ChatBubbleLeftEllipsisIcon class="w-5 mr-1" />
+              Comment
             </button>
           </div>
+          <button v-if="item.responses?.length && !isThreadOpen" class="flex items-center text-primary text-sm hover:underline" @click="hideThread">
+            <ArrowUturnLeftIcon class="w-[12px] mr-1.5" />
+            {{ countComment(item.responses) }} Replies
+          </button>
         </div>
-        <!-- comment: end -->
-        <!-- thread: start -->
-        <NestedThread 
-          v-if="item.responses?.length && isThreadOpen" 
-          :level="level + 1"
-          :data="item.responses"
-          class="pl-12"
-        ></NestedThread>
-        <!-- thread: end -->
-      </li>
-    </ul>
-  </section>
+      </div>
+      <!-- comment: end -->
+      <!-- thread: start -->
+      <NestedThread 
+        v-if="item.responses?.length && isThreadOpen" 
+        :level="level + 1"
+        :data="item.responses"
+        class="pl-12"
+      ></NestedThread>
+      <!-- thread: end -->
+      <transition
+        enter-active-class="transition duration-300 ease-out"
+        enter-from-class="transform scale-0 opacity-0"
+        enter-to-class="transform scale-100 opacity-100"
+      >
+        <div v-if="isCommentOpen" class="flex items-center pl-12 sticky bottom-0 mb-2">
+          <Avatar size="xs">
+            <img :src="avatar" />
+          </Avatar>
+          <a class="flex items-center w-full ml-2 p-1 border rounded-full bg-gray-100">
+            <input 
+              ref="commentInputRef"
+              class="w-full outline-none text-base rounded-lg px-2 bg-transparent" 
+              placeholder="Share your thoughts" 
+            />
+            <Button compact pilled class="p-1.5">
+              <PaperAirplaneIcon class="h-6" />
+            </Button>
+          </a>
+        </div>
+      </transition>
+    </li>
+  </ul>
 </template>
 
 <style lang="scss" scoped>

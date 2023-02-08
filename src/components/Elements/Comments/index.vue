@@ -21,7 +21,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="bg-light-1 h-full relative shadow-inner">
+  <div class="h-full relative">
     <div>
       <div v-if="data.length" class="px-3 pt-4">
         <Nested :level="0" :data="data"></Nested>
@@ -36,7 +36,7 @@ onMounted(() => {
         <img :src="avatar" />
       </Avatar>
       <a 
-        class="flex items-center w-full ml-2 p-1 border rounded-full"
+        class="flex items-center w-full ml-2 p-1 border rounded-full bg-gray-100"
         :class="{ 'ring-2': isCommentActive }"
       >
         <input 
