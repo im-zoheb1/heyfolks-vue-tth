@@ -34,66 +34,61 @@ const hideComment = (): void => {
 
 <template>
   <ul class="w-full">
-    <li 
-      v-for="(item, index) in data"
-      class="relative"
-      :class="{ 'connection-line': item.responses.length }"
-    >
+    <li class="relative" :class="{ 'connection-line': data.responses.length }">
       <!-- comment: start  -->
       <div class="flex mb-2 relative" >
-        <!-- <span :class="{ 'connection-line__curved': level }"></span> -->
+        <span :class="{ 'connection-line__curved': level }"></span>
         <Avatar size="xs">
-          <img :src="item.avatar" />
+          <img :src="data.avatar" />
         </Avatar>
         <div class="ml-3 text-gray-700">
-          <h3 class="font-bold">{{ item.fullname }}</h3>
-          <p class="leading-tight">{{ item.text }}</p>
+          <h3 class="font-bold">{{ data.fullname }}</h3>
+          <p class="leading-tight">{{ data.text }}</p>
           <div class="flex mt-1 my-2 text-sm font-semibold text-gray-600">
             <button class="mr-5 flex items-center">
-              <HandThumbUpIcon class="w-5 mr-1" />
-              Like
+              <HandThumbUpIcon class="w-5 mr-1" /> Like
             </button>
             <button class="flex items-center" @click="hideComment">
-              <ChatBubbleLeftEllipsisIcon class="w-5 mr-1" />
-              Comment
+              <ChatBubbleLeftEllipsisIcon class="w-5 mr-1" /> Comment
             </button>
           </div>
-          <button v-if="item.responses?.length && !isThreadOpen" class="flex items-center text-primary text-sm hover:underline" @click="hideThread">
+          <button v-if="data.responses?.length && !isThreadOpen" class="flex items-center text-primary text-sm hover:underline" @click="hideThread">
             <ArrowUturnLeftIcon class="w-[12px] mr-1.5" />
-            {{ countComment(item.responses) }} Replies
+            {{ countComment(data.responses) }} Replies
           </button>
         </div>
       </div>
       <!-- comment: end -->
+
       <!-- thread: start -->
-      <NestedThread 
-        v-if="item.responses?.length && isThreadOpen" 
-        :level="level + 1"
-        :data="item.responses"
-        class="pl-12"
-      ></NestedThread>
+      <!-- <div v-if="isThreadOpen">{{ data.responses }}</div> -->
+      <template v-for="response in data.responses" v-if="isThreadOpen">
+        <NestedThread 
+          :level="level + 1"
+          :data="response"
+          class="pl-12"
+        ></NestedThread>
+      </template>
       <!-- thread: end -->
-      <transition
-        enter-active-class="transition duration-300 ease-out"
-        enter-from-class="transform scale-0 opacity-0"
-        enter-to-class="transform scale-100 opacity-100"
-      >
-        <div v-if="isCommentOpen" class="flex items-center pl-12 sticky bottom-0 mb-2">
-          <Avatar size="xs">
-            <img :src="avatar" />
-          </Avatar>
-          <a class="flex items-center w-full ml-2 p-1 border rounded-full bg-gray-100">
-            <input 
-              ref="commentInputRef"
-              class="w-full outline-none text-base rounded-lg px-2 bg-transparent" 
-              placeholder="Share your thoughts" 
-            />
-            <Button compact pilled class="p-1.5">
-              <PaperAirplaneIcon class="h-6" />
-            </Button>
-          </a>
-        </div>
-      </transition>
+      
+      <!-- comment input: start -->
+      <div v-if="isCommentOpen" class="flex items-center pl-12 sticky bottom-0 mb-2">
+        <Avatar size="xs">
+          <img :src="avatar" />
+        </Avatar>
+        <a class="flex items-center w-full ml-2 p-1 border rounded-full bg-gray-100">
+          <input 
+            ref="commentInputRef"
+            class="w-full outline-none text-base rounded-lg px-2 bg-transparent" 
+            placeholder="Share your thoughts" 
+          />
+          <Button compact pilled class="p-1.5">
+            <PaperAirplaneIcon class="h-6" />
+          </Button>
+        </a>
+      </div>
+      <!-- comment input: end -->
+      
     </li>
   </ul>
 </template>

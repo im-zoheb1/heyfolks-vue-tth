@@ -24,7 +24,11 @@ onMounted(() => {
   <div class="h-full relative">
     <div>
       <div v-if="data.length" class="px-3 pt-4">
-        <Nested :level="0" :data="data"></Nested>
+        <Nested 
+          v-for="item in data" 
+          :level="0" 
+          :data="item"
+        ></Nested>
       </div>
       <div v-else class="my-3 text-center">
         <img src="@/assets/illustration/no-results.svg" class="w-32 mx-auto" />
