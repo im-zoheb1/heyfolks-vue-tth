@@ -27,7 +27,6 @@ const isOpen = ref<boolean>(false)
 watch(isOpen, (value: boolean) => {
   emits('update:modelValue', value)
 })
-
 watch(() => props.modelValue, (value: boolean) => {
   isOpen.value = value 
 })

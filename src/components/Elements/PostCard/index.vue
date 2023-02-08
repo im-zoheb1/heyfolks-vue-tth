@@ -1,91 +1,23 @@
 <script lang="ts" setup>
 import Card from '@/components/Elements/Card.vue'
-import Avatar from '@/components/Elements/Avatar.vue'
-import Separator from '@/components/Elements/Separator.vue';
+import Post from '@/components/Elements/PostCard/Post.vue'
 import PostDialog from './PostDialog.vue'
-import NoUserPhoto from '@/assets/img/no-user-photo.png' 
-import { ref, computed } from 'vue'
-import { 
-  HandThumbUpIcon as LikeIcon, 
-  ChatBubbleOvalLeftEllipsisIcon as CommentIcon, 
-  BookmarkIcon as SaveIcon 
-} from '@heroicons/vue/24/outline';
-import { 
-  HandThumbUpIcon as LikeSolidIcon, 
-  BookmarkIcon as SaveSolidIcon 
-} from '@heroicons/vue/24/solid';
-
+import { ref } from 'vue'
 
 const props = defineProps<{
-  value: any
+  value: any;
 }>()
 
 const isCommentsActive = ref<boolean>(false)
 
-const likesCount = computed(() => props.value.interactions.likes)
-const commentsCount = computed(() => props.value.interactions.comments)
-const isLiked = computed(() => props.value.interactions.isLiked)
-const isSaved = computed(() => props.value.interactions.isSaved)
-
-const onImgError = (event: Event) => {
-  (event.target as HTMLImageElement).src = NoUserPhoto
-}
-
-const toggleLike = (): void => {
-  props.value.interactions.isLiked = !props.value.interactions.isLiked
-  if (!props.value.interactions.isLiked) props.value.interactions.likes--
-  else props.value.interactions.likes++
-}
-
-const toggleSave = (): void => {
-  props.value.interactions.isSaved = !props.value.interactions.isSaved
+const activeComment = (value: boolean) => {
+  isCommentsActive.value = value
 }
 </script>
 
 <template>
   <Card>
-    <!-- start: header  -->
-    <div class="p-3">
-      <div class="flex items-center">
-        <Avatar size="sm">
-          <img :src="value.avatar" @error="onImgError" />
-        </Avatar>
-        <span class="leading-tight ml-3">
-          <div class="text-md">{{ value.fullname }}</div>
-          <div class="text-gray-400 text-sm">{{ $moment(value.date).fromNow() }}</div>
-        </span>
-      </div>
-    </div>
-    <!-- end: header -->
-
-    <!-- start: content -->
-    <div class="px-3">
-      <div class="leading-normal text-base mb-3">
-        {{ value.content.text }}
-      </div>
-      <div v-if="value.content.photo" class="mb-3 h-[300px] w-full overflow-hidden rounded-md">
-        <img class="w-full h-full object-cover" :src="value.content.photo" />
-      </div>
-    </div>
-    <!-- end: content  -->
-
-    <!-- start: interactions start -->
-    <Separator />
-    <div class="flex text-sm font-semibold">
-      <button class="flex items-center justify-center cursor-pointer w-4/12 hover:bg-light-1 py-2" :class="{ 'font-bold text-primary': isLiked }" @click="toggleLike">
-        <component :is="isLiked ? LikeSolidIcon : LikeIcon" class="w-6"></component>
-        <div class="ml-2">{{ likesCount }} Likes</div>
-      </button>
-      <button class="flex items-center justify-center cursor-pointer w-4/12 hover:bg-light-1 py-2" @click="isCommentsActive = true">
-        <CommentIcon class="w-6" />
-        <div class="ml-2">{{ commentsCount || '' }} comments</div>
-      </button>
-      <button class="flex items-center justify-center cursor-pointer w-4/12 hover:bg-light-1 py-2" @click="toggleSave">
-        <component :is="isSaved ? SaveSolidIcon : SaveIcon" class="w-6"></component>
-        <div class="ml-2">Save</div>
-      </button>
-    </div>
-    <!-- end: interactions end -->
+    <Post :data="value" :activate-comment="activeComment" />
     <PostDialog 
       v-model="isCommentsActive"
       :data="value"
