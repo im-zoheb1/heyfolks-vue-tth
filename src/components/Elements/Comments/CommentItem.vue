@@ -2,28 +2,18 @@
 import Avatar from "@/components/Elements/Avatar.vue";
 import Button from "@/components/Elements/Button.vue"
 import {
-  ArrowUturnLeftIcon,
-  ArrowUturnUpIcon,
   HeartIcon,
   ChatBubbleLeftEllipsisIcon,
 } from "@heroicons/vue/24/outline";
-import { ref } from "vue";
 
 defineProps<{
   data: any;
   itemClass?: string
 }>();
 
-const isThreadOpen = ref<boolean>(false)
-const isCommentOpen = ref<boolean>(false)
-
-const toggleComment = (): void => {
-  isCommentOpen.value = !isCommentOpen.value
-}
-
-const toggleThread = (): void => {
-  isThreadOpen.value = !isThreadOpen.value
-}
+const emits = defineEmits<{
+  (e: 'toggleComment'): void
+}>()
 
 const countComment = (comments: any): number => {
   let count: number = 0;
@@ -47,23 +37,15 @@ const countComment = (comments: any): number => {
         <Button compact variant="light" size="sm" class="mr-5 p-1">
           <HeartIcon class="w-[18px]" />
         </Button>
-        <Button compact variant="light" size="sm" class="p-1 mr-2">
+        <Button compact variant="light" size="sm" class="p-1 mr-2" @click="emits('toggleComment')">
           <ChatBubbleLeftEllipsisIcon class="w-[18px]" />
         </Button>
         <div class="text-gray-500">{{ $moment(data.date).fromNow() }}</div>
-      </div>
-      <button
-        v-if="data.responses.length"
-        class="flex items-center text-primary text-sm hover:underline pt-1.5 font-semibold"
-        @click="toggleThread"
-      >
-        <component class="w-[12px] mr-1.5" :is="isThreadOpen ? ArrowUturnUpIcon : ArrowUturnLeftIcon"></component>
-        <span v-if="!isThreadOpen">{{ countComment(data.responses) }} Replies</span>
-        <span v-else>hide replies</span>
-      </button>
+      </div> 
+      <slot></slot>
     </div>
   </div>
   <div class="pl-12">
-    <slot name="responses" v-bind="{ isCommentOpen, isThreadOpen }"></slot>
+    <slot name="responses"></slot>
   </div>
 </template>

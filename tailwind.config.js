@@ -12,6 +12,7 @@ module.exports = {
         'accent': '#34D399',
         'light-1': '#EFF6FF',
         'light-2': '#DBEAFE',
+        'danger': '#DC0000'
       },
       backgroundImage: {
         'folks': `linear-gradient(to right bottom, rgba(59, 130, 246, 0.5), rgba(124, 58, 237, 0.3)), url('@/assets/img/folks-bg.png')`

@@ -13,7 +13,12 @@ const comment = ref<string>('')
 <template>
   <div class="h-full relative">
     <div class="px-3 py-2">
-      <CommentsList v-if="data.length" :data="data"></CommentsList>
+      <CommentsList 
+        v-for="(item, index) in data" 
+        v-if="data.length" 
+        :data="item"
+        :key="`comment-item-${index}`"
+      ></CommentsList>
       <div v-else class="my-3 text-center">
         <img src="@/assets/illustration/no-results.svg" class="w-32 mx-auto" />
         <div class="text-gray-500 mt-2">No comments available</div>
