@@ -1,23 +1,15 @@
 import { faker } from "@faker-js/faker"
 
-export const getFakeresponses = (): any => {
-  const responses: any[] = []
-  if (faker.datatype.boolean()) {
-    const loopCount: number = Math.floor(Math.random() * 4)
-  }
-  return responses
-}
-
-export const getFakeComment = (): any => {
+export const getFakeComment = (level: number = 0): any => {
   const fullname: string = faker.name.fullName()
   const avatar: string = faker.internet.avatar()
   const date: Date = faker.date.past();
   const text: any = faker.lorem.sentence()
   const responses: any[] = []
-  if (faker.datatype.boolean()) {
+  if (faker.datatype.boolean() && level === 0) {
     const loopCount: number = Math.floor(Math.random() * 4)
     for (let i = 0; i < loopCount; i++) {
-      responses.push(getFakeComment())
+      responses.push(getFakeComment(level + 1))
     }
   }
 

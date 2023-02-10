@@ -1,9 +1,9 @@
 <script lang="ts" setup>
-import { ref, onMounted } from 'vue';
-import Nested from './NestedThread.vue';
+import { ref } from 'vue';
 import CommentInput from './CommentInput.vue';
+import NestedThread from './NestedThread.vue';
 
-const props = defineProps<{
+defineProps<{
   data: any
 }>()
 
@@ -13,13 +13,7 @@ const comment = ref<string>('')
 <template>
   <div class="h-full relative">
     <div class="px-3 py-2">
-      <div v-if="data.length">
-        <Nested 
-          v-for="item in data" 
-          :level="0" 
-          :data="item"
-        ></Nested>
-      </div>
+      <NestedThread v-if="data.length" :data="data"></NestedThread>
       <div v-else class="my-3 text-center">
         <img src="@/assets/illustration/no-results.svg" class="w-32 mx-auto" />
         <div class="text-gray-500 mt-2">No comments available</div>
