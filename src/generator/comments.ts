@@ -3,7 +3,7 @@ import { faker } from "@faker-js/faker"
 export const getFakeComment = (level: number = 0): any => {
   const fullname: string = faker.name.fullName()
   const avatar: string = faker.internet.avatar()
-  const date: Date = faker.date.past();
+  const date: Date = faker.date.recent();
   const text: any = faker.lorem.sentence()
   const responses: any[] = []
   if (faker.datatype.boolean() && level === 0) {

@@ -30,13 +30,14 @@ function countComment(comments: any): number {
     <div class="ml-3 text-gray-700">
       <h3 class="font-bold">{{ data.fullname }}</h3>
       <p class="leading-tight">{{ data.text }}</p>
-      <div class="flex text-sm font-semibold text-gray-600 pt-1">
+      <div class="flex items-center text-sm text-gray-600 pt-1">
         <Button compact variant="light" size="sm" class="mr-5 p-1">
           <HeartIcon class="w-[18px]" />
         </Button>
-        <Button compact variant="light" size="sm" class="p-1">
+        <Button compact variant="light" size="sm" class="p-1 mr-2">
           <ChatBubbleLeftEllipsisIcon class="w-[18px]" />
         </Button>
+        <div class="text-gray-500">{{ $moment(data.date).fromNow() }}</div>
       </div>
       <button
         v-if="data.responses.length"
