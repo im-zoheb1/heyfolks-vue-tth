@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
 import CommentInput from './CommentInput.vue';
-import NestedThread from './NestedThread.vue';
+import CommentsList from './CommentsList.vue';
 
 defineProps<{
   data: any
@@ -13,7 +13,7 @@ const comment = ref<string>('')
 <template>
   <div class="h-full relative">
     <div class="px-3 py-2">
-      <NestedThread v-if="data.length" :data="data"></NestedThread>
+      <CommentsList v-if="data.length" :data="data"></CommentsList>
       <div v-else class="my-3 text-center">
         <img src="@/assets/illustration/no-results.svg" class="w-32 mx-auto" />
         <div class="text-gray-500 mt-2">No comments available</div>

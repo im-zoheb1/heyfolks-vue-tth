@@ -1,8 +1,9 @@
 <script lang="ts" setup>
 import Avatar from "@/components/Elements/Avatar.vue";
+import Button from "@/components/Elements/Button.vue"
 import {
   ArrowUturnLeftIcon,
-  HandThumbUpIcon,
+  HeartIcon,
   ChatBubbleLeftEllipsisIcon,
 } from "@heroicons/vue/24/outline";
 
@@ -30,12 +31,12 @@ function countComment(comments: any): number {
       <h3 class="font-bold">{{ data.fullname }}</h3>
       <p class="leading-tight">{{ data.text }}</p>
       <div class="flex text-sm font-semibold text-gray-600 pt-1">
-        <button class="mr-5 flex items-center">
-          <HandThumbUpIcon class="w-5 mr-1" /> Like
-        </button>
-        <button class="flex items-center">
-          <ChatBubbleLeftEllipsisIcon class="w-5 mr-1" /> Comment
-        </button>
+        <Button compact variant="light" size="sm" class="mr-5 p-1">
+          <HeartIcon class="w-[18px]" />
+        </Button>
+        <Button compact variant="light" size="sm" class="p-1">
+          <ChatBubbleLeftEllipsisIcon class="w-[18px]" />
+        </Button>
       </div>
       <button
         v-if="data.responses.length"
