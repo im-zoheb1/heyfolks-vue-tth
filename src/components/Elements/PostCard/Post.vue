@@ -3,12 +3,12 @@ import Avatar from '@/components/Elements/Avatar.vue'
 import Separator from '@/components/Elements/Separator.vue';
 import NoUserPhoto from '@/assets/img/no-user-photo.png' 
 import { 
-  HandThumbUpIcon as LikeIcon, 
+  HeartIcon as LikeIcon, 
   ChatBubbleOvalLeftEllipsisIcon as CommentIcon, 
   BookmarkIcon as SaveIcon 
 } from '@heroicons/vue/24/outline';
 import { 
-  HandThumbUpIcon as LikeSolidIcon, 
+  HeartIcon as LikeSolidIcon, 
   BookmarkIcon as SaveSolidIcon 
 } from '@heroicons/vue/24/solid';
 
