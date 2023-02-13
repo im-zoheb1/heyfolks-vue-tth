@@ -24,6 +24,7 @@ const onComment = (): void => {
 
 const onLike = (data: any): void => {
   data.isLiked = !data.isLiked
+  data.isLiked ? data.totalLikes++ : data.totalLikes--
 }
 </script>
 

@@ -6,6 +6,13 @@ export const getFakeComment = (level: number = 0): any => {
   const date: Date = faker.date.recent();
   const text: any = faker.lorem.sentence()
   const isLiked: boolean = +faker.random.numeric(1, { bannedDigits: ['6', '7', '8', '9'] }) === 1
+  let totalLikes: number = 0
+  if ([2, 3].includes(+faker.random.numeric(1, { bannedDigits: ['6', '7', '8', '9'] }))) {
+    totalLikes = +faker.random.numeric()
+  } else if (+faker.random.numeric(1, { bannedDigits: ['6', '7', '8', '9'] }) === 4) {
+    totalLikes = +faker.random.numeric(2)
+  }
+  if (isLiked) totalLikes++
   const responses: any[] = []
   if (faker.datatype.boolean() && level === 0) {
     const loopCount: number = Math.floor(Math.random() * 4)
@@ -20,6 +27,7 @@ export const getFakeComment = (level: number = 0): any => {
     date,
     text,
     isLiked,
+    totalLikes,
     responses
   }
 }
