@@ -29,11 +29,6 @@ const size = ref<string>(((S: string): string => {
   return props.compact ? text : padding + ' ' + text
 })(props.size || 'md'))
 
-/* const spacing: string = {
-  compact: "",
-  normal: "py-3.5 px-9 text-xl",
-}[props.compact ? "compact" : "normal"]; */
-
 const pointerEvents = ref<string>(props.noPointerEvents ? 'pointer-events-none' : '')
 
 const border = ref<string>({
@@ -52,7 +47,6 @@ const style = ref<string>(`${variant.value} ${size.value} ${border.value} ${defa
   <button 
     :class="style"
     :type="props.type"
-    @click="$emit('click')"
   >
     <slot></slot>
   </button>
