@@ -1,10 +1,8 @@
 <script lang="ts" setup>
-import Avatar from "@/components/Elements/Avatar.vue";
+import Avatar from "@/components/Elements/Avatar.vue"
 import Button from "@/components/Elements/Button.vue"
-import {
-  HeartIcon,
-  ChatBubbleLeftEllipsisIcon,
-} from "@heroicons/vue/24/outline";
+import { HeartIcon, ChatBubbleLeftEllipsisIcon } from "@heroicons/vue/24/outline"
+import { HeartIcon as HeartIconSolid } from "@heroicons/vue/24/solid"
 
 defineProps<{
   data: any;
@@ -12,7 +10,8 @@ defineProps<{
 }>();
 
 const emits = defineEmits<{
-  (e: 'toggleComment'): void
+  (e: 'comment'): void;
+  (e: 'like'): void;
 }>()
 
 const countComment = (comments: any): number => {
@@ -34,10 +33,11 @@ const countComment = (comments: any): number => {
       <h3 class="font-bold">{{ data.fullname }}</h3>
       <p class="leading-tight">{{ data.text }}</p>
       <div class="flex items-center text-sm text-gray-600 pt-1">
-        <Button compact variant="light" size="sm" class="mr-5 p-1">
-          <HeartIcon class="w-[18px]" />
+        <Button compact variant="light" size="sm" class="mr-5 p-1" @click="emits('like')">
+          <HeartIconSolid v-if="data.isLiked" class="w-[18px] text-secondary" />
+          <HeartIcon v-else class="w-[18px]" />
         </Button>
-        <Button compact variant="light" size="sm" class="p-1 mr-2" @click="emits('toggleComment')">
+        <Button compact variant="light" size="sm" class="p-1 mr-2" @click="emits('comment')">
           <ChatBubbleLeftEllipsisIcon class="w-[18px]" />
         </Button>
         <div class="text-gray-500">{{ $moment(data.date).fromNow() }}</div>

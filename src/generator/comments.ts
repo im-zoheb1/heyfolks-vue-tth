@@ -5,6 +5,7 @@ export const getFakeComment = (level: number = 0): any => {
   const avatar: string = faker.internet.avatar()
   const date: Date = faker.date.recent();
   const text: any = faker.lorem.sentence()
+  const isLiked: boolean = +faker.random.numeric(1, { bannedDigits: ['6', '7', '8', '9'] }) === 1
   const responses: any[] = []
   if (faker.datatype.boolean() && level === 0) {
     const loopCount: number = Math.floor(Math.random() * 4)
@@ -18,6 +19,7 @@ export const getFakeComment = (level: number = 0): any => {
     avatar,
     date,
     text,
+    isLiked,
     responses
   }
 }

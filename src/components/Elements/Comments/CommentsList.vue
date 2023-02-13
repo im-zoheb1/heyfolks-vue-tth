@@ -18,8 +18,12 @@ const toggleThread = (): void => {
   isThreadOpen.value = !isThreadOpen.value
 }
 
-const toggleComment = (): void => {
+const onComment = (): void => {
   isCommentOpen.value = true
+}
+
+const onLike = (data: any): void => {
+  data.isLiked = !data.isLiked
 }
 </script>
 
@@ -27,7 +31,8 @@ const toggleComment = (): void => {
   <CommentItem 
     :data="data"
     :item-class="isCommentOpen || isThreadOpen ? 'relative is-parent': ''"
-    @toggle-comment="toggleComment"
+    @comment="onComment"
+    @like="onLike(data)"
   >
     <button
       v-if="data.responses.length"
@@ -45,7 +50,11 @@ const toggleComment = (): void => {
         :key="`comment-response-${responseIndex}`"
         class="relative is-descendant"
       >
-        <CommentItem :data="response"></CommentItem>
+        <CommentItem 
+          :data="response"
+          @comment="onComment"
+          @like="onLike(response)"
+        />
       </div>
       <CommentInput 
         v-if="isCommentOpen"
