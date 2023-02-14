@@ -79,8 +79,8 @@ const props = defineProps<{
       @apply flex-1;
     }
     &__link {
-      @apply flex items-center py-[14px] hover:bg-light-1 hover:text-primary transition duration-300 font-bold rounded-md active:scale-95;
-      @apply sm:mx-3 sm:mb-1;
+      @apply flex items-center py-3 hover:bg-light-1 hover:text-primary transition duration-300 font-bold rounded-md active:scale-95;
+      @apply sm:mx-3 sm:mb-1 sm:py-[14px];
       @apply lg:px-5;
     }
     &__icon {
