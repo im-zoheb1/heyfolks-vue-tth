@@ -18,7 +18,7 @@ const userData: any = reactive<any>(getUserData());
   />
   <Sidenav 
     class="
-      z-sidenav hidden
+      z-sidenav
       sm:w-20 sm:block
       lg:w-64
       xl:w-72
