@@ -9,6 +9,8 @@ export const getFakeFriend = (): any => {
   const avatar: string = faker.image.avatar()
   const city: string = faker.address.city() + ', ' + faker.address.country()
   const bio: string = faker.lorem.paragraph()
+  const followers = faker.random.numeric(2)
+  const following = faker.random.numeric(2)
 
   return { 
     avatar, 
@@ -18,7 +20,9 @@ export const getFakeFriend = (): any => {
     gender, 
     username, 
     city, 
-    bio 
+    bio,
+    followers,
+    following
   }
 }
 
