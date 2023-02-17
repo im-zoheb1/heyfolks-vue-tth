@@ -8,7 +8,7 @@ export const getFakeFriend = (): any => {
   const username: string = faker.internet.userName(firstname, lastname)
   const avatar: string = faker.image.avatar()
   const city: string = faker.address.city() + ', ' + faker.address.country()
-  const bio: string = faker.lorem.paragraph()
+  const bio: string = faker.lorem.sentence()
   const followers = faker.random.numeric(2)
   const following = faker.random.numeric(2)
 
