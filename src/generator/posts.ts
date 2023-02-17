@@ -17,7 +17,7 @@ export const getFakePost = (): any => {
   const fullname: string =  faker.name.fullName();
   const username: string = faker.internet.userName(fullname)
   const avatar: string = faker.image.avatar();
-  const date: Date = faker.date.past();
+  const date: Date = faker.date.recent();
   const content: any = {
     text: faker.lorem.sentences(),
     photo: faker.datatype.boolean() ? faker.image.people(600, 400, true) : null

@@ -30,14 +30,14 @@ const props = defineProps<{
           :key="`nav-menu-item-${index}`"
           class="sidebar__navigation__item"
         >
-          <a 
-            href="#" 
+          <RouterLink
             class="sidebar__navigation__link"
-            :class="{ 'bg-light-1 text-primary': !index }"
+            active-class="bg-light-1 text-primary"
+            :to="navigation.link" 
           >
             <component class="sidebar__navigation__icon" :is="navigation.icon"></component> 
             <span class="sidebar__navigation__text">{{ navigation.label }}</span>
-          </a>
+          </RouterLink>
         </li>
       </ul>
     </nav>

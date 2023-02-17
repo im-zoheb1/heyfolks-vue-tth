@@ -15,10 +15,10 @@ interface MenuItem {
 
 const menu: MenuItem[] = [
   { link: '/', label: 'Home', icon: HomeIcon },
-  { link: '/', label: 'Friends', icon: FriendsIcon },
-  { link: '/', label: 'Messages', icon: MessagesIcon },
-  { link: '/', label: 'Notifications', icon: NotificationIcon },
-  { link: '/', label: 'Profile', icon: ProfileIcon },
+  { link: '/friends', label: 'Friends', icon: FriendsIcon },
+  { link: '/messages', label: 'Messages', icon: MessagesIcon },
+  { link: '/notifications', label: 'Notifications', icon: NotificationIcon },
+  { link: '/profile', label: 'Profile', icon: ProfileIcon },
 ]
 
 export default menu 
