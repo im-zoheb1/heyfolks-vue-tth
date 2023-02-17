@@ -10,7 +10,7 @@ const friends = ref(getFakeFriends());
 <template>
   <MainLayout>
     <div
-      class="gap-3 columns-[25rem] [&>*]:mb-3 [&>*]:break-inside-avoid-column lg:colums-[28rem] xl:columns-[32rem] 2xl:columns-[37rem]"
+      class="gap-3 columns-[19rem] [&>*]:mb-3 [&>*]:break-inside-avoid-column"
     >
       <ProfileCard v-for="friend in friends" :data="friend"></ProfileCard>
     </div>
