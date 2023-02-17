@@ -12,12 +12,14 @@ import {
   BookmarkIcon as SaveSolidIcon 
 } from '@heroicons/vue/24/solid';
 
-import { computed } from 'vue'
+import { ref, computed } from 'vue'
 
 const props = defineProps<{
   data: any;
   activateComment?: (arg: boolean) => void;
 }>()
+
+const solidLikeClass = ref('')
 
 // computed: start
 const likesCount = computed(() => props.data.interactions.likes)
@@ -32,8 +34,13 @@ const onImgError = (event: Event) => {
 }
 const toggleLike = (): void => {
   props.data.interactions.isLiked = !props.data.interactions.isLiked
-  if (!props.data.interactions.isLiked) props.data.interactions.likes--
-  else props.data.interactions.likes++
+  if (!props.data.interactions.isLiked) { 
+    props.data.interactions.likes-- 
+    solidLikeClass.value = ''
+  } else { 
+    props.data.interactions.likes++ 
+    solidLikeClass.value = 'animate__bounceIn'
+  }
 }
 const toggleSave = (): void => {
   props.data.interactions.isSaved = !props.data.interactions.isSaved
@@ -72,7 +79,11 @@ const toggleSave = (): void => {
     <Separator />
     <div class="flex text-sm font-semibold">
       <button class="flex items-center justify-center cursor-pointer w-4/12 hover:bg-light-1 py-2" :class="{ 'font-bold text-primary': isLiked }" @click="toggleLike">
-        <component :is="isLiked ? LikeSolidIcon : LikeIcon" class="sm:w-6 w-5"></component>
+        <LikeSolidIcon 
+          v-if="isLiked" 
+          :class="['sm:w-6 w-5 animate__animated animate__faster', solidLikeClass]"
+        ></LikeSolidIcon>
+        <LikeIcon v-else class="sm:w-6 w-5"></LikeIcon>
         <div class="ml-2">{{ likesCount }} Likes</div>
       </button>
       <button class="flex items-center justify-center cursor-pointer w-4/12 hover:bg-light-1 py-2" @click="activateComment && activateComment(true)">
