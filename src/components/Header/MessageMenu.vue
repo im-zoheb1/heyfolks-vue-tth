@@ -42,7 +42,7 @@ const messages = ref<any[]>(getMessages())
       </div>
       <Separator />
       <div class="my-2 mx-3">
-        <Button class="w-full" size="sm" variant="light">See all</Button>
+        <Button class="px-3" size="sm" variant="light">View all messages</Button>
       </div>
     </template>
   </Popover>
