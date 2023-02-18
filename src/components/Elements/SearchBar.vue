@@ -48,7 +48,7 @@ const search = (event: Event): void => {
         >
           <ComboboxOptions
             class="absolute mt-1 min-w-[380px] overflow-auto rounded-xl bg-white 
-              p-2 text-base shadow-lg ring-1 ring-slate-500 ring-opacity-5 max-h-[500px]"
+              p-2 text-base shadow-lg ring-1 ring-slate-500 ring-opacity-5 max-h-[500px] z-popover"
           >
             <ComboboxOption
               v-for="item in options"
