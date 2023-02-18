@@ -19,7 +19,7 @@ const props = defineProps<{
 <template>
   <Card class="px-3 py-4 shadow-sm cursor-pointer">
     <div class="flex items-center leading-tight">
-      <Avatar size="md">
+      <Avatar size="lg" rounded>
         <img :src="data.avatar" />
       </Avatar>
       <div class="w-full ml-5">
@@ -45,7 +45,7 @@ const props = defineProps<{
             </MenuItem>
           </Menu>
         </div>
-        <div>{{ data.bio }}</div>
+        <div class="line-clamp-2 mr-2">{{ data.bio }}</div>
       </div>
     </div>
   </Card>

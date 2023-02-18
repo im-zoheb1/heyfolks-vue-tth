@@ -12,11 +12,11 @@ const size = ref<string>(
     xs: "w-9 h-9",
     sm: "w-12 h-12",
     md: "w-16 h-16",
-    lg: "w-18 h-18",
+    lg: "w-[90px] h-[90px]",
   }[props.size ?? "md"]
 );
 
-const border = props.rounded ? "rounded-md" : "rounded-full";
+const border = props.rounded ? "rounded-2xl" : "rounded-full";
 </script>
 
 <template>
