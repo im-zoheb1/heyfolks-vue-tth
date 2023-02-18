@@ -14,7 +14,7 @@ const position = ref<string>({
   'top-right': 'absolute left-0 bottom-[100%]',
   'bottom-left': 'absolute right-0',
   'bottom-right': 'absolute left-0',
-  'fixed-header-right': 'fixed top-[68px] right-2'
+  'fixed-header-right': 'fixed top-[68px] right-2 bottom-2'
 }[props.panelPosition ?? 'bottom-right'])
 </script>
 
