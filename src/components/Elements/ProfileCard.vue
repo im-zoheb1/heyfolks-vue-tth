@@ -17,7 +17,7 @@ const props = defineProps<{
 </script>
 
 <template>
-  <Card class="px-3 py-4 shadow-sm cursor-pointer">
+  <Card class="px-3 py-4 shadow-none cursor-pointer">
     <div class="flex items-center leading-tight">
       <Avatar size="lg" rounded>
         <img :src="data.avatar" />
