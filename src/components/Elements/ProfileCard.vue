@@ -17,7 +17,7 @@ const props = defineProps<{
 </script>
 
 <template>
-  <Card class="px-3 py-4 shadow-none cursor-pointer hover:bg-light-1 transition-all">
+  <Card class="px-3 py-4 shadow-none cursor-pointer transition-all hover:bg-slate-50">
     <div class="flex items-center leading-tight">
       <Avatar size="lg" rounded>
         <img :src="data.avatar" />
@@ -34,12 +34,12 @@ const props = defineProps<{
                 <EllipsisHorizontalIcon class="w-6" />
               </Button>
             </template>
-            <MenuItem class="flex items-center font-bold text-sm rounded-none">
+            <MenuItem class="flex items-center font-semibold text-sm rounded-none">
               <UnfollowIcon class="w-5 mr-2" />
               Unfollow
             </MenuItem>
-            <Separator />
-            <MenuItem class="flex items-center font-bold text-sm rounded-none">
+            <Separator class="mx-2" />
+            <MenuItem class="flex items-center font-semibold text-sm rounded-none">
               <MessageIcon class="w-5 mr-2" />
               Message
             </MenuItem>
