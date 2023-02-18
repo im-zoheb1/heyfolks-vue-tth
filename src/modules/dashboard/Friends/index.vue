@@ -13,7 +13,7 @@ const friends = ref(getFakeFriends());
     <div class="p-3 bg-white rounded">
       <div class="flex justify-between items-center mb-2">
         <div class="capitalize font-bold mb-2 text-xl">Friends</div>
-        <SearchBar></SearchBar>
+        <SearchBar popover-class="right-0" />
       </div>
       <div
         class="grid gap-3 lg:grid-cols-2"
