@@ -6,6 +6,7 @@ import Avatar from '@/components/Elements/Avatar.vue'
 import { ChatBubbleOvalLeftIcon } from "@heroicons/vue/20/solid";
 import { ref, onMounted } from 'vue'
 import { getMessages } from "@/generator/messages";
+import SearchBar from "../Elements/SearchBar.vue";
 
 const messages = ref<any[]>(getMessages())
 </script>
@@ -21,6 +22,7 @@ const messages = ref<any[]>(getMessages())
       <h3 class="text-xl tracking-wide font-bold py-3 px-4">Messages</h3>
       <Separator />
       <div class="p-2">
+        <SearchBar class="mb-2" />
         <a 
           href="#" 
           v-for="message in messages" 

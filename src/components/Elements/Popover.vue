@@ -32,7 +32,7 @@ const position = ref<string>({
       leave-to-class="translate-y-1 opacity-0"
     >
       <PopoverPanel
-        class="bg-white shadow-md rounded-lg ring-1 ring-slate-500 ring-opacity-5 min-w-content z-popover"
+        class="bg-white shadow-md rounded-lg ring-1 ring-slate-500 ring-opacity-5 w-full z-popover"
         :class="[panelClass, position]"
       >
         <slot name="content"></slot>
