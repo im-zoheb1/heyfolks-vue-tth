@@ -34,12 +34,12 @@ const props = defineProps<{
                 <EllipsisHorizontalIcon class="w-6" />
               </Button>
             </template>
-            <MenuItem class="flex items-center font-bold text-sm">
+            <MenuItem class="flex items-center font-bold text-sm rounded-none">
               <UnfollowIcon class="w-5 mr-2" />
               Unfollow
             </MenuItem>
             <Separator />
-            <MenuItem class="flex items-center font-bold text-sm">
+            <MenuItem class="flex items-center font-bold text-sm rounded-none">
               <MessageIcon class="w-5 mr-2" />
               Message
             </MenuItem>

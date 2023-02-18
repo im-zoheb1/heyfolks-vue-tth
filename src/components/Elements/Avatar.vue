@@ -12,7 +12,7 @@ const size = ref<string>(
     xs: "w-9 h-9",
     sm: "w-12 h-12",
     md: "w-16 h-16",
-    lg: "w-[90px] h-[90px]",
+    lg: "w-[80px] h-[80px]",
   }[props.size ?? "md"]
 );
 
