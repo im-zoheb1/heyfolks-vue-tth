@@ -16,7 +16,7 @@ const props = defineProps<{
 </script>
 
 <template>
-  <Card class="px-3 py-4 shadow-sm">
+  <Card class="px-3 py-4 shadow-sm cursor-pointer">
     <div class="flex items-center leading-none">
       <Avatar size="md">
         <img :src="data.avatar" />
@@ -27,14 +27,14 @@ const props = defineProps<{
       </div>
       <Menu class="ml-auto">
         <template #button>
-          <EllipsisHorizontalIcon class="w-5" />
+          <EllipsisHorizontalIcon class="w-6" />
         </template>
-        <MenuItem class="flex items-center font-semibold text-sm">
+        <MenuItem class="flex items-center font-bold text-sm">
           <UnfollowIcon class="w-5 mr-2" />
           Unfollow
         </MenuItem>
         <Separator />
-        <MenuItem class="flex items-center font-semibold text-sm">
+        <MenuItem class="flex items-center font-bold text-sm">
           <MessageIcon class="w-5 mr-2" />
           Message
         </MenuItem>
