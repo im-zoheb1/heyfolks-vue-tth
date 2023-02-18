@@ -21,7 +21,7 @@ const props = defineProps<{
       <NotificationMenu />
       <Separator is-vertical class="mx-4 h-8" />
       <!-- start: user menu -->
-      <Menu popover-class="w-72">
+      <Menu width="300px">
         <template #button>
           <Avatar size="sm">
             <img :src="userData.avatar" />

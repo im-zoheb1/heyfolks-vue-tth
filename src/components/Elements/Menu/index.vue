@@ -2,7 +2,8 @@
 import { Menu, MenuButton, MenuItems } from '@headlessui/vue'
 
 defineProps<{
-  popoverClass?: string
+  popoverClass?: string;
+  width?: string;
 }>()
 </script>
 
@@ -20,8 +21,8 @@ defineProps<{
       leave-to-class="transform scale-95 opacity-0"
     >
       <MenuItems 
-        class="absolute right-0 mt-2 w-56 z-popover origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
-        :class="popoverClass"
+        class="absolute right-0 mt-2 z-popover origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg w-52 ring-1 ring-black ring-opacity-5 focus:outline-none"
+        :style="`width: ${width}`"
       >
         <div class="p-2">
           <slot></slot>
