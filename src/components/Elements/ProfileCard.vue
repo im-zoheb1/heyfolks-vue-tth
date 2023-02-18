@@ -36,7 +36,7 @@ const props = defineProps<{
             </template>
             <MenuItem class="flex items-center font-semibold text-sm rounded-none">
               <UnfollowIcon class="w-5 mr-2" />
-              Unfollow
+              Remove
             </MenuItem>
             <Separator class="mx-2" />
             <MenuItem class="flex items-center font-semibold text-sm rounded-none">
