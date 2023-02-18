@@ -18,11 +18,10 @@ const props = defineProps<{
       <div class="mx-5">
         <h3 class="font-semibold mb-1">{{ data.fullname }}</h3>
         <h3 class="text-muted line-clamp-1">{{ data.city }}</h3>
-        <div class="line-clamp-1 leading-tight mt-2">{{ data.bio }}</div>
       </div>
       <div class="ml-auto flex gap-3">
         <Button variant="light">Following</Button>
-        <Button variant="light" class="px-2" compact>
+        <Button variant="light" class="px-2 bg-transparent" compact>
           <EllipsisHorizontalIcon class="w-5" />
         </Button>
       </div>

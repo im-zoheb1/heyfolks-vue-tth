@@ -10,7 +10,7 @@ const friends = ref(getFakeFriends());
 <template>
   <MainLayout>
     <div
-      class="grid grid-cols-2 gap-3"
+      class="grid gap-3 lg:grid-cols-2"
     >
       <ProfileCard v-for="friend in friends" :data="friend"></ProfileCard>
     </div>
