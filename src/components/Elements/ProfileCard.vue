@@ -1,10 +1,14 @@
 <script lang="ts" setup>
 import Card from './Card.vue';
 import Avatar from './Avatar.vue';
-import Button from './Button.vue'
-import { EllipsisHorizontalIcon } from '@heroicons/vue/20/solid';
+import Separator from './Separator.vue';
 import Menu from './Menu';
 import MenuItem from './Menu/MenuItem.vue';
+import { 
+  EllipsisHorizontalIcon,
+  ArchiveBoxXMarkIcon as UnfollowIcon,
+  ChatBubbleLeftEllipsisIcon as MessageIcon
+} from '@heroicons/vue/24/outline';
 
 const props = defineProps<{
   data: any
@@ -25,8 +29,15 @@ const props = defineProps<{
         <template #button>
           <EllipsisHorizontalIcon class="w-5" />
         </template>
-        <MenuItem>Unfollow</MenuItem>
-        <MenuItem>Message</MenuItem>
+        <MenuItem class="flex items-center font-semibold text-sm">
+          <UnfollowIcon class="w-5 mr-2" />
+          Unfollow
+        </MenuItem>
+        <Separator />
+        <MenuItem class="flex items-center font-semibold text-sm">
+          <MessageIcon class="w-5 mr-2" />
+          Message
+        </MenuItem>
       </Menu>
     </div>
   </Card>
