@@ -11,7 +11,7 @@ const notifications = ref<any[]>(getNotifications())
 </script>
 
 <template>
-  <Popover panel-class="w-[400px]" panel-position="bottom-left">
+  <Popover panel-class="w-[400px]" panel-position="fixed-header-right">
     <template #default="{ open }">
       <Button variant="light" class="p-2" pilled compact>
         <BellIcon class="w-7" :class="{ 'text-primary': open }"></BellIcon>

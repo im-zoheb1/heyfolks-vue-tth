@@ -2,7 +2,7 @@
 import { Popover, PopoverButton, PopoverPanel } from "@headlessui/vue";
 import { ref } from "vue";
 
-type PanelPosition = 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right'
+type PanelPosition = 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right' | 'fixed-header-right'
 
 const props = defineProps<{
   panelClass?: string;
@@ -10,10 +10,11 @@ const props = defineProps<{
 }>();
 
 const position = ref<string>({
-  'top-left': 'right-0 bottom-[100%]',
-  'top-right': 'left-0 bottom-[100%]',
-  'bottom-left': 'right-0',
-  'bottom-right': 'left-0'
+  'top-left': 'absolute right-0 bottom-[100%]',
+  'top-right': 'absolute left-0 bottom-[100%]',
+  'bottom-left': 'absolute right-0',
+  'bottom-right': 'absolute left-0',
+  'fixed-header-right': 'fixed top-[68px] right-2'
 }[props.panelPosition ?? 'bottom-right'])
 </script>
 
@@ -31,7 +32,7 @@ const position = ref<string>({
       leave-to-class="translate-y-1 opacity-0"
     >
       <PopoverPanel
-        class="absolute bg-white shadow-md rounded-lg ring-1 ring-slate-500 ring-opacity-5 min-w-fit z-popover"
+        class="bg-white shadow-md rounded-lg ring-1 ring-slate-500 ring-opacity-5 min-w-content z-popover"
         :class="[panelClass, position]"
       >
         <slot name="content"></slot>

@@ -11,7 +11,7 @@ const messages = ref<any[]>(getMessages())
 </script>
 
 <template>
-  <Popover panel-class="w-[400px]" panel-position="bottom-left">
+  <Popover panel-class="max-w-[400px]" panel-position="fixed-header-right">
     <template #default="{ open }">
       <Button compact variant="light" pilled class="p-2 mx-3">
         <ChatBubbleOvalLeftIcon class="w-7" :class="{ 'text-primary': open }" />
