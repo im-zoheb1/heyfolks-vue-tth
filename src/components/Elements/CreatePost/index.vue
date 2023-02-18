@@ -70,15 +70,15 @@ const onSelectEmoji = (emoji: any): void => {
         <div class="flex items-center font-semibold text-gray-500 tracking-wide">
           <InputFile class="mr-3" name="upload-photo-file" multiple @change="onChange" @load="onLoad">
             <div class="flex items-center">
-              <img src="@/assets/icon/gallery.png" class="mr-2" />
-              Photo/media
+              <img src="@/assets/icon/gallery.png" />
+              <span class="ml-2 hidden sm:inline-block">Photo/media</span>
             </div>
           </InputFile>
           <Popover>
             <template #default>
               <div class="flex items-center">
-                <img src="@/assets/icon/emoji.png" class="mr-2" />
-                Reaction
+                <img src="@/assets/icon/emoji.png" />
+                <span class="ml-2 hidden sm:inline-block">Reaction</span>
               </div>
             </template>
             <template #content>

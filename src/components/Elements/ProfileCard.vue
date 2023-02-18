@@ -3,6 +3,8 @@ import Card from './Card.vue';
 import Avatar from './Avatar.vue';
 import Button from './Button.vue'
 import { EllipsisHorizontalIcon } from '@heroicons/vue/20/solid';
+import Menu from './Menu';
+import MenuItem from './Menu/MenuItem.vue';
 
 const props = defineProps<{
   data: any
@@ -10,7 +12,7 @@ const props = defineProps<{
 </script>
 
 <template>
-  <Card class="px-3 py-6">
+  <Card class="px-3 py-4 shadow-sm">
     <div class="flex items-center leading-none">
       <Avatar size="md">
         <img :src="data.avatar" />
@@ -19,12 +21,13 @@ const props = defineProps<{
         <h3 class="font-semibold mb-1">{{ data.fullname }}</h3>
         <h3 class="text-muted line-clamp-1">{{ data.city }}</h3>
       </div>
-      <div class="ml-auto flex gap-3">
-        <Button variant="light">Following</Button>
-        <Button variant="light" class="px-2 bg-transparent" compact>
+      <Menu class="ml-auto">
+        <template #button>
           <EllipsisHorizontalIcon class="w-5" />
-        </Button>
-      </div>
+        </template>
+        <MenuItem>Unfollow</MenuItem>
+        <MenuItem>Message</MenuItem>
+      </Menu>
     </div>
   </Card>
 </template>
