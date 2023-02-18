@@ -16,7 +16,7 @@ const friends = ref(getFakeFriends());
         <SearchBar popover-class="right-0" />
       </div>
       <div
-        class="grid gap-3 lg:grid-cols-2"
+        class="grid gap-3 md:grid-cols-2"
       >
         <ProfileCard v-for="friend in friends" :data="friend"></ProfileCard>
       </div>
