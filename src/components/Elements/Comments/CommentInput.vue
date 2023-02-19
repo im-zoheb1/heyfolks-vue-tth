@@ -6,7 +6,7 @@ import { ref, watch, onMounted } from 'vue'
 import { faker } from '@faker-js/faker';
 
 const props = defineProps<{
-  modelValue: string
+  modelValue: string;
 }>()
 
 const emits = defineEmits<{
@@ -43,7 +43,7 @@ onMounted(() => {
       <img :src="avatar" />
     </Avatar>
     <a 
-      class="flex items-center w-full ml-2 p-1 border rounded-full bg-gray-100"
+      class="flex items-center w-full ml-2 p-1 border rounded-full bg-light-1"
       :class="{ 'ring-2': isCommentActive }"
     >
       <input 

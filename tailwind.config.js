@@ -13,7 +13,7 @@ module.exports = {
         'light-1': '#EFF6FF',
         'light-2': '#DBEAFE',
         'danger': '#DC0000',
-        'muted': '#999999',
+        'muted': '#777777',
         'main-bg': '#ffffff'
       },
       backgroundImage: {

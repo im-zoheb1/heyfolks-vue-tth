@@ -17,8 +17,8 @@ const messages = ref<any[]>(getMessages());
       <a
         href="#"
         v-for="message in messages"
-        class="flex items-center p-4 transition duration-300 rounded-xl hover:bg-light-1"
-        :class="{ 'bg-blue-50': message.unread }"
+        class="flex items-center p-4 transition duration-300 rounded-xl hover:bg-light-2"
+        :class="{ 'bg-light-1': message.unread }"
       >
         <Avatar size="sm">
           <img :src="message.avatar" />
