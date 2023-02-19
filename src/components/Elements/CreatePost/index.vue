@@ -44,7 +44,7 @@ const onSelectEmoji = (emoji: any): void => {
     <div class="px-4 py-2">
       <textarea 
         v-model="text"
-        class="w-full bg-white outline-0 text-gray-700 text-lg resize-none tracking-wide" 
+        class="w-full bg-main-bg outline-0 text-gray-700 text-lg resize-none tracking-wide" 
         :placeholder="placeholder" 
         rows="3"
       ></textarea>

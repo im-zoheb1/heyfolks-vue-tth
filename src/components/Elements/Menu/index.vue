@@ -21,7 +21,7 @@ defineProps<{
       leave-to-class="transform scale-95 opacity-0"
     >
       <MenuItems 
-        class="absolute right-0 mt-2 z-popover origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg w-52 ring-1 ring-black ring-opacity-5 focus:outline-none"
+        class="absolute right-0 mt-2 z-popover origin-top-right divide-y divide-gray-100 rounded-md bg-main-bg shadow-lg w-52 ring-1 ring-black ring-opacity-5 focus:outline-none"
         :style="`width: ${width}`"
       >
         <div class="p-2">

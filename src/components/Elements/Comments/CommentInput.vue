@@ -38,7 +38,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="flex items-center bg-white">
+  <div class="flex items-center bg-main-bg">
     <Avatar size="xs">
       <img :src="avatar" />
     </Avatar>

@@ -59,7 +59,7 @@ const search = (event: Event): void => {
         >
           <ComboboxOptions
             v-if="isTypeSelect"
-            class="absolute mt-1 min-w-[380px] overflow-auto rounded-xl bg-white 
+            class="absolute mt-1 min-w-[380px] overflow-auto rounded-xl bg-main-bg 
               p-2 text-base shadow-lg ring-1 ring-slate-500 ring-opacity-5 max-h-[500px] z-popover"
             :class="popoverClass"
           >

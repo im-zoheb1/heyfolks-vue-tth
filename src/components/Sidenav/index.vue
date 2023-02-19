@@ -47,7 +47,7 @@ const props = defineProps<{
 
 <style lang="scss" scoped>
 .sidebar {
-  @apply flex bg-white fixed bottom-0 left-0 right-0 drop-shadow-2xl;
+  @apply flex bg-main-bg fixed bottom-0 left-0 right-0 drop-shadow-2xl;
   @apply sm:flex-col sm:top-0 sm:shadow-sm sm:pt-20 sm:right-auto sm:drop-shadow-none;
   @apply lg:pt-4;
   &__user-profile {

@@ -32,7 +32,6 @@ const notifications = ref<any[]>(getNotifications());
         </div>
 
         <div class="p-2 flex-1">
-          <!-- notification item: start -->
           <a
             href="#"
             v-for="(notification, index) in notifications"
@@ -64,7 +63,6 @@ const notifications = ref<any[]>(getNotifications());
               </div>
             </div>
           </a>
-          <!-- notification item: end -->
         </div>
 
         <div>
@@ -74,10 +72,6 @@ const notifications = ref<any[]>(getNotifications());
           </Button>
         </div>
       </div>
-
-      <!-- notifications list: start -->
-
-      <!-- notifications list: end -->
     </template>
   </Popover>
 </template>
