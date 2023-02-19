@@ -17,7 +17,7 @@ import ChatList from "@/components/Elements/ChatList.vue";
 <style lang="scss" scoped>
 .chat {
   height: calc(100vh - 88px);
-  @apply  bg-main-bg shadow-sm rounded flex items-stretch;
+  @apply  bg-main-bg shadow-sm flex items-stretch;
   &__left-sidebar {
     @apply flex-1 p-2;
   }
