@@ -4,13 +4,19 @@ export const getChat = () => {
   const messages = []
   let sender = {
     id: 1,
+    avatar: faker.internet.avatar(),
     name: faker.name.fullName(),
-    avatar: faker.internet.avatar()
+    get username() {
+      return faker.internet.userName(...sender.name.split(' '))
+    },
   }
   let recipient = {
     id: 2,
+    avatar: faker.internet.avatar(),
     name: faker.name.fullName(),
-    avatar: faker.internet.avatar()
+    get username() {
+      return faker.internet.userName(...recipient.name.split(' '))
+    },
   }
   const userInfo = recipient
   for (let i = 0; i < 20; i++) {

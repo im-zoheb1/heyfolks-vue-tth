@@ -5,7 +5,7 @@ const props = defineProps<{
   compact?: boolean;
   pilled?: boolean;
   type?: "submit" | "reset";
-  variant?: "primary" | "light" | "light-primary" | "danger-light";
+  variant?: "primary" | "light" | "light-primary" | "danger-light" | "flat";
   size?: "sm" | "md" | "lg" | "xl";
   transformOnHover?: boolean;
   noPointerEvents?: boolean;
@@ -14,8 +14,9 @@ const props = defineProps<{
 const variant = ref<string>({
   primary: "bg-gradient-to-br from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white",
   light: "bg-light-1 hover:bg-light-2 text-gray-600",
+  flat: "bg-transparent hover:bg-light-1 text-gray-600",
   "light-primary": "bg-light-1 hover:bg-light-2 text-primary",
-  "danger-light": "bg-red-50 hover:bg-red-100 text-muted shadow-xl"
+  "danger-light": "bg-red-50 hover:bg-red-100 text-muted shadow-xl",
 }[props.variant ?? "primary"]);
 
 // const spacing = ''
