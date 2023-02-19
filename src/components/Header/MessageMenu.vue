@@ -2,13 +2,8 @@
 import Button from "../Elements/Button.vue";
 import Popover from "../Elements/Popover.vue";
 import Separator from "../Elements/Separator.vue";
-import Avatar from "../Elements/Avatar.vue";
 import ChatList from "../Elements/ChatList.vue";
 import { ChatBubbleOvalLeftIcon } from "@heroicons/vue/20/solid";
-import { ref } from "vue";
-import { getMessages } from "@/generator/messages";
-import SearchBar from "../Elements/SearchBar.vue";
-
 </script>
 
 <template>

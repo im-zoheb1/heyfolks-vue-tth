@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import NotificationMenu from './NotificationMenu.vue'
 import MessageMenu from './MessageMenu.vue'
-import SearchBar from '@/components/Elements/SearchBar.vue'
+import SearchBox from '@/components/Elements/SearchBox.vue'
 import Avatar from '@/components/Elements/Avatar.vue'
 import Separator from '@/components/Elements/Separator.vue'
 import Menu from '@/components/Elements/Menu/index.vue'
@@ -15,7 +15,7 @@ const props = defineProps<{
 
 <template>
   <header class="bg-main-bg fixed top-0 left-0 right-0 w-full flex items-center justify-between shadow-sm">
-    <SearchBar type="select" class="ml-3 w-80"></SearchBar>
+    <SearchBox type="select" class="ml-3 w-80"></SearchBox>
     <div class="flex items-center">
       <MessageMenu /> 
       <NotificationMenu />

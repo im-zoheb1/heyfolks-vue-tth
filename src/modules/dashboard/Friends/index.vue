@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import MainLayout from "@/layout/MainLayout.vue";
 import ProfileCard from "@/components/Elements/ProfileCard.vue";
-import SearchBar from "@/components/Elements/SearchBar.vue";
+import SearchBox from "@/components/Elements/SearchBox.vue";
 import { getFakeFriends } from "@/generator/friends";
 import { ref } from "vue";
 
@@ -13,7 +13,7 @@ const friends = ref(getFakeFriends());
     <div class="p-3 bg-main-bg rounded">
       <div class="flex justify-between items-center mb-3">
         <div class="capitalize font-bold mb-2 text-xl">Friends</div>
-        <SearchBar class="w-80" popover-class="right-0" />
+        <SearchBox class="w-80" popover-class="right-0" />
       </div>
       <div
         class="grid gap-3 md:grid-cols-2"

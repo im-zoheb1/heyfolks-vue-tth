@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import SearchBar from "./SearchBar.vue";
+import SearchBox from "./SearchBox.vue";
 import Avatar from "./Avatar.vue";
-import Scrollbar from "./Scrollbar.vue";
+import ScrollBar from "./ScrollBar.vue";
 import { ref } from "vue";
 import { getMessages } from "@/generator/messages";
 
@@ -9,8 +9,8 @@ const messages = ref<any[]>(getMessages());
 </script>
 
 <template>
-  <Scrollbar class="flex-1 h-full relative">
-    <SearchBar
+  <ScrollBar class="flex-1 h-full relative">
+    <SearchBox
       class="sticky top-0 bg-main-bg p-2 shadow-sm overflow-hidden rounded-t-lg"
     />
     <div class="p-2">
@@ -42,5 +42,5 @@ const messages = ref<any[]>(getMessages());
         </div>
       </a>
     </div>
-  </Scrollbar>
+  </ScrollBar>
 </template>
