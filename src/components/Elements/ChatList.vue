@@ -1,15 +1,18 @@
 <script lang="ts" setup>
-import SearchBar from './SearchBar.vue';
-import Avatar from './Avatar.vue';
-import { ref } from 'vue';
-import { getMessages } from '@/generator/messages';
+import SearchBar from "./SearchBar.vue";
+import Avatar from "./Avatar.vue";
+import Scrollbar from "./Scrollbar.vue";
+import { ref } from "vue";
+import { getMessages } from "@/generator/messages";
 
 const messages = ref<any[]>(getMessages());
 </script>
 
 <template>
-  <div class="flex-1 h-full overflow-y-scroll relative">
-    <SearchBar class="sticky top-0 bg-main-bg p-2 shadow-sm overflow-hidden rounded-t-lg" />
+  <Scrollbar class="flex-1 h-full relative">
+    <SearchBar
+      class="sticky top-0 bg-main-bg p-2 shadow-sm overflow-hidden rounded-t-lg"
+    />
     <div class="p-2">
       <a
         href="#"
@@ -33,11 +36,11 @@ const messages = ref<any[]>(getMessages());
           <span
             v-if="message.unread"
             class="flex items-center justify-center bg-primary w-5 h-5 text-white ml-auto rounded-md"
-            >{{ message.unread }}</span
           >
+            {{ message.unread }}
+          </span>
         </div>
       </a>
     </div>
-    
-  </div>
+  </Scrollbar>
 </template>
