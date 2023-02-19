@@ -21,7 +21,7 @@ const comment = ref<string>('')
       ></CommentsList>
       <div v-else class="my-3 text-center">
         <img src="@/assets/illustration/no-results.svg" class="w-32 mx-auto" />
-        <div class="text-gray-500 mt-2">No comments available</div>
+        <div class="text-muted mt-2">No comments available</div>
       </div>
     </div>
     <CommentInput v-model="comment" class="sticky bottom-0 px-3 py-2" />

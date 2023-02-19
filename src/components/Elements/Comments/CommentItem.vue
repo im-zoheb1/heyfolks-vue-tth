@@ -45,7 +45,7 @@ const countComment = (comments: any): number => {
         <Button compact variant="light" size="sm" class="p-1 mr-2" @click="emits('comment')">
           <ChatBubbleLeftEllipsisIcon class="w-[18px]" />
         </Button>
-        <div class="text-gray-500">{{ $moment(data.date).fromNow() }}</div>
+        <div class="text-muted">{{ $moment(data.date).fromNow() }}</div>
       </div> 
       <slot></slot>
     </div>

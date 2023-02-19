@@ -64,7 +64,7 @@ const props = defineProps<{
       @apply mb-1.5;
     }
     &__username {
-      @apply text-gray-500;
+      @apply text-muted;
     }
   }
 

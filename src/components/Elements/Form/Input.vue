@@ -28,7 +28,7 @@ const props = defineProps<{
 .input--field {
     @apply relative block tracking-wide border-0 outline-0 w-full bg-transparent font-semibold px-1 py-2.5 text-xl;
     &::placeholder {
-        @apply text-gray-500 font-semibold;
+        @apply text-muted font-semibold;
     }
 
     &:focus:not(:valid) ~ .input--border::after,

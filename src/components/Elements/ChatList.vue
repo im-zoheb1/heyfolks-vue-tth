@@ -21,12 +21,12 @@ const messages = ref<any[]>(getMessages());
           <img :src="message.avatar" />
         </Avatar>
         <span class="ml-3">
-          <div class="font-bold text-md">{{ message.name }}</div>
-          <div class="line-clamp-1 leading-tight text-[15px] text-gray-500">
+          <div class="font-semibold text-md">{{ message.name }}</div>
+          <div class="line-clamp-1 leading-tight text-[15px] text-muted">
             {{ message.message }}
           </div>
         </span>
-        <div class="ml-auto pl-2 text-xs font-semibold text-gray-500 flex-col">
+        <div class="ml-auto pl-2 text-xs font-semibold text-muted flex-col">
           <div class="whitespace-nowrap mb-2">
             {{ $moment(message.date).format("LT") }}
           </div>

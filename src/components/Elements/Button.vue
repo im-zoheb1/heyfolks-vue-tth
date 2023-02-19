@@ -15,7 +15,7 @@ const variant = ref<string>({
   primary: "bg-gradient-to-br from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white",
   light: "bg-light-1 hover:bg-light-2 text-gray-600",
   "light-primary": "bg-light-1 hover:bg-light-2 text-primary",
-  "danger-light": "bg-red-50 hover:bg-red-100 text-gray-500 shadow-xl"
+  "danger-light": "bg-red-50 hover:bg-red-100 text-muted shadow-xl"
 }[props.variant ?? "primary"]);
 
 // const spacing = ''

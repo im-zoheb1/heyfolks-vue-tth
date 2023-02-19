@@ -67,7 +67,7 @@ const onSelectEmoji = (emoji: any): void => {
       <!-- <EmojiPicker :native="true" /> -->
       <div class="flex items-center justify-between pt-2">
         <!-- start: footer  -->
-        <div class="flex items-center font-semibold text-gray-500 tracking-wide">
+        <div class="flex items-center font-semibold text-muted tracking-wide">
           <InputFile class="mr-3" name="upload-photo-file" multiple @change="onChange" @load="onLoad">
             <div class="flex items-center">
               <img src="@/assets/icon/gallery.png" />
