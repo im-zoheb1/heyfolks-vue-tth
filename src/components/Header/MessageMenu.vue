@@ -22,7 +22,7 @@ const messages = ref<any[]>(getMessages());
       <div class="flex flex-col h-full">
         <h3 class="text-xl tracking-wide font-bold py-3 px-4">Messages</h3>
         <Separator />
-        <div class="p-2 flex-1 h-full">
+        <div class="p-2 flex-1 h-full overflow-y-scroll">
           <SearchBar class="mb-2" />
           <a
             href="#"

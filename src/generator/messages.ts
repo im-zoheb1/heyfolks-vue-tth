@@ -11,7 +11,7 @@ export const getFakeData = (): any => {
 
 export const getMessages = (): any => {
   const messages = []
-  for (let i = 0; i < +faker.random.numeric(); i++) {
+  for (let i = 0; i < 20; i++) {
     const unread: number = i < 1 ? +faker.random.numeric() : 0
     messages.push({ ...getFakeData() , unread })
   }

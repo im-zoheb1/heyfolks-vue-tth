@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ref } from "vue";
+import { ref, computed } from "vue";
 import { faker } from '@faker-js/faker'
 import Avatar from '@/components/Elements/Avatar.vue'
 import { MagnifyingGlassIcon } from "@heroicons/vue/20/solid";
@@ -10,12 +10,19 @@ import {
   ComboboxOption
 } from "@headlessui/vue";
 
-defineProps<{
-  popoverClass?: string
-}>()
+export interface Props {
+  popoverClass?: string;
+  type?: 'input' | 'select'
+}
+
+const { popoverClass = '', type = 'input' } = defineProps<Props>()
 
 const value = ref<any>(null);
 const options = ref<any[]>([])
+
+const isTypeSelect = computed(() => {
+  return type === 'select'
+})
 
 const search = (event: Event): void => {
   const random: number = Math.ceil(Math.random() * 10)
@@ -51,6 +58,7 @@ const search = (event: Event): void => {
           enter-to-class="transform scale-100 opacity-100"
         >
           <ComboboxOptions
+            v-if="isTypeSelect"
             class="absolute mt-1 min-w-[380px] overflow-auto rounded-xl bg-white 
               p-2 text-base shadow-lg ring-1 ring-slate-500 ring-opacity-5 max-h-[500px] z-popover"
             :class="popoverClass"
