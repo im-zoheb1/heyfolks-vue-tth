@@ -9,7 +9,7 @@ const messages = ref<any[]>(getMessages());
 
 <template>
   <div class="flex-1 h-full overflow-y-scroll relative">
-    <SearchBar class="sticky top-0 bg-main-bg p-2 shadow-sm" />
+    <SearchBar class="sticky top-0 bg-main-bg p-2 shadow-sm overflow-hidden rounded-t-lg" />
     <div class="p-2">
       <a
         href="#"

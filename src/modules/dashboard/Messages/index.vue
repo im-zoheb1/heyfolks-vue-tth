@@ -32,7 +32,7 @@ const message = ref<string>('')
 <style lang="scss" scoped>
 .chat-container {
   height: calc(100vh - 88px);
-  @apply  bg-main-bg shadow-sm flex items-stretch;
+  @apply  bg-main-bg shadow rounded-md flex items-stretch;
 }
 .chat {
   @apply flex flex-col flex-[2];
