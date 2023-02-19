@@ -4,12 +4,13 @@ import Avatar from "./Avatar.vue";
 import ScrollBar from "./ScrollBar.vue";
 import { ref } from "vue";
 import { getMessages } from "@/generator/messages";
+import { PerfectScrollbar } from 'vue3-perfect-scrollbar'
 
 const messages = ref<any[]>(getMessages());
 </script>
 
 <template>
-  <ScrollBar class="flex-1 h-full relative">
+  <PerfectScrollbar class="flex-1 h-full relative">
     <SearchBox
       class="sticky top-0 bg-main-bg p-2 shadow-sm overflow-hidden rounded-t-lg"
     />
@@ -42,5 +43,5 @@ const messages = ref<any[]>(getMessages());
         </div>
       </a>
     </div>
-  </ScrollBar>
+  </PerfectScrollbar>
 </template>

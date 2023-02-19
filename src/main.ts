@@ -7,6 +7,7 @@ import moment from 'moment'
 import injectKey from './config/injectKey'
 import '@/assets/scss/main.scss'
 import 'vue3-emoji-picker/css'
+import 'vue3-perfect-scrollbar/dist/vue3-perfect-scrollbar.css'
 import 'animate.css'
 
 const app = createApp(App)
