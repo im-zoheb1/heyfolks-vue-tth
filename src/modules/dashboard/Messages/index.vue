@@ -50,7 +50,7 @@ const conversation = ref(getChat());
         </div>
         <PerfectScrollbar class="chat__content">
           <div class="chat__messages">
-            <div class="chat__message">{{ conversation.messages }}</div>
+            <div class="chat__message" v-for="message in conversation.messages">{{ $moment(message.timestamp).calendar() }}</div>
           </div>
         </PerfectScrollbar>
         <Separator />

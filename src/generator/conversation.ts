@@ -30,5 +30,9 @@ export const getChat = () => {
       timestamp: faker.date.recent(),
     })
   }
+  messages.sort((a, b): number => {
+    if (a.timestamp > b.timestamp) return 1
+    return -1
+  })
   return { userInfo, messages }
 }
