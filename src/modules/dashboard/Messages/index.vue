@@ -50,8 +50,20 @@ const conversation = ref(getChat());
         </div>
         <PerfectScrollbar class="chat__content">
           <div class="chat__messages">
-            <div class="chat__message mt-3" v-for="message in conversation.messages">
-              <div class="w-64 bg-light-2">{{ message }}</div>
+            <div 
+              class="chat__message mt-4"
+              :class="{ 'ml-auto': message.sender.id === 1 }"
+              v-for="message in conversation.messages"
+            >
+              <div 
+                class="inline-block border rounded-lg p-2"
+                :class="{
+                  'bg-light-1 rounded-tr-none ml-auto': message.sender.id === 1,
+                  'bg-primary text-white rounded-tl-none': message.sender.id !== 1
+                }"
+              >
+                {{ message.content }}
+              </div>
             </div>
           </div>
         </PerfectScrollbar>
@@ -72,19 +84,16 @@ const conversation = ref(getChat());
 .chat {
   @apply flex flex-col flex-[2];
   &__header {
-    @apply h-16 flex items-center px-3 justify-between;
-  }
-  &__content,
-  &__footer {
-    @apply p-2;
-  }
-  &__header {
-    @apply shadow-sm;
+    @apply h-16 flex items-center px-3 justify-between shadow-sm;
   }
   &__content {
-    @apply flex-1 overflow-y-scroll;
+    @apply p-3 flex-1 overflow-y-scroll
+  }
+  &__messages {
+    @apply flex flex-col;
   }
   &__footer {
+    @apply p-2;
   }
 }
 </style>
