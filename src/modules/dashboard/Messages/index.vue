@@ -82,6 +82,11 @@ onMounted(() => {
               }"
               :key="`chat-message-${index}`"
             >
+              <div class="chat__message__avatar-wrapper">
+                <Avatar size="xs">
+                  <img :src="message.sender.avatar" />
+                </Avatar>
+              </div>
               <div class="chat__message__content">
                 <div class="chat__message__text">{{ message.content }}</div>
                 <div class="chat__message__footer">{{ $moment(message.timestamp).format('LT') }}</div>
@@ -115,8 +120,16 @@ onMounted(() => {
     @apply flex flex-col;
   }
   &__message {
-    @apply mt-2;
-    &.is-self { @apply text-right; }
+    @apply mt-2 flex items-end;
+    &__avatar-wrapper {
+      @apply mx-2 cursor-pointer;
+    }
+  }
+  &__message.is-self {
+    @apply flex flex-row-reverse;
+  }
+  &__message:not(.is-last-type) &__message__avatar-wrapper {
+    @apply invisible opacity-0;
   }
   &__message__content {
     @apply inline-block border py-2 px-4 max-w-lg bg-primary text-light-1 rounded-2xl;
@@ -125,7 +138,7 @@ onMounted(() => {
     @apply rounded-bl-none;
   }
   &__message.is-self &__message__content {
-    @apply bg-light-1 text-gray-600 ml-auto text-left;
+    @apply bg-light-1 text-gray-600 text-left;
   }
   &__message.is-self.is-last-type &__message__content {
     @apply rounded-2xl rounded-br-none;
