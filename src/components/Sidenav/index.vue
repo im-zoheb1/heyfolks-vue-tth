@@ -1,15 +1,12 @@
 <script lang="ts" setup>
-import Avatar from '@/components/Elements/Avatar.vue'
-import Separator from '@/components/Elements/Separator.vue'
-import navigations from './menu'
+import Avatar from "@/components/Elements/Avatar.vue";
+import Separator from "@/components/Elements/Separator.vue";
+import navigations from "./menu";
 
-const { 
-  isCollapsed = false,
-  userData
-} = defineProps<{
+const { isCollapsed = false, userData } = defineProps<{
   userData: any;
-  isCollapsed?: boolean
-}>()
+  isCollapsed?: boolean;
+}>();
 </script>
 
 <template>
@@ -25,21 +22,24 @@ const {
       </span>
     </a>
     <!-- user profile : end -->
-    <Separator class="mx-4 hidden lg:block" />
+    <Separator class="mx-4 hidden lg:block" :class="{ 'lg:hidden': isCollapsed }" />
     <!-- navigation : start -->
     <nav class="sidebar__navigation">
       <ul class="sidebar__navigation__list">
-        <li 
-          v-for="(navigation, index) in navigations" 
+        <li
+          v-for="(navigation, index) in navigations"
           :key="`nav-menu-item-${index}`"
           class="sidebar__navigation__item"
         >
           <RouterLink
             class="sidebar__navigation__link"
             active-class="bg-light-1 text-primary"
-            :to="navigation.link" 
+            :to="navigation.link"
           >
-            <component class="sidebar__navigation__icon" :is="navigation.icon"></component> 
+            <component
+              class="sidebar__navigation__icon"
+              :is="navigation.icon"
+            ></component>
             <span class="sidebar__navigation__text">{{ navigation.label }}</span>
           </RouterLink>
         </li>
@@ -53,7 +53,9 @@ const {
 .sidebar {
   @apply flex bg-main-bg fixed bottom-0 left-0 right-0 drop-shadow-2xl;
   @apply sm:flex-col sm:top-0 sm:shadow-sm sm:pt-20 sm:right-auto sm:drop-shadow-none;
-  @apply lg:pt-4;
+  &:not(.collapsed) {
+    @apply lg:pt-4;
+  }
   &__user-profile {
     @apply transition duration-300 rounded-3xl mb-3 hidden relative;
     @apply lg:flex lg:items-center lg:mx-4 lg:px-3 lg:py-3 lg:hover:bg-light-1;
@@ -61,17 +63,16 @@ const {
       @apply mx-auto lg:mx-0;
     }
     &__info {
-      @apply ml-3 text-black leading-none hidden line-clamp-1 text-base;
+      @apply ml-3 text-black leading-none hidden text-base;
       @apply lg:inline-block;
     }
     &__full-name {
       @apply mb-1.5;
     }
     &__username {
-      @apply text-muted;
+      @apply text-muted line-clamp-1;
     }
   }
-
   &__navigation {
     @apply w-full overflow-y-auto p-1;
     @apply lg:mt-6 sm:p-0;
@@ -91,7 +92,27 @@ const {
       @apply h-[26px] mx-auto lg:mx-0 lg:h-6;
     }
     &__text {
-      @apply ml-3 hidden lg:inline-block; 
+      @apply ml-3 hidden lg:inline-block;
+    }
+  }
+}
+.collapsed {
+  .sidebar {
+    @apply lg:pt-0;
+    &__user-profile {
+      @apply hidden;
+    }
+    &__navigation {
+      @apply lg:mt-0;
+      &__link {
+        @apply lg:px-0;
+      }
+      &__icon {
+        @apply lg:mx-auto lg:h-[26px];
+      }
+      &__text {
+        @apply lg:hidden;
+      }
     }
   }
 }

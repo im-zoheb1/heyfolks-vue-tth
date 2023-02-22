@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import MainLayout from "@/layout/MainLayout.vue";
+import ChatLayout from "@/layout/ChatLayout.vue";
 import Separator from "@/components/Elements/Separator.vue";
 import ChatList from "@/components/Elements/ChatList.vue";
 import CommentInput from "@/components/Elements/Comments/CommentInput.vue";
@@ -23,7 +23,7 @@ const isSelf = (message: any): boolean => {
 </script>
 
 <template>
-  <MainLayout>
+  <ChatLayout>
     <div class="chat-container">
       <ChatList />
       <Separator is-vertical />
@@ -81,13 +81,13 @@ const isSelf = (message: any): boolean => {
         </div>
       </div>
     </div>
-  </MainLayout>
+  </ChatLayout>
 </template>
 
 <style lang="scss" scoped>
 .chat-container {
-  height: calc(100vh - 88px);
-  @apply bg-main-bg shadow rounded-md flex items-stretch;
+  height: calc(100vh - 66px);
+  @apply bg-main-bg flex items-stretch;
 }
 .chat {
   @apply flex flex-col flex-[2];
