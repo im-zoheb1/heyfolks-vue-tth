@@ -7,7 +7,7 @@ import Avatar from "@/components/Elements/Avatar.vue";
 import Button from "@/components/Elements/Button.vue";
 import { getChat } from "@/generator/conversation";
 import { PerfectScrollbar } from "vue3-perfect-scrollbar";
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 import {
   EllipsisHorizontalIcon as EllipsisIcon,
   BellIcon as MuteIcon,
@@ -16,10 +16,22 @@ import {
 
 const message = ref<string>("");
 const conversation = ref(getChat());
+const scrollerRef = ref<HTMLDivElement | null>(null)
 
 const isSelf = (message: any): boolean => {
   return message.sender.id === 1
 }
+
+const scrollToBottom = (): void => {
+  if (scrollerRef.value) {
+    const el = scrollerRef.value?.$el
+    el.scrollTop = el.scrollHeight
+  }
+}
+
+onMounted(() => {
+  scrollToBottom()
+})
 </script>
 
 <template>
@@ -52,7 +64,7 @@ const isSelf = (message: any): boolean => {
             </Button>
           </div>
         </div>
-        <PerfectScrollbar class="chat__content">
+        <PerfectScrollbar ref="scrollerRef" class="chat__content">
           <div class="chat__messages">
             <div 
               class="chat__message mt-3"
