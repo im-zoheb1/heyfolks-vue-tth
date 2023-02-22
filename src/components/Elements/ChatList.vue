@@ -14,11 +14,11 @@ const messages = ref<any[]>(getMessages());
     <SearchBox
       class="sticky top-0 bg-main-bg p-2 shadow-sm overflow-hidden rounded-t-lg"
     />
-    <div class="p-2">
+    <div>
       <a
         href="#"
         v-for="message in messages"
-        class="flex items-center p-4 transition duration-300 rounded-xl hover:bg-light-2"
+        class="flex items-center p-4 transition duration-300 hover:bg-light-2"
         :class="{ 'bg-light-1': message.unread }"
       >
         <Avatar size="sm">
