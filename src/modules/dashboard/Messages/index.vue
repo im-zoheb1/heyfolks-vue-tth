@@ -16,6 +16,10 @@ import {
 
 const message = ref<string>("");
 const conversation = ref(getChat());
+
+const isSelf = (message: any): boolean => {
+  return message.sender.id === 1
+}
 </script>
 
 <template>
@@ -56,13 +60,17 @@ const conversation = ref(getChat());
               v-for="message in conversation.messages"
             >
               <div 
-                class="inline-block border rounded-lg p-2"
+                class="inline-block border rounded-3xl py-2 px-4 max-w-lg"
                 :class="{
-                  'bg-light-1 rounded-tr-none ml-auto': message.sender.id === 1,
-                  'bg-primary text-white rounded-tl-none': message.sender.id !== 1
+                  'bg-light-1 rounded-tr-none ml-auto': isSelf(message),
+                  'bg-primary text-light-1 rounded-tl-none': !isSelf(message)
                 }"
               >
                 {{ message.content }}
+                <div 
+                  class="text-right text-[13px] text-muted font-semibold"
+                  :class="{ 'text-gray-200': !isSelf(message)}"
+                >{{ $moment(message.timestamp).format('LT') }}</div>
               </div>
             </div>
           </div>
@@ -84,7 +92,7 @@ const conversation = ref(getChat());
 .chat {
   @apply flex flex-col flex-[2];
   &__header {
-    @apply h-16 flex items-center px-3 justify-between shadow-sm;
+    @apply h-16 flex items-center px-3 justify-between shadow;
   }
   &__content {
     @apply p-3 flex-1 overflow-y-scroll
