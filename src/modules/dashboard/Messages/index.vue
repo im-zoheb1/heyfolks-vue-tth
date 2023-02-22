@@ -67,21 +67,14 @@ onMounted(() => {
         <PerfectScrollbar ref="scrollerRef" class="chat__content">
           <div class="chat__messages">
             <div 
+              v-for="(message, index) in conversation.messages"
               class="chat__message"
-              :class="{ 'ml-auto': message.sender.id === 1 }"
-              v-for="message in conversation.messages"
+              :class="{ 'is-self': isSelf(message) }"
+              :key="`chat-message-${index}`"
             >
-              <div 
-                class="chat__message__content"
-                :class="{
-                  'is-self': isSelf(message),
-                }"
-              >
-                {{ message.content }}
-                <div 
-                  class="chat__message__footer"
-                  :class="{ 'text-gray-200': !isSelf(message)}"
-                >{{ $moment(message.timestamp).format('LT') }}</div>
+              <div class="chat__message__content">
+                <div class="chat__message__text">{{ message.content }}</div>
+                <div class="chat__message__footer">{{ $moment(message.timestamp).format('LT') }}</div>
               </div>
             </div>
           </div>
@@ -113,15 +106,21 @@ onMounted(() => {
   }
   &__message {
     @apply mt-2;
-    &__content {
-      @apply inline-block border rounded-3xl py-2 px-4 max-w-lg bg-primary text-light-1 rounded-tl-none;
-      &.is-self {
-        @apply bg-light-1 text-gray-600 rounded-tl-3xl rounded-tr-none ml-auto;
-      }
+    &.is-self {
+      @apply text-right;
     }
-    &__footer {
-      @apply text-right text-[12px] text-muted font-semibold
-    }
+  }
+  &__message__content {
+    @apply inline-block border rounded-3xl py-2 px-4 max-w-lg bg-primary text-light-1 rounded-tl-none;
+  }
+  &__message.is-self &__message__content {
+    @apply bg-light-1 text-gray-600 rounded-tl-3xl rounded-tr-none ml-auto text-left;
+  }
+  &__message__footer {
+    @apply text-right text-[12px] text-muted font-semibold text-light-2;
+  }
+  &__message.is-self &__message__footer {
+    @apply text-gray-500;
   }
   &__footer {
     @apply p-2;
