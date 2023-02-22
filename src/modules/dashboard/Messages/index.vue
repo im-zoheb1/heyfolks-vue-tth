@@ -67,20 +67,19 @@ onMounted(() => {
         <PerfectScrollbar ref="scrollerRef" class="chat__content">
           <div class="chat__messages">
             <div 
-              class="chat__message mt-3"
+              class="chat__message"
               :class="{ 'ml-auto': message.sender.id === 1 }"
               v-for="message in conversation.messages"
             >
               <div 
-                class="inline-block border rounded-3xl py-2 px-4 max-w-lg"
+                class="chat__message__content"
                 :class="{
-                  'bg-light-1 rounded-tr-none ml-auto': isSelf(message),
-                  'bg-primary text-light-1 rounded-tl-none': !isSelf(message)
+                  'is-self': isSelf(message),
                 }"
               >
                 {{ message.content }}
                 <div 
-                  class="text-right text-[12px] text-muted font-semibold"
+                  class="chat__message__footer"
                   :class="{ 'text-gray-200': !isSelf(message)}"
                 >{{ $moment(message.timestamp).format('LT') }}</div>
               </div>
@@ -111,6 +110,18 @@ onMounted(() => {
   }
   &__messages {
     @apply flex flex-col;
+  }
+  &__message {
+    @apply mt-2;
+    &__content {
+      @apply inline-block border rounded-3xl py-2 px-4 max-w-lg bg-primary text-light-1 rounded-tl-none;
+      &.is-self {
+        @apply bg-light-1 text-gray-600 rounded-tl-3xl rounded-tr-none ml-auto;
+      }
+    }
+    &__footer {
+      @apply text-right text-[12px] text-muted font-semibold
+    }
   }
   &__footer {
     @apply p-2;
