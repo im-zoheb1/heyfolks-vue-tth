@@ -3,13 +3,17 @@ import Avatar from '@/components/Elements/Avatar.vue'
 import Separator from '@/components/Elements/Separator.vue'
 import navigations from './menu'
 
-const props = defineProps<{
-  userData?: any
+const { 
+  isCollapsed = false,
+  userData
+} = defineProps<{
+  userData: any;
+  isCollapsed?: boolean
 }>()
 </script>
 
 <template>
-  <aside class="sidebar">
+  <aside class="sidebar" :class="{ collapsed: isCollapsed }">
     <!-- user profile : start -->
     <a href="#" class="sidebar__user-profile">
       <Avatar class="sidebar__user-profile__avatar">

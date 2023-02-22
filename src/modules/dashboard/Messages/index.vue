@@ -55,7 +55,7 @@ const isSelf = (message: any): boolean => {
         <PerfectScrollbar class="chat__content">
           <div class="chat__messages">
             <div 
-              class="chat__message mt-4"
+              class="chat__message mt-3"
               :class="{ 'ml-auto': message.sender.id === 1 }"
               v-for="message in conversation.messages"
             >
@@ -68,7 +68,7 @@ const isSelf = (message: any): boolean => {
               >
                 {{ message.content }}
                 <div 
-                  class="text-right text-[13px] text-muted font-semibold"
+                  class="text-right text-[12px] text-muted font-semibold"
                   :class="{ 'text-gray-200': !isSelf(message)}"
                 >{{ $moment(message.timestamp).format('LT') }}</div>
               </div>
