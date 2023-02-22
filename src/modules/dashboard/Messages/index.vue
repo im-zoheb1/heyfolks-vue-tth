@@ -22,6 +22,13 @@ const isSelf = (message: any): boolean => {
   return message.sender.id === 1
 }
 
+const isLastType = (index: number): boolean => {
+  const { messages } = conversation.value
+  if (!messages[index+1]) return true
+  if (messages[index].sender.id !== messages[index+1].sender.id) return true
+  return false
+}
+
 const scrollToBottom = (): void => {
   if (scrollerRef.value) {
     const el = scrollerRef.value?.$el
@@ -69,7 +76,10 @@ onMounted(() => {
             <div 
               v-for="(message, index) in conversation.messages"
               class="chat__message"
-              :class="{ 'is-self': isSelf(message) }"
+              :class="{ 
+                'is-self': isSelf(message),
+                'is-last-type': isLastType(index)
+              }"
               :key="`chat-message-${index}`"
             >
               <div class="chat__message__content">
@@ -106,15 +116,19 @@ onMounted(() => {
   }
   &__message {
     @apply mt-2;
-    &.is-self {
-      @apply text-right;
-    }
+    &.is-self { @apply text-right; }
   }
   &__message__content {
-    @apply inline-block border rounded-3xl py-2 px-4 max-w-lg bg-primary text-light-1 rounded-tl-none;
+    @apply inline-block border py-2 px-4 max-w-lg bg-primary text-light-1 rounded-3xl;
+  }
+  &__message.is-last-type &__message__content {
+    @apply rounded-bl-none;
   }
   &__message.is-self &__message__content {
     @apply bg-light-1 text-gray-600 rounded-tl-3xl rounded-tr-none ml-auto text-left;
+  }
+  &__message.is-self.is-last-type &__message__content {
+    @apply rounded-3xl rounded-br-none;
   }
   &__message__footer {
     @apply text-right text-[12px] text-muted font-semibold text-light-2;
