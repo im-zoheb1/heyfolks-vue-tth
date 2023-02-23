@@ -12,11 +12,14 @@ import {
   EllipsisHorizontalIcon as EllipsisIcon,
   BellIcon as MuteIcon,
   MagnifyingGlassIcon as SearchIcon,
+	XMarkIcon as CancelIcon
 } from "@heroicons/vue/24/outline";
 
-const message = ref<string>("");
-const conversation = ref(getChat());
+const message = ref<string>("")
+const conversation = ref(getChat())
+const isChatSearchMode = ref<boolean>()
 const scrollerRef = ref<HTMLDivElement | null>(null)
+const searchChatInputRef = ref<HTMLInputElement | null>(null)
 
 const isSelf = (message: any): boolean => {
   return message.sender.id === 1
@@ -36,9 +39,16 @@ const scrollToBottom = (): void => {
   }
 }
 
+const closeChatSearch = (): void => {
+  isChatSearchMode.value = false
+}
+
+const openChatSearch = (): void => {
+  isChatSearchMode.value = true
+}
+
 onMounted(() => {
-  scrollToBottom()
-})
+  scrollToBottom() })
 </script>
 
 <template>
@@ -60,7 +70,7 @@ onMounted(() => {
             </div>
           </div>
           <div class="flex">
-            <Button variant="flat" pilled compact class="p-2">
+            <Button variant="flat" pilled compact class="p-2" @click="searchChat" @click.prevent="openChatSearch">
               <SearchIcon class="w-6" />
             </Button>
             <Button variant="flat" pilled compact class="p-2">
@@ -70,6 +80,22 @@ onMounted(() => {
               <EllipsisIcon class="w-6" />
             </Button>
           </div>
+					<transition
+						enter-active-class="transition duration-100 ease-out"
+						enter-from-class="transform scale-95 opacity-0"
+						enter-to-class="transform scale-100 opacity-100"
+						leave-active-class="transition duration-75 ease-in"
+						leave-from-class="transform scale-100 opacity-100"
+						leave-to-class="transform scale-95 opacity-0"
+					>
+						<div v-if="isChatSearchMode" class="chat__search-box">
+							<SearchIcon class="w-6" />
+							<input ref="searchChatInput" class="outline-none ml-3 text-base flex-1 bg-transparent" type="text" placeholder="Search chat" />
+							<Button class="p-1.5 ml-3 bg-light-1" variant="light" compact pilled @click.prevent="closeChatSearch">
+								<CancelIcon class="w-4" />
+							</Button>
+						</div>
+					</transition>
         </div>
         <PerfectScrollbar ref="scrollerRef" class="chat__content">
           <div class="chat__messages">
@@ -90,8 +116,7 @@ onMounted(() => {
               <div class="chat__message__content">
                 <div class="chat__message__text">{{ message.content }}</div>
                 <div class="chat__message__footer">{{ $moment(message.timestamp).format('LT') }}</div>
-              </div>
-            </div>
+              </div> </div>
           </div>
         </PerfectScrollbar>
         <Separator />
@@ -109,10 +134,13 @@ onMounted(() => {
   @apply bg-main-bg flex items-stretch;
 }
 .chat {
-  @apply flex flex-col flex-[2];
+  @apply flex flex-col flex-[2] relative;
   &__header {
-    @apply h-16 flex items-center px-3 justify-between shadow;
+    @apply h-16 flex items-center px-3 justify-between shadow relative border-b;
   }
+	&__search-box {
+		@apply absolute bg-main-bg border top-full left-0 right-0 z-[1] p-3 flex items-center text-base;
+	}
   &__content {
     @apply p-3 flex-1 overflow-y-scroll
   }
