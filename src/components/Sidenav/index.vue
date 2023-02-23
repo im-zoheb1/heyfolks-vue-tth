@@ -97,6 +97,7 @@ const { isCollapsed = false, userData } = defineProps<{
   }
 }
 .collapsed {
+	@apply hidden sm:flex;
   .sidebar {
     @apply lg:pt-0;
     &__user-profile {
