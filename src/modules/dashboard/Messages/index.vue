@@ -12,7 +12,8 @@ import {
   EllipsisHorizontalIcon as EllipsisIcon,
   BellIcon as MuteIcon,
   MagnifyingGlassIcon as SearchIcon,
-	XMarkIcon as CancelIcon
+	XMarkIcon as CancelIcon,
+	ArrowSmallLeftIcon as BackIcon
 } from "@heroicons/vue/24/outline";
 
 const message = ref<string>("")
@@ -54,10 +55,13 @@ onMounted(() => {
 <template>
   <ChatLayout>
     <div class="chat-container">
-      <ChatList />
+			<ChatList class="chat__list" />
       <Separator is-vertical />
-      <div class="chat">
+      <div class="chat chat__conversation">
         <div class="chat__header">
+					<Button class="mr-2 p-2 lg:hidden" variant="flat" compact pilled>
+						<BackIcon class="w-6" />
+					</Button>
           <div class="flex items-center">
             <Avatar size="sm">
               <img :src="conversation.userInfo.avatar" />
@@ -69,7 +73,7 @@ onMounted(() => {
               </div>
             </div>
           </div>
-          <div class="flex">
+          <div class="flex ml-auto">
             <Button variant="flat" pilled compact class="p-2" @click="searchChat" @click.prevent="openChatSearch">
               <SearchIcon class="w-6" />
             </Button>
@@ -135,8 +139,12 @@ onMounted(() => {
 }
 .chat {
   @apply flex flex-col flex-[2] relative;
+	&__list {
+		@apply hidden lg:block;
+	}
+	&__conversation {}
   &__header {
-    @apply h-16 flex items-center px-3 justify-between shadow relative border-b;
+    @apply h-16 flex items-center px-3 shadow relative border-b;
   }
 	&__search-box {
 		@apply absolute bg-main-bg border top-full left-0 right-0 z-[1] p-3 flex items-center text-base;
@@ -160,7 +168,7 @@ onMounted(() => {
     @apply invisible opacity-0;
   }
   &__message__content {
-    @apply inline-block border py-2 px-4 max-w-lg bg-primary text-light-1 rounded-2xl;
+    @apply inline-block border py-2 px-4 max-w-xs lg:max-w-lg bg-primary text-light-1 rounded-2xl;
   }
   &__message.is-last-type &__message__content {
     @apply rounded-bl-none;
