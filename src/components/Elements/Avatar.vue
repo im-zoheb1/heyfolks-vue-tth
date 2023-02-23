@@ -5,6 +5,7 @@ const props = defineProps<{
   size?: "xs" | "sm" | "md" | "lg";
   rounded?: boolean;
   clickable?: boolean;
+	noRing?: boolean;
 }>();
 
 const size = ref<string>(
@@ -21,8 +22,8 @@ const border = props.rounded ? "rounded-2xl" : "rounded-full";
 
 <template>
   <span
-    :class="[size, border, clickable && 'cursor-pointer']"
-    class="bg-main-bg inline-block overflow-hidden min-w-max ring-offset-2 ring-1 ring-slate-300 [&>*]:w-full [&>*]:h-full [&>*]:object-cover"
+    :class="[size, border, clickable && 'cursor-pointer', !noRing && 'ring-offset-2 ring-1 ring-slate-300']"
+    class="bg-main-bg inline-block overflow-hidden min-w-max [&>*]:w-full [&>*]:h-full [&>*]:object-cover"
   >
     <slot></slot>
   </span>

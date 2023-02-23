@@ -83,7 +83,7 @@ onMounted(() => {
               :key="`chat-message-${index}`"
             >
               <div class="chat__message__avatar-wrapper">
-                <Avatar size="xs">
+                <Avatar size="xs" no-ring>
                   <img :src="message.sender.avatar" />
                 </Avatar>
               </div>
