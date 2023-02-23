@@ -46,6 +46,7 @@ const closeChatSearch = (): void => {
 
 const openChatSearch = (): void => {
   isChatSearchMode.value = true
+	setTimeout(() => searchChatInputRef.value?.focus(), 0)
 }
 
 onMounted(() => {
@@ -94,7 +95,7 @@ onMounted(() => {
 					>
 						<div v-if="isChatSearchMode" class="chat__search-box">
 							<SearchIcon class="w-6" />
-							<input ref="searchChatInput" class="outline-none ml-3 text-base flex-1 bg-transparent" type="text" placeholder="Search chat" />
+							<input ref="searchChatInputRef" class="outline-none ml-3 text-base flex-1 bg-transparent" type="text" placeholder="Search chat" />
 							<Button class="p-1.5 ml-3 bg-light-1" variant="light" compact pilled @click.prevent="closeChatSearch">
 								<CancelIcon class="w-4" />
 							</Button>
