@@ -34,10 +34,8 @@ const isLastType = (index: number): boolean => {
 }
 
 const scrollToBottom = (): void => {
-  if (scrollerRef.value) {
-    const el = scrollerRef.value?.$el
-    el.scrollTop = el.scrollHeight
-  }
+  const el = document.getElementById('scroller')
+  if (el) el.scrollTop = el.scrollHeight
 }
 
 const closeChatSearch = (): void => {
@@ -75,7 +73,7 @@ onMounted(() => {
             </div>
           </div>
           <div class="flex ml-auto">
-            <Button variant="flat" pilled compact class="p-2" @click="searchChat" @click.prevent="openChatSearch">
+            <Button variant="flat" pilled compact class="p-2" @click.prevent="openChatSearch">
               <SearchIcon class="w-6" />
             </Button>
             <Button variant="flat" pilled compact class="p-2">
@@ -102,7 +100,7 @@ onMounted(() => {
 						</div>
 					</transition>
         </div>
-        <PerfectScrollbar ref="scrollerRef" class="chat__content">
+        <PerfectScrollbar id="scroller" ref="scrollerRef" class="chat__content">
           <div class="chat__messages">
             <div 
               v-for="(message, index) in conversation.messages"
