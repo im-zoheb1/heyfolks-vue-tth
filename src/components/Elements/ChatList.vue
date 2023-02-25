@@ -1,10 +1,15 @@
 <script lang="ts" setup>
 import SearchBox from "./SearchBox.vue";
 import Avatar from "./Avatar.vue";
-import ScrollBar from "./ScrollBar.vue";
+import Button from "./Button.vue";
 import { ref } from "vue";
 import { getMessages } from "@/generator/messages";
 import { PerfectScrollbar } from 'vue3-perfect-scrollbar'
+import { ArrowSmallLeftIcon as BackIcon } from "@heroicons/vue/24/outline";
+
+const props = defineProps<{
+  goBack?: boolean
+}>()
 
 const emit = defineEmits<{
   (e: 'open-chat', value?: any): void
@@ -19,9 +24,10 @@ const openChat = (): void => {
 
 <template>
   <PerfectScrollbar class="flex-1 h-full relative">
-    <SearchBox
-      class="sticky top-0 bg-main-bg p-2 shadow-sm overflow-hidden rounded-t-lg"
-    />
+    <div class="sticky top-0 flex items-center p-2 bg-main-bg">
+      <slot name="search-prepend"></slot> 
+      <SearchBox class="flex-1 shadow-sm overflow-hidden rounded-t-lg" />
+    </div>
     <div>
       <a
         href="#"

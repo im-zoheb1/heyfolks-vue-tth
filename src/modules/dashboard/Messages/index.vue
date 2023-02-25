@@ -72,7 +72,13 @@ onMounted(() => {
 			<ChatList 
         class="chat__list" 
         @open-chat="openConversation"
-      />
+      >
+        <template #search-prepend>
+          <Button class="mr-2 p-2 lg:hidden" variant="flat" compact pilled @click="$router.push({ name: 'home' })">
+            <BackIcon class="w-6" />
+          </Button>
+        </template>
+      </ChatList>
       <Separator is-vertical />
       <div class="chat__conversation">
         <div class="chat__header">
@@ -208,9 +214,9 @@ onMounted(() => {
 }
 
 .chat.is-conversation-open .chat__list {
-  @apply hidden;
+  @apply max-sm:hidden;
 }
 .chat:not(.chat.is-conversation-open) .chat__conversation {
-  @apply hidden;
+  @apply max-sm:hidden;
 }
 </style>
