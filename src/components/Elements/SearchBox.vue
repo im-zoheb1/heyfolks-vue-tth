@@ -27,7 +27,7 @@ const isTypeSelect = computed(() => {
 })
 
 const onFocus = (): void => {
-  isFocused.value = true
+  // isFocused.value = true
 }
 
 const onBlur = (): void => {
