@@ -11,7 +11,7 @@ const userData: any = reactive<any>(getUserData());
   <Header class="h-16 z-header-tab" :user-data="userData" />
   <Sidenav is-collapsed class="z-sidenav sm:w-20 sm:block border-r" :user-data="userData" />
   <main
-    class="w-full bg-light-1 pt-16 min-h-screen pb-16 sm:pl-20 sm:pb-0"
+    class="w-full bg-light-1 pt-16 min-h-screen sm:pl-20 sm:pb-0"
   >
     <div>
       <slot></slot>
