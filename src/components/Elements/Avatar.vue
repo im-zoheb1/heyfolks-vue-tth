@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { ref } from "vue";
-import NoUserPhoto from '@/assets/img/no-user-photo.png' 
+import NoUserPhoto from '@/assets/img/no-user-photo.svg' 
 
 const props = defineProps<{
   size?: "xs" | "sm" | "md" | "lg";
@@ -30,7 +30,7 @@ const onImgError = (event: Event) => {
 <template>
   <span
     :class="[size, border, clickable && 'cursor-pointer', !noRing && 'ring-offset-2 ring-1 ring-slate-300']"
-    class="inline-block overflow-hidden min-w-max [&>*]:w-full [&>*]:h-full [&>*]:object-cover bg-[#556080]"
+    class="inline-block overflow-hidden min-w-max [&>*]:w-full [&>*]:h-full [&>*]:object-cover bg-slate-100"
   >
     <img :src="src" @error="onImgError" />
   </span>
