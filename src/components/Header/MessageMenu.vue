@@ -7,7 +7,7 @@ import { ChatBubbleOvalLeftIcon } from "@heroicons/vue/20/solid";
 </script>
 
 <template>
-  <Popover panel-class="max-w-[400px]" panel-position="fixed-header-right">
+  <Popover panel-class="max-w-[400px] w-[96%]" panel-position="fixed-header-right">
     <template #default="{ open }">
       <Button compact variant="light" pilled class="p-2 mx-3">
         <ChatBubbleOvalLeftIcon class="w-7" :class="{ 'text-primary': open }" />
