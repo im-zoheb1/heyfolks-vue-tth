@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { ref } from "vue";
+import NoUserPhoto from '@/assets/img/no-user-photo.png' 
 
 const props = defineProps<{
   size?: "xs" | "sm" | "md" | "lg";
@@ -19,6 +20,11 @@ const size = ref<string>(
 );
 
 const border = props.rounded ? "rounded-2xl" : "rounded-full";
+
+// methods: start
+const onImgError = (event: Event) => {
+  (event.target as HTMLImageElement).src = NoUserPhoto
+}
 </script>
 
 <template>
@@ -26,6 +32,6 @@ const border = props.rounded ? "rounded-2xl" : "rounded-full";
     :class="[size, border, clickable && 'cursor-pointer', !noRing && 'ring-offset-2 ring-1 ring-slate-300']"
     class="bg-main-bg inline-block overflow-hidden min-w-max [&>*]:w-full [&>*]:h-full [&>*]:object-cover"
   >
-    <img :src="src" />
+    <img :src="src" @error="onImgError" />
   </span>
 </template>

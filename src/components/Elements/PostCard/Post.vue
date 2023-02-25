@@ -28,10 +28,6 @@ const isLiked = computed(() => props.data.interactions.isLiked)
 const isSaved = computed(() => props.data.interactions.isSaved)
 // computed: end
 
-// methods: start
-const onImgError = (event: Event) => {
-  (event.target as HTMLImageElement).src = NoUserPhoto
-}
 const toggleLike = (): void => {
   props.data.interactions.isLiked = !props.data.interactions.isLiked
   if (!props.data.interactions.isLiked) { 
