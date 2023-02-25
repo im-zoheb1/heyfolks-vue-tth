@@ -8,6 +8,7 @@ const progress = internalInstace?.appContext.config.globalProperties.$Progress;
 
 router?.beforeEach((to, from, next) => {
   progress?.start();
+  window.scrollTo(0, 0)
   next();
 });
 

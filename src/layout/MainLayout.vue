@@ -5,6 +5,10 @@ import { reactive } from "vue";
 import { getUserData } from "@/generator/user";
 
 const userData: any = reactive<any>(getUserData());
+
+defineProps<{
+  noPadding?: boolean
+}>()
 </script>
 
 <template>
@@ -27,7 +31,7 @@ const userData: any = reactive<any>(getUserData());
   />
   <main 
     class="
-      w-full bg-light-1 pt-16 min-h-screen pb-16
+      w-full bg-light-1 pt-16 min-h-screen pb-14
       sm:pl-20 sm:pb-0
       lg:pl-64
       xl:pl-72
