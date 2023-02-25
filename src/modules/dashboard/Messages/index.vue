@@ -157,7 +157,7 @@ onMounted(() => {
   &__message {
     @apply mt-2 flex items-end;
     &__avatar-wrapper {
-      @apply mx-2 cursor-pointer;
+      @apply mx-2 cursor-pointer hidden sm:inline-block;
     }
   }
   &__message.is-self {
