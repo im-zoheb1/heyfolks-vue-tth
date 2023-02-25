@@ -18,7 +18,7 @@ import {
 
 const message = ref<string>("")
 const conversation = ref(getChat())
-const isConversationOpen = ref<boolean>(true)
+const isConversationOpen = ref<boolean>(false)
 const isChatSearchMode = ref<boolean>()
 const scrollerRef = ref<HTMLDivElement | null>(null)
 const searchChatInputRef = ref<HTMLInputElement | null>(null)
@@ -57,18 +57,22 @@ const openConversation = (): void => {
 }
 
 onMounted(() => {
-  scrollToBottom() })
+  scrollToBottom() 
+})
 </script>
 
 <template>
   <ChatLayout>
     <div 
       :class="[
-      'chat',
+        'chat',
         { 'is-conversation-open': isConversationOpen } 
       ]"
     >
-			<ChatList class="chat__list" />
+			<ChatList 
+        class="chat__list" 
+        @open-chat="openConversation"
+      />
       <Separator is-vertical />
       <div class="chat__conversation">
         <div class="chat__header">
@@ -124,7 +128,6 @@ onMounted(() => {
                 'is-last-type': isLastType(index)
               }"
               :key="`chat-message-${index}`"
-              @click="openConversation"
             >
               <div class="chat__message__avatar-wrapper">
                 <Avatar size="xs" no-ring>
@@ -152,7 +155,7 @@ onMounted(() => {
   height: calc(100vh - 66px);
   @apply bg-main-bg flex items-stretch;
 	&__list {
-		@apply hidden lg:block;
+		@apply block;
 	}
   &__conversation {
     @apply flex flex-col flex-[2] relative;
@@ -202,5 +205,12 @@ onMounted(() => {
   &__footer {
     @apply p-2;
   }
+}
+
+.chat.is-conversation-open .chat__list {
+  @apply hidden;
+}
+.chat:not(.chat.is-conversation-open) .chat__conversation {
+  @apply hidden;
 }
 </style>

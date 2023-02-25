@@ -6,7 +6,15 @@ import { ref } from "vue";
 import { getMessages } from "@/generator/messages";
 import { PerfectScrollbar } from 'vue3-perfect-scrollbar'
 
+const emit = defineEmits<{
+  (e: 'open-chat', value?: any): void
+}>()
+
 const messages = ref<any[]>(getMessages());
+
+const openChat = (): void => {
+  emit('open-chat')
+}
 </script>
 
 <template>
@@ -20,6 +28,7 @@ const messages = ref<any[]>(getMessages());
         v-for="message in messages"
         class="flex items-center p-4 transition duration-300 hover:bg-light-2"
         :class="{ 'bg-light-1': message.unread }"
+        @click="openChat"
       >
         <Avatar size="sm">
           <img :src="message.avatar" />
