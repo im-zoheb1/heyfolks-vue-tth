@@ -157,10 +157,10 @@ onMounted(() => {
   height: calc(100vh - 66px);
   @apply bg-main-bg flex items-stretch;
 	&__list {
-		@apply block;
+		@apply block flex-[2];
 	}
   &__conversation {
-    @apply flex flex-col flex-[2] relative;
+    @apply flex flex-col flex-[3] relative;
   }
   &__header {
     @apply h-16 flex items-center px-3 shadow relative border-b;
@@ -210,9 +210,9 @@ onMounted(() => {
 }
 
 .chat.is-conversation-open .chat__list {
-  @apply max-sm:hidden;
+  @apply max-md:hidden;
 }
 .chat:not(.chat.is-conversation-open) .chat__conversation {
-  @apply max-sm:hidden;
+  @apply max-md:hidden;
 }
 </style>

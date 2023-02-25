@@ -30,7 +30,7 @@ const onImgError = (event: Event) => {
 <template>
   <span
     :class="[size, border, clickable && 'cursor-pointer', !noRing && 'ring-offset-2 ring-1 ring-slate-300']"
-    class="bg-main-bg inline-block overflow-hidden min-w-max [&>*]:w-full [&>*]:h-full [&>*]:object-cover"
+    class="inline-block overflow-hidden min-w-max [&>*]:w-full [&>*]:h-full [&>*]:object-cover bg-[#556080]"
   >
     <img :src="src" @error="onImgError" />
   </span>

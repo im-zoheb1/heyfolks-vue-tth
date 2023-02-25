@@ -1,7 +1,6 @@
 <script lang="ts" setup>
 import Avatar from '@/components/Elements/Avatar.vue'
 import Separator from '@/components/Elements/Separator.vue';
-import NoUserPhoto from '@/assets/img/no-user-photo.png' 
 import { 
   HeartIcon as LikeIcon, 
   ChatBubbleOvalLeftEllipsisIcon as CommentIcon, 
