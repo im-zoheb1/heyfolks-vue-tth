@@ -2,6 +2,14 @@
 # yarn lockfile v1
 
 
+"@aacassandra/vue3-progressbar@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@aacassandra/vue3-progressbar/-/vue3-progressbar-1.0.3.tgz#12df4a135968a43af2d2a5753174587e5cc5cb95"
+  integrity sha512-e4SlgYwXiNABJbHYOChs3aSiCyR+1D6WAjWR1zo3vCs/9k6Vjj2GIPXWNJA/YP4RhlQS4eSC3RtCPC95CfAEbw==
+  dependencies:
+    core-js "^3.6.5"
+    vue "^3.0.0"
+
 "@babel/parser@^7.16.4":
   version "7.20.7"
   resolved "https://registry.yarnpkg.com/@babel/parser/-/parser-7.20.7.tgz#66fe23b3c8569220817d5feb8b9dcdc95bb4f71b"
@@ -211,6 +219,13 @@
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/@trysound/sax/-/sax-0.2.0.tgz#cccaab758af56761eb7bf37af6f03f326dd798ad"
   integrity sha512-L7z9BgrNEcYyUYtF+HaEfiS5ebkh9jXqbszz7pC0hRBPaatV0XjSD3+eHrpqFemQfgwiFF0QPIarnIihIDn7OA==
+
+"@types/@aacassandra/vue3-progressbar":
+  version "1.0.3"
+  resolved "https://codeload.github.com/aacassandra/vue3-progressbar/tar.gz/f66f7003b5729b94fa46d3e86072e90fa16723ae"
+  dependencies:
+    core-js "^3.6.5"
+    vue "^3.0.0"
 
 "@types/chai-subset@^1.3.3":
   version "1.3.3"
@@ -917,6 +932,11 @@ concat-map@0.0.1:
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/concat-map/-/concat-map-0.0.1.tgz#d8a96bd77fd68df7793a73036a3ba0d5405d477b"
   integrity sha512-/Srv4dswyQNBfohGpz9o6Yb3Gz3SrUDqBH5rTuhGR7ahtlbYKnVxw2bCFMRljaA7EXHaXZ8wsHdodFvbkhKmqg==
+
+core-js@^3.6.5:
+  version "3.28.0"
+  resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.28.0.tgz#ed8b9e99c273879fdfff0edfc77ee709a5800e4a"
+  integrity sha512-GiZn9D4Z/rSYvTeg1ljAIsEqFm0LaN9gVtwDCrKL80zHtS31p9BAjmTxVqTQDMpwlMolJZOFntUG2uwyj7DAqw==
 
 cross-spawn@^6.0.5:
   version "6.0.5"
@@ -3318,7 +3338,7 @@ vue3-perfect-scrollbar@^1.6.1:
     perfect-scrollbar "^1.5.5"
     postcss-import "^12.0.0"
 
-vue@^3.2.23:
+vue@^3.0.0, vue@^3.2.23:
   version "3.2.47"
   resolved "https://registry.yarnpkg.com/vue/-/vue-3.2.47.tgz#3eb736cbc606fc87038dbba6a154707c8a34cff0"
   integrity sha512-60188y/9Dc9WVrAZeUVSDxRQOZ+z+y5nO2ts9jWXSTkMvayiWxCWOWtBQoYjLeccfXkiiPZWAHcV+WTPhkqJHQ==
