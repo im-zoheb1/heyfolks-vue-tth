@@ -157,10 +157,10 @@ onMounted(() => {
   height: calc(100vh - 66px);
   @apply bg-main-bg flex items-stretch;
 	&__list {
-		@apply block flex-[2];
+		@apply block flex-[1];
 	}
   &__conversation {
-    @apply flex flex-col flex-[3] relative;
+    @apply flex flex-col flex-[2] relative;
   }
   &__header {
     @apply h-16 flex items-center px-3 shadow relative border-b;
