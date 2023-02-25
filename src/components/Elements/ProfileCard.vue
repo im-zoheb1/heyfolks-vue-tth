@@ -19,9 +19,7 @@ const props = defineProps<{
 <template>
   <Card class="px-3 py-4 shadow-none cursor-pointer transition-all hover:bg-slate-50">
     <div class="flex items-center leading-tight">
-      <Avatar size="lg" rounded>
-        <img :src="data.avatar" />
-      </Avatar>
+      <Avatar :src="data.avatar" size="lg" rounded />
       <div class="w-full ml-5">
         <div class="flex items-center justify-between w-full mb-3">
           <div>

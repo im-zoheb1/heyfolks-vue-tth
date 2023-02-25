@@ -39,9 +39,7 @@ onMounted(() => {
 
 <template>
   <div class="flex items-center bg-main-bg">
-    <Avatar size="xs">
-      <img :src="avatar" />
-    </Avatar>
+    <Avatar size="xs" :src="avatar" />
     <a 
       class="flex items-center w-full ml-2 p-1 border rounded-full bg-light-1"
       :class="{ 'ring-2': isCommentActive }"

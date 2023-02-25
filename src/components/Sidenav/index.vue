@@ -13,9 +13,7 @@ const { isCollapsed = false, userData } = defineProps<{
   <aside class="sidebar" :class="{ collapsed: isCollapsed }">
     <!-- user profile : start -->
     <a href="#" class="sidebar__user-profile">
-      <Avatar class="sidebar__user-profile__avatar">
-        <img :src="userData.avatar" />
-      </Avatar>
+      <Avatar class="sidebar__user-profile__avatar" :src="userData.avatar" />
       <span class="sidebar__user-profile__info">
         <div class="sidebar__user-profile__full-name">{{ userData.fullname }}</div>
         <div class="sidebar__user-profile__username">@{{ userData.username }}</div>

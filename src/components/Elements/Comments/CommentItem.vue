@@ -26,9 +26,7 @@ const countComment = (comments: any): number => {
 
 <template>
   <div class="flex py-1" :class="itemClass">
-    <Avatar size="xs">
-      <img :src="data.avatar" />
-    </Avatar>
+    <Avatar size="xs" :src="data.avatar" />
     <div class="ml-3 text-gray-700">
       <h3 class="font-semibold">{{ data.fullname }}</h3>
       <p class="leading-tight">{{ data.text }}</p>

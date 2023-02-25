@@ -43,9 +43,7 @@ const notifications = ref<any[]>(getNotifications());
                 notification.isNew,
             }"
           >
-            <Avatar size="sm">
-              <img :src="notification.avatar" />
-            </Avatar>
+            <Avatar size="sm" :src="notification.avatar" />
             <div class="pl-4">
               <div>
                 <span class="font-bold">{{ notification.name }}</span>

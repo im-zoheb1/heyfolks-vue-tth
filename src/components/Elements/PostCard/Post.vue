@@ -53,9 +53,7 @@ const toggleSave = (): void => {
     <!-- start: header  -->
     <div class="p-3">
       <div class="flex items-center">
-        <Avatar size="sm">
-          <img :src="data.avatar" @error="onImgError" />
-        </Avatar>
+        <Avatar size="sm" :src="data.avatar" />
         <span class="leading-tight ml-3">
           <div class="text-md">{{ data.fullname }}</div>
           <div class="text-muted text-sm">{{ $moment(data.date).fromNow() }}</div>

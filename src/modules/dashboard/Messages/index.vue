@@ -86,9 +86,7 @@ onMounted(() => {
 						<BackIcon class="w-6" />
 					</Button>
           <div class="flex items-center">
-            <Avatar size="sm">
-              <img :src="conversation.userInfo.avatar" />
-            </Avatar>
+            <Avatar :src="conversation.userInfo.avatar" size="sm" />
             <div class="ml-3 leading-tight">
               <div class="font-semibold">{{ conversation.userInfo.name }}</div>
               <div class="text-muted text-sm font-semibold">
@@ -136,9 +134,7 @@ onMounted(() => {
               :key="`chat-message-${index}`"
             >
               <div class="chat__message__avatar-wrapper">
-                <Avatar size="xs" no-ring>
-                  <img :src="message.sender.avatar" />
-                </Avatar>
+                <Avatar :src="message.sender.avatar" size="xs" no-ring />
               </div>
               <div class="chat__message__content">
                 <div class="chat__message__text">{{ message.content }}</div>

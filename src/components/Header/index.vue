@@ -23,9 +23,7 @@ const props = defineProps<{
       <!-- start: user menu -->
       <Menu width="300px">
         <template #button>
-          <Avatar size="sm">
-            <img :src="userData.avatar" />
-          </Avatar>
+          <Avatar size="sm" :src="userData.avatar" />
         </template>
         <div class="ml-3 mb-2 font-semibold leading-tight">
           <div class="text-base">{{ userData.fullname }}</div>

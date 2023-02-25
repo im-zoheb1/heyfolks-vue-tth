@@ -88,9 +88,7 @@ const search = (event: Event): void => {
                   class="flex items-center truncate p-1"
                   :class="{ 'font-medium': selected, 'font-normal': !selected }"
                 >
-                  <Avatar size="sm">
-                    <img :src="item.avatar" />
-                  </Avatar>
+                  <Avatar size="sm" :src="item.avatar" />
                   <div class="ml-3 leading-none font-semibold">
                     <h3 class="text-base">{{ item.name }}</h3>
                     <h4 class="text-sm text-gray-400">{{ item.bio }}</h4>

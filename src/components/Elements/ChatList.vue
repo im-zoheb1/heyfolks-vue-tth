@@ -36,9 +36,7 @@ const openChat = (): void => {
         :class="{ 'bg-light-1': message.unread }"
         @click="openChat"
       >
-        <Avatar size="sm">
-          <img :src="message.avatar" />
-        </Avatar>
+        <Avatar :src="message.avatar" size="sm" />
         <span class="ml-3">
           <div class="font-semibold text-md">{{ message.name }}</div>
           <div class="line-clamp-1 leading-tight text-[15px] text-muted">

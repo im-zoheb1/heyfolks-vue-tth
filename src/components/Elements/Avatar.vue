@@ -6,6 +6,7 @@ const props = defineProps<{
   rounded?: boolean;
   clickable?: boolean;
 	noRing?: boolean;
+  src: string;
 }>();
 
 const size = ref<string>(
@@ -25,6 +26,6 @@ const border = props.rounded ? "rounded-2xl" : "rounded-full";
     :class="[size, border, clickable && 'cursor-pointer', !noRing && 'ring-offset-2 ring-1 ring-slate-300']"
     class="bg-main-bg inline-block overflow-hidden min-w-max [&>*]:w-full [&>*]:h-full [&>*]:object-cover"
   >
-    <slot></slot>
+    <img :src="src" />
   </span>
 </template>
