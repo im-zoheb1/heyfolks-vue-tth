@@ -18,6 +18,7 @@ import {
 
 const message = ref<string>("")
 const conversation = ref(getChat())
+const isConversationOpen = ref<boolean>(true)
 const isChatSearchMode = ref<boolean>()
 const scrollerRef = ref<HTMLDivElement | null>(null)
 const searchChatInputRef = ref<HTMLInputElement | null>(null)
@@ -47,18 +48,31 @@ const openChatSearch = (): void => {
 	setTimeout(() => searchChatInputRef.value?.focus(), 0)
 }
 
+const openChatList = (): void => {
+  isConversationOpen.value = false
+}
+
+const openConversation = (): void => {
+  isConversationOpen.value = true
+}
+
 onMounted(() => {
   scrollToBottom() })
 </script>
 
 <template>
   <ChatLayout>
-    <div class="chat-container">
+    <div 
+      :class="[
+      'chat',
+        { 'is-conversation-open': isConversationOpen } 
+      ]"
+    >
 			<ChatList class="chat__list" />
       <Separator is-vertical />
-      <div class="chat chat__conversation">
+      <div class="chat__conversation">
         <div class="chat__header">
-					<Button class="mr-2 p-2 lg:hidden" variant="flat" compact pilled>
+					<Button class="mr-2 p-2 lg:hidden" variant="flat" compact pilled @click="openChatList">
 						<BackIcon class="w-6" />
 					</Button>
           <div class="flex items-center">
@@ -110,6 +124,7 @@ onMounted(() => {
                 'is-last-type': isLastType(index)
               }"
               :key="`chat-message-${index}`"
+              @click="openConversation"
             >
               <div class="chat__message__avatar-wrapper">
                 <Avatar size="xs" no-ring>
@@ -119,7 +134,8 @@ onMounted(() => {
               <div class="chat__message__content">
                 <div class="chat__message__text">{{ message.content }}</div>
                 <div class="chat__message__footer">{{ $moment(message.timestamp).format('LT') }}</div>
-              </div> </div>
+              </div> 
+            </div>
           </div>
         </PerfectScrollbar>
         <Separator />
@@ -132,16 +148,15 @@ onMounted(() => {
 </template>
 
 <style lang="scss" scoped>
-.chat-container {
+.chat {
   height: calc(100vh - 66px);
   @apply bg-main-bg flex items-stretch;
-}
-.chat {
-  @apply flex flex-col flex-[2] relative;
 	&__list {
 		@apply hidden lg:block;
 	}
-	&__conversation {}
+  &__conversation {
+    @apply flex flex-col flex-[2] relative;
+  }
   &__header {
     @apply h-16 flex items-center px-3 shadow relative border-b;
   }
@@ -179,7 +194,7 @@ onMounted(() => {
     @apply rounded-2xl rounded-br-none;
   }
   &__message__footer {
-    @apply text-right text-[12px] text-muted font-semibold text-light-2;
+    @apply text-right text-[12px] font-semibold text-light-2;
   }
   &__message.is-self &__message__footer {
     @apply text-gray-500;
@@ -187,5 +202,8 @@ onMounted(() => {
   &__footer {
     @apply p-2;
   }
+}
+
+.is-conversation-open.chat {
 }
 </style>
