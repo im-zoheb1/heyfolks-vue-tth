@@ -203,7 +203,4 @@ onMounted(() => {
     @apply p-2;
   }
 }
-
-.is-conversation-open.chat {
-}
 </style>
