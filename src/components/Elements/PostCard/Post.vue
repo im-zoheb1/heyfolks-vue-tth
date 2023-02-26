@@ -67,11 +67,14 @@ const toggleSave = (): void => {
       </div>
     </div>
     <!-- end: content  -->
-
-    <!-- start: interactions start -->
     <Separator />
+    <!-- start: interactions start -->
     <div class="flex text-sm font-semibold">
-      <button class="flex items-center justify-center cursor-pointer w-4/12 hover:bg-light-1 py-2" :class="{ 'font-bold text-danger': isLiked }" @click="toggleLike">
+      <button 
+				class="flex items-center justify-center cursor-pointer w-4/12 hover:bg-light-1 py-2" 
+				:class="{ 'font-bold text-danger': isLiked }" 
+				@click="toggleLike"
+			>
         <LikeSolidIcon 
           v-if="isLiked" 
           :class="['sm:w-6 w-5 animate__animated animate__faster', solidLikeClass]"
@@ -79,11 +82,18 @@ const toggleSave = (): void => {
         <LikeIcon v-else class="sm:w-6 w-5"></LikeIcon>
         <div class="ml-2">{{ likesCount }} Likes</div>
       </button>
-      <button class="flex items-center justify-center cursor-pointer w-4/12 hover:bg-light-1 py-2" @click="activateComment && activateComment(true)">
+      <button 
+				class="flex items-center justify-center cursor-pointer w-4/12 hover:bg-light-1 py-2" 
+				@click="activateComment && activateComment(true)"
+			>
         <CommentIcon class="sm:w-6 w-5" />
         <div class="ml-2">{{ commentsCount || '' }} Comments</div>
       </button>
-      <button class="flex items-center justify-center cursor-pointer w-4/12 hover:bg-light-1 py-2 text-primary" @click="toggleSave">
+			<button 
+				class="flex items-center justify-center cursor-pointer w-4/12 hover:bg-light-1 py-2" 
+				:class="{ 'text-primary': isSaved }" 
+				@click="toggleSave"
+			>
         <component :is="isSaved ? SaveSolidIcon : SaveIcon" class="sm:w-6 w-5"></component>
         <div class="ml-2">Save</div>
       </button>
