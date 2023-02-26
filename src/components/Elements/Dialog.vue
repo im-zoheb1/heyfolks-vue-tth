@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { ref, watch, onMounted } from "vue";
 import Button from '@/components/Elements/Button.vue'
+import { ref, watch, onMounted } from "vue";
 import { TransitionRoot, TransitionChild, Dialog, DialogPanel, DialogTitle } from "@headlessui/vue";
 
 // start: props
@@ -27,6 +27,7 @@ const isOpen = ref<boolean>(false)
 watch(isOpen, (value: boolean) => {
   emits('update:modelValue', value)
 })
+
 watch(() => props.modelValue, (value: boolean) => {
   isOpen.value = value 
 })

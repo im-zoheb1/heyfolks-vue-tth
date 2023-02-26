@@ -12,10 +12,10 @@ const props = defineProps<{
 
 const size = ref<string>(
   {
-    xs: "w-9 h-9",
-    sm: "w-12 h-12",
-    md: "w-16 h-16",
-    lg: "w-[80px] h-[80px]",
+    xs: "min-w-[2.25rem] min-h-[2.25rem] max-w-[2.25rem] max-h-[2.25rem]", // w-9
+    sm: "min-w-[3rem] min-h-[3rem] max-w-[3rem] max-h-[3rem]", // w-12
+    md: "min-w-[4rem] min-h-[4rem] max-w-[4rem] max-h-[4rem]", // w-16
+    lg: "min-w-[5rem] min-h-[5rem] max-w-[5rem] max-h-[5rem]",
   }[props.size ?? "md"]
 );
 
@@ -30,8 +30,12 @@ const onImgError = (event: Event) => {
 <template>
   <span
     :class="[size, border, clickable && 'cursor-pointer', !noRing && 'ring-offset-2 ring-1 ring-slate-300']"
-    class="inline-block overflow-hidden min-w-max [&>*]:w-full [&>*]:h-full [&>*]:object-cover bg-slate-100"
+    class="inline-block overflow-hidden bg-slate-100 relative"
   >
-    <img :src="src" @error="onImgError" />
+    <img 
+			:src="src" 
+			@error="onImgError" 
+			class="w-full h-full object-cover"
+		/>
   </span>
 </template>
