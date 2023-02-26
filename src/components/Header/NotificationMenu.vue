@@ -4,7 +4,6 @@ import Button from "@/components/Elements/Button.vue";
 import Separator from "@/components/Elements/Separator.vue";
 import { BellIcon } from "@heroicons/vue/20/solid";
 import NotificationList from "../Elements/NotificationList.vue";
-
 </script>
 
 <template>
@@ -19,9 +18,11 @@ import NotificationList from "../Elements/NotificationList.vue";
         <NotificationList />
         <div>
           <Separator />
-          <Button class="px-4 m-3" size="sm" variant="light">
-            View all notifications
-          </Button>
+          <RouterLink :to="{ name: 'notifications' }">
+            <Button class="px-4 m-3" size="sm" variant="light">
+              View all notifications
+            </Button>
+          </RouterLink>
         </div>
       </div>
     </template>

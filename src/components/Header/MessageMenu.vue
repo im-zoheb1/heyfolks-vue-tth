@@ -20,9 +20,11 @@ import { ChatBubbleOvalLeftIcon } from "@heroicons/vue/20/solid";
         <ChatList /> 
         <div>
           <Separator />
-          <Button class="px-4 m-3" size="sm" variant="light">
-            View all messages 
-          </Button>
+          <RouterLink :to="{ name: 'messages' }">
+            <Button :to="{ name: 'messages' }" tag="div" class="px-4 m-3" size="sm" variant="light">
+              View all messages
+            </Button>
+          </RouterLink>
         </div>
       </div>
     </template>
