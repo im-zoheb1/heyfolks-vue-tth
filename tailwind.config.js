@@ -17,7 +17,8 @@ module.exports = {
         'main-bg': '#ffffff'
       },
       backgroundImage: {
-        'folks': `linear-gradient(to right bottom, rgba(59, 130, 246, 0.5), rgba(124, 58, 237, 0.3)), url('@/assets/img/folks-bg.png')`
+        'folks': `linear-gradient(to right bottom, rgba(59, 130, 246, 0.5), rgba(124, 58, 237, 0.3)), url('@/assets/img/folks-bg.png')`,
+        'gradient': `linear-gradient(to right bottom, rgba(59, 130, 246), rgba(124, 58, 237))`
       },
       fontFamily: {
         'logo': "'Anton', sans-serif",
