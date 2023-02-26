@@ -71,7 +71,7 @@ const toggleSave = (): void => {
     <!-- start: interactions start -->
     <Separator />
     <div class="flex text-sm font-semibold">
-      <button class="flex items-center justify-center cursor-pointer w-4/12 hover:bg-light-1 py-2" :class="{ 'font-bold text-primary': isLiked }" @click="toggleLike">
+      <button class="flex items-center justify-center cursor-pointer w-4/12 hover:bg-light-1 py-2" :class="{ 'font-bold text-danger': isLiked }" @click="toggleLike">
         <LikeSolidIcon 
           v-if="isLiked" 
           :class="['sm:w-6 w-5 animate__animated animate__faster', solidLikeClass]"
@@ -83,7 +83,7 @@ const toggleSave = (): void => {
         <CommentIcon class="sm:w-6 w-5" />
         <div class="ml-2">{{ commentsCount || '' }} Comments</div>
       </button>
-      <button class="flex items-center justify-center cursor-pointer w-4/12 hover:bg-light-1 py-2" @click="toggleSave">
+      <button class="flex items-center justify-center cursor-pointer w-4/12 hover:bg-light-1 py-2 text-primary" @click="toggleSave">
         <component :is="isSaved ? SaveSolidIcon : SaveIcon" class="sm:w-6 w-5"></component>
         <div class="ml-2">Save</div>
       </button>

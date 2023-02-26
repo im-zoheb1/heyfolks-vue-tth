@@ -12,7 +12,7 @@ module.exports = {
         'accent': '#34D399',
         'light-1': '#EFF6FF',
         'light-2': '#DBEAFE',
-        'danger': '#DC0000',
+        'danger': '#E85A71',
         'muted': '#777777',
         'main-bg': '#ffffff'
       },
