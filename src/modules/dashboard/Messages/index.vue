@@ -133,7 +133,7 @@ onMounted(() => {
               }"
               :key="`chat-message-${index}`"
             >
-              <div class="chat__message__avatar-wrapper">
+              <div v-if="!isSelf(message)" class="chat__message__avatar-wrapper">
                 <Avatar :src="message.sender.avatar" size="xs" no-ring />
               </div>
               <div class="chat__message__content">
