@@ -13,12 +13,14 @@ import {
 import { MapPinIcon as LocationIcon } from "@heroicons/vue/24/solid"
 
 const profile = ref<any>(getFakeProfile());
+const tabs = ref<any[]>(['timeline', 'friends'])
+const activeTab = ref<string>(tabs.value[0])
 </script>
 
 <template>
   <MainLayout>
     <div class="flex items-start gap-3">
-      <Card class="flex-[2] overflow-hidden">
+      <Card class="flex-[5] overflow-hidden">
         <div class="bg-gradient w-full h-56">
           <img
             v-if="profile.cover"
@@ -27,6 +29,8 @@ const profile = ref<any>(getFakeProfile());
           />
         </div>
         <div class="px-5">
+
+          <!-- user details: start -->
           <div class="flex items-center mt-[-20px]">
             <Avatar class="ring-offset-4" :src="profile.avatar" size="xl" />
             <div class="flex flex-1 justify-between">
@@ -47,15 +51,35 @@ const profile = ref<any>(getFakeProfile());
           <p class="mt-5 text-muted flex items-center">
             <LocationIcon class="w-5 mr-1 mb-1" /> {{ profile.city }}
           </p>
-          <p class="text-base mt-2 mb-5">{{ profile.bio }}</p>
+          <p class="text-base mt-2 mb-4">{{ profile.bio }}</p>
+          <!-- user details: end -->
+
+          <!-- tabs: start -->
+          <div class="flex font-semibold [&>*]:px-5 [&>*]:py-2">
+            <button 
+              v-for="tab in tabs" 
+              class="capitalize border-b-[3px] transition-all duration-300"
+              :class="{ 
+                'border-primary text-primary': activeTab === tab ,
+                'border-transparent': activeTab !== tab
+              }"
+              @click="() => activeTab = tab"
+            >
+              {{ tab }}
+            </button>
+          </div>
+          <!-- tabs: end -->
         </div>
       </Card>
-      <div class="flex-1">
+
+      <!-- right section: start -->
+      <div class="flex-[3]">
         <SuggesstionsCard class="flex-1 mb-3" />
         <Card class="p-3">
-          <h5 class="text-lg font-bold">Active Friends</h5>
+          <h5 class="text-lg font-bold">Friends</h5>
         </Card>
       </div>
+      <!-- right section: end -->
     </div>
   </MainLayout>
 </template>
