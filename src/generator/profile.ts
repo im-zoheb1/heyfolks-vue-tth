@@ -8,6 +8,7 @@ const getProfile = (): any => {
   const fullname: string = faker.name.fullName()
   const username: string = faker.internet.userName(firstname, lastname)
   const bio = faker.lorem.sentences(3)
+  const city: string = faker.address.city() + ', ' + faker.address.country()
 
   const connections = { 
     followers: faker.random.numeric(2), 
@@ -21,6 +22,7 @@ const getProfile = (): any => {
     username,
     bio,
     connections,
+    city
   }
 }
 

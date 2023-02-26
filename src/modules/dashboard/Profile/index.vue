@@ -9,7 +9,8 @@ import { ref } from "vue";
 import { 
   PencilSquareIcon as EditIcon, 
   Cog6ToothIcon as SettingsIcon
-} from "@heroicons/vue/20/solid";
+} from "@heroicons/vue/20/solid"
+import { MapPinIcon as LocationIcon } from "@heroicons/vue/24/solid"
 
 const profile = ref<any>(getFakeProfile());
 </script>
@@ -43,10 +44,18 @@ const profile = ref<any>(getFakeProfile());
               </div>
             </div>
           </div>
-          <p class="my-4">{{ profile.bio }}</p>
+          <p class="mt-5 text-muted flex items-center">
+            <LocationIcon class="w-5 mr-1 mb-1" /> {{ profile.city }}
+          </p>
+          <p class="text-base mt-2 mb-5">{{ profile.bio }}</p>
         </div>
       </Card>
-      <SuggesstionsCard class="flex-1" />
+      <div class="flex-1">
+        <SuggesstionsCard class="flex-1 mb-3" />
+        <Card class="p-3">
+          <h5 class="text-lg font-bold">Active Friends</h5>
+        </Card>
+      </div>
     </div>
   </MainLayout>
 </template>
