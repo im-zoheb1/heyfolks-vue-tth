@@ -24,7 +24,7 @@ const openChat = (): void => {
 
 <template>
   <PerfectScrollbar class="flex-1 h-full relative">
-    <div class="sticky top-0 flex items-center p-2 bg-main-bg shadow-sm">
+    <div class="sticky top-0 flex items-center p-2 bg-main-bg shadow-sm z-10">
       <slot name="search-prepend"></slot> 
       <SearchBox class="flex-1 overflow-hidden rounded-t-lg" />
     </div>
