@@ -33,6 +33,7 @@ const notifications = ref<any[]>(getNotifications());
           'after:content-[\'\'] after:w-2.5 after:h-2.5 after:bg-primary after:absolute after:right-2 after:top-3 after:rounded-full':
             notification.isNew,
         }"
+				:key="`notification-list-item-${index}`"
       >
         <Avatar size="sm" :src="notification.avatar" />
         <div class="pl-4">
