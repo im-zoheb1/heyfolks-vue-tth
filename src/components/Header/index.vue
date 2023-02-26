@@ -29,7 +29,7 @@ const props = defineProps<{
           <div class="text-base">{{ userData.fullname }}</div>
           <div class="text-md text-gray-400">{{ userData.username }}</div>
         </div>
-        <MenuItem class="flex items-center">
+        <MenuItem class="flex items-center" @click="() => $router.push({ name: 'profile' })">
           <UserIcon class="w-6 mr-3" /> Profile
         </MenuItem>
         <MenuItem class="flex items-center">
