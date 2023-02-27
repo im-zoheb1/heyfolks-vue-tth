@@ -71,12 +71,24 @@ const activeTab = ref<string>(tabs.value[0]);
             <!-- tabs: end -->
           </div>
         </Card>
-        <div v-if="activeTab === 'timeline'">
-          <PostCard v-for="post in profile.timeline" :value="post" class="mt-3"></PostCard>
-        </div>
-        <Card v-if="activeTab === 'friends'" class="grid gap-3 md:grid-cols-2 p-2 mt-3">
-          <ProfileCard v-for="friend in profile.friends" :data="friend"></ProfileCard>
-        </Card>
+        <transition
+          enter-active-class="transition duration-300 ease-out"
+          enter-from-class="transform translate-y-5 opacity-0"
+          enter-to-class="transform translate-y-0 opacity-100"
+        >
+          <div v-if="activeTab === 'timeline'">
+            <PostCard v-for="post in profile.timeline" :value="post" class="mt-3"></PostCard>
+          </div>
+        </transition>
+        <transition
+          enter-active-class="transition duration-300 ease-out"
+          enter-from-class="transform translate-y-5 opacity-0"
+          enter-to-class="transform translate-y-0 opacity-100"
+        >
+          <Card v-if="activeTab === 'friends'" class="grid gap-3 md:grid-cols-2 p-2 mt-3">
+            <ProfileCard v-for="friend in profile.friends" :data="friend"></ProfileCard>
+          </Card>
+        </transition>
       </div>
 
       <!-- right section: start -->
