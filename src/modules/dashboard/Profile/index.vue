@@ -6,9 +6,9 @@ import Avatar from "@/components/Elements/Avatar.vue";
 import Button from "@/components/Elements/Button.vue";
 import PostCard from '@/components/Elements/PostCard/index.vue'
 import ProfileCard from "@/components/Elements/ProfileCard.vue";
+import ActiveConactsCard from "@/components/Elements/ActiveContactsCard.vue"
 import { getFakeProfile } from "@/generator/profile";
-import { PerfectScrollbar } from "vue3-perfect-scrollbar";
-import { ref, computed } from "vue";
+import { ref } from "vue";
 import {
   PencilSquareIcon as EditIcon,
   Cog6ToothIcon as SettingsIcon,
@@ -80,13 +80,9 @@ const activeTab = ref<string>(tabs.value[0]);
       </div>
 
       <!-- right section: start -->
-      <div class="flex-[3] max-md:hidden sticky top-20">
+      <div class="flex-[3] max-md:hidden sticky top-[4.75rem]">
         <SuggesstionsCard class="flex-1 mb-3" />
-        <Card class="p-3">
-          <PerfectScrollbar ref="friendsScrollRef" class="h-[calc(100vh-385px)]">
-            <h5 v-for="item in 10" class="text-xl font-bold">Friends</h5>
-          </PerfectScrollbar>
-        </Card>
+        <ActiveConactsCard />
       </div>
       <!-- right section: end -->
     </div>

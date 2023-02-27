@@ -13,6 +13,7 @@ module.exports = {
         'light-1': '#EFF6FF',
         'light-2': '#DBEAFE',
         'danger': '#E85A71',
+        'success': '#03C988',
         'muted': '#777777',
         'main-bg': '#ffffff'
       },
