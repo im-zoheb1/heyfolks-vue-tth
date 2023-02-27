@@ -1,4 +1,5 @@
 import { faker } from "@faker-js/faker"
+import { getFakePost } from "./posts"
 
 const getProfile = (): any => {
   const cover: string = faker.image.people(900, 600, true)
@@ -27,7 +28,18 @@ const getProfile = (): any => {
 }
 
 export const getFakeProfile = (): any => {
-  return { 
-    ...getProfile()
+  const data = { 
+    ...getProfile(),
+    timeline: []
   }
+  for (let i = 0; i < 10; i++) {
+    const post = getFakePost()
+    post.avatar = data.avatar
+    post.fullname = data.fullname
+    post.date = faker.date.recent()
+    post.interactions.isLiked = false
+    post.interactions.isSaved = false
+    data.timeline.push(post)
+  }
+  return data
 }

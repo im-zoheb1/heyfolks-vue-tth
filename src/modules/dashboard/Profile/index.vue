@@ -4,6 +4,7 @@ import SuggesstionsCard from "@/components/Elements/SuggesstionsCard.vue";
 import Card from "@/components/Elements/Card.vue";
 import Avatar from "@/components/Elements/Avatar.vue";
 import Button from "@/components/Elements/Button.vue";
+import PostCard from '@/components/Elements/PostCard/index.vue'
 import { getFakeProfile } from "@/generator/profile";
 import { ref } from "vue";
 import {
@@ -29,7 +30,7 @@ const activeTab = ref<string>(tabs.value[0]);
               :src="profile.cover"
             />
           </div>
-          <div class="px-5">
+          <div class="px-3">
             <!-- user details: start -->
             <div class="flex items-center mt-[-20px]">
               <Avatar class="ring-offset-4" :src="profile.avatar" size="xl" />
@@ -83,7 +84,9 @@ const activeTab = ref<string>(tabs.value[0]);
             <!-- tabs: end -->
           </div>
         </Card>
-        <Card v-if="activeTab === 'timeline'" class="mt-3">timeline</Card>
+        <div v-if="activeTab === 'timeline'">
+          <PostCard v-for="post in profile.timeline" :value="post" class="mt-3"></PostCard>
+        </div>
         <Card v-if="activeTab === 'friends'" class="mt-3">friends</Card>
       </div>
 
