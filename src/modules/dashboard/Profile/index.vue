@@ -5,8 +5,10 @@ import Card from "@/components/Elements/Card.vue";
 import Avatar from "@/components/Elements/Avatar.vue";
 import Button from "@/components/Elements/Button.vue";
 import PostCard from '@/components/Elements/PostCard/index.vue'
+import ProfileCard from "@/components/Elements/ProfileCard.vue";
 import { getFakeProfile } from "@/generator/profile";
-import { ref } from "vue";
+import { PerfectScrollbar } from "vue3-perfect-scrollbar";
+import { ref, computed } from "vue";
 import {
   PencilSquareIcon as EditIcon,
   Cog6ToothIcon as SettingsIcon,
@@ -20,7 +22,7 @@ const activeTab = ref<string>(tabs.value[0]);
 
 <template>
   <MainLayout>
-    <div class="flex items-start gap-3">
+    <div class="flex items-start gap-3 relative">
       <div class="flex-[5]">
         <Card class="overflow-hidden">
           <div class="bg-gradient w-full h-56">
@@ -40,22 +42,11 @@ const activeTab = ref<string>(tabs.value[0]);
                   <h6 class="font-semibold text-muted">@{{ profile.username }}</h6>
                 </div>
                 <div class="flex items-center">
-                  <Button
-                    size="sm"
-                    variant="light"
-                    class="flex items-center p-2 px-4"
-                    compact
-                    pilled
-                  >
-                    <EditIcon class="w-5 inline-block mr-1" /> Edit Profile
+                  <Button size="sm" variant="light" class="flex items-center p-2 xl:px-4" compact pilled>
+                    <EditIcon class="w-5 inline-block" />
+                    <span class="ml-1 max-xl:hidden">Edit Profile</span>
                   </Button>
-                  <Button
-                    size="sm"
-                    variant="flat"
-                    class="ml-2 hover:[&>*]:rotate-90 p-2"
-                    compact
-                    pilled
-                  >
+                  <Button size="sm" variant="flat" class="ml-2 hover:[&>*]:rotate-90 p-2" compact pilled>
                     <SettingsIcon class="w-5 transition-all duration-500" />
                   </Button>
                 </div>
@@ -66,16 +57,12 @@ const activeTab = ref<string>(tabs.value[0]);
             </p>
             <p class="text-base mt-2 mb-4">{{ profile.bio }}</p>
             <!-- user details: end -->
-
             <!-- tabs: start -->
             <div class="flex font-semibold [&>*]:px-5 [&>*]:py-2">
               <button
                 v-for="tab in tabs"
                 class="capitalize border-b-[3px] transition-all duration-300"
-                :class="{
-                  'border-primary text-primary': activeTab === tab,
-                  'border-transparent': activeTab !== tab,
-                }"
+                :class="{ 'border-primary text-primary': activeTab === tab, 'border-transparent': activeTab !== tab }"
                 @click="() => (activeTab = tab)"
               >
                 {{ tab }}
@@ -87,14 +74,18 @@ const activeTab = ref<string>(tabs.value[0]);
         <div v-if="activeTab === 'timeline'">
           <PostCard v-for="post in profile.timeline" :value="post" class="mt-3"></PostCard>
         </div>
-        <Card v-if="activeTab === 'friends'" class="mt-3">friends</Card>
+        <Card v-if="activeTab === 'friends'" class="grid gap-3 md:grid-cols-2 p-2 mt-3">
+          <ProfileCard v-for="friend in profile.friends" :data="friend"></ProfileCard>
+        </Card>
       </div>
 
       <!-- right section: start -->
-      <div class="flex-[3]">
+      <div class="flex-[3] max-md:hidden sticky top-20">
         <SuggesstionsCard class="flex-1 mb-3" />
         <Card class="p-3">
-          <h5 class="text-lg font-bold">Friends</h5>
+          <PerfectScrollbar ref="friendsScrollRef" class="h-[calc(100vh-385px)]">
+            <h5 v-for="item in 10" class="text-xl font-bold">Friends</h5>
+          </PerfectScrollbar>
         </Card>
       </div>
       <!-- right section: end -->
