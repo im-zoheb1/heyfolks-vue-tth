@@ -26,7 +26,7 @@ const props = defineProps<{
             <h3 class="font-semibold mb-1">{{ data.fullname }}</h3>
             <h3 class="text-muted line-clamp-1">{{ data.city }}</h3>
           </div>
-          <Menu class="ml-auto">
+          <Menu class="ml-auto" width="200px">
             <template #button>
               <Button variant="light" class="p-1" compact pilled>
                 <EllipsisHorizontalIcon class="w-6" />
