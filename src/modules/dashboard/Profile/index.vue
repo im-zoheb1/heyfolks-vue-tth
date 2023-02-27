@@ -85,8 +85,8 @@ const activeTab = ref<string>(tabs.value[0]);
           enter-from-class="transform translate-y-5 opacity-0"
           enter-to-class="transform translate-y-0 opacity-100"
         >
-          <Card v-if="activeTab === 'friends'" class="grid gap-3 md:grid-cols-2 p-2 mt-3">
-            <ProfileCard v-for="friend in profile.friends" :data="friend"></ProfileCard>
+          <Card v-if="activeTab === 'friends'" class="p-3 mt-3 gap-3 columns-[25rem]">
+            <ProfileCard v-for="friend in profile.friends" :data="friend" class="mb-3"></ProfileCard>
           </Card>
         </transition>
       </div>

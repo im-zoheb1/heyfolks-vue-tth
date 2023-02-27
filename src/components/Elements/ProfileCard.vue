@@ -43,7 +43,7 @@ const props = defineProps<{
             </MenuItem>
           </Menu>
         </div>
-        <div class="line-clamp-2 mr-2">{{ data.bio }}</div>
+        <div class="line-clamp-1 mr-2">{{ data.bio }}</div>
       </div>
     </div>
   </Card>
