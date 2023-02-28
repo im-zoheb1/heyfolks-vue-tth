@@ -131,7 +131,7 @@ onMounted(() => {
                 'is-self': isSelf(message),
                 'is-last-type': isLastType(index)
               }"
-              :key="`chat-message-${index}`"
+              :key="`chat-conversation-message-${index}`"
             >
               <div v-if="!isSelf(message)" class="chat__message__avatar-wrapper">
                 <Avatar :src="message.sender.avatar" size="xs" no-ring />

@@ -22,7 +22,11 @@ onMounted((): void => {
     <PerfectScrollbar ref="friendsScrollRef" class="h-[calc(100vh-385px)]">
       <h5 class="text-xl font-bold">Contacts</h5>
       <div class="mt-3">
-        <div v-for="contact in activeContacts" class="flex items-center gap-3 [&+*]:mt-4">
+        <div 
+					v-for="(contact, index) in activeContacts" 
+					:key="`active-contacts-${index}`"
+					class="flex items-center gap-3 [&+*]:mt-4"
+				>
           <Avatar :src="contact.avatar" size="xs" no-ring />
           <h5 class="font-semibold text-gray-600">{{ contact.fullname }}</h5>
           <span class="inline-block w-2.5 h-2.5 bg-success rounded-full ml-auto mr-4"></span>

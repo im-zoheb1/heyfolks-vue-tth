@@ -2,8 +2,7 @@
 import MainLayout from "@/layout/MainLayout.vue";
 import CreatePost from "@/components/Elements/CreatePost/index.vue";
 import PostCard from "@/components/Elements/PostCard/index.vue"
-import { faker } from "@faker-js/faker";
-import { ref, onMounted } from "vue";
+import { ref } from "vue";
 import { getPosts } from "@/generator/posts";
 
 const posts = ref<any[]>(getPosts());
@@ -19,7 +18,11 @@ const posts = ref<any[]>(getPosts());
       2xl:columns-[37rem]
     ">
       <CreatePost />
-      <PostCard v-for="post in posts" :value="post" />
+      <PostCard 
+				v-for="(post, index) in posts" 
+				:key="`home-post-card-${index}`"
+				:value="post" 
+			/>
     </div>
   </MainLayout>
 </template>

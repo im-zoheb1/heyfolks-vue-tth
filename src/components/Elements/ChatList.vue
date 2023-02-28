@@ -31,7 +31,8 @@ const openChat = (): void => {
     <div>
       <a
         href="#"
-        v-for="message in messages"
+        v-for="(message, index) in messages"
+				:key="`chat-list-message-${index}`"
         class="flex items-center p-4 transition duration-300 hover:bg-light-2"
         :class="{ 'bg-light-1': message.unread }"
         @click="openChat"
