@@ -76,9 +76,10 @@ const search = (event: Event): void => {
             :class="popoverClass"
           >
             <ComboboxOption
-              v-for="item in options"
+              v-for="(item, index) in options"
               v-slot="{ selected, active }"
               :value="item.name"
+							:key="`search-box-item-${index}`"
             >
               <li
                 class="relative select-none py-3 px-3 cursor-pointer rounded-xl transition duration-200"
