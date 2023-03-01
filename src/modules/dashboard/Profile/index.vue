@@ -12,20 +12,20 @@ import { ref } from "vue";
 import UserProfileCard from "@/components/Elements/UserProfileCard.vue";
 
 const profile = ref<any>(getFakeProfile());
-const activeTab = ref<string>('timeline')
+const tab = ref<string>('timeline')
 </script>
 
 <template>
   <MainLayout>
     <div class="flex items-start gap-3 relative">
       <div class="flex-[6]">
-        <UserProfileCard :value="profile" />
+        <UserProfileCard v-model:tab="tab" :value="profile" />
         <transition
           enter-active-class="transition duration-300 ease-out"
           enter-from-class="transform translate-y-5 opacity-0"
           enter-to-class="transform translate-y-0 opacity-100"
         >
-          <div v-if="activeTab === 'timeline'">
+          <div v-if="tab === 'timeline'">
             <PostCard 
 							v-for="(post, index) in profile.timeline" 
 							:key="`profile-post-card-${index}`"
@@ -39,7 +39,7 @@ const activeTab = ref<string>('timeline')
           enter-from-class="transform translate-y-5 opacity-0"
           enter-to-class="transform translate-y-0 opacity-100"
         >
-          <Card v-if="activeTab === 'friends'" class="p-3 mt-3 gap-3 columns-[25rem]">
+          <Card v-if="tab === 'friends'" class="p-3 mt-3 gap-3 columns-[25rem]">
             <ProfileCard 
 							v-for="(friend, index) in profile.friends" 
 							:key="`profile-friend-card-${index}`"
