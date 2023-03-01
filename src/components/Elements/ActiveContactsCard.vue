@@ -19,7 +19,7 @@ onMounted((): void => {
 
 <template>
   <Card class="p-3">
-    <PerfectScrollbar ref="friendsScrollRef" class="h-[calc(100vh-385px)]">
+    <PerfectScrollbar ref="friendsScrollRef" class="h-[calc(100vh-110px)]">
       <h5 class="text-xl font-bold">Contacts</h5>
       <div class="mt-3">
         <div 

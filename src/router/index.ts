@@ -35,7 +35,12 @@ const routes: Array<RouteRecordRaw> = [
     path: '/profile',
     name: 'profile',
     component: () => import('@/modules/dashboard/Profile/index.vue')
-  }
+  },
+	{
+		path: '/editprofile',
+		name: 'profileManage',
+		component: () => import('@/modules/dashboard/ProfileManage/index.vue')
+	}
 ]
 
 const router = createRouter({
