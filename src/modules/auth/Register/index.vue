@@ -14,11 +14,11 @@ import Input from '@/components/Elements/Form/Input.vue'
     </template>
     <!-- SIGNUP FORM START -->
     <form @submit.prevent="$router.push({ name: 'home' })">
-      <Input class="mb-10" label="Fullname" placeholder="Fullname" type="text" required />
-      <Input class="mb-10" label="Username" placeholder="Username" type="text" required />
-      <Input class="mb-10" label="Email Address" placeholder="Email Address" type="email" required />
-      <Input class="mb-10" label="Password" placeholder="Password" type="text" required />
-      <Input class="mb-10" label="Confirm Password" placeholder="Confirm Password" type="text" required />
+      <Input class="mb-10" label="Fullname" placeholder="Fullname" type="text" required underlined />
+      <Input class="mb-10" label="Username" placeholder="Username" type="text" required underlined />
+      <Input class="mb-10" label="Email Address" placeholder="Email Address" type="email" required underlined />
+      <Input class="mb-10" label="Password" placeholder="Password" type="password" required underlined />
+      <Input class="mb-10" label="Confirm Password" placeholder="Confirm Password" type="password" required underlined />
       <Button class="px-10 py-4" type="submit" size="xl" pilled>Sign Up</Button>
     </form>
     <!-- SIGNUP FORM END -->

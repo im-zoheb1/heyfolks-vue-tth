@@ -4,11 +4,17 @@ const props = defineProps<{
   label?: string;
   placeholder?: string;
   required?: boolean;
+  underlined?: boolean;
 }>();
 </script>
 
 <template>
-  <div class="input__holder">
+  <div class="input__bordered" v-if="!underlined">
+    <span class="prepend">prepend</span>
+    <input class="w-full outline-0 py-1 px-2" />
+    <span class="append">append</span>
+  </div>
+  <div v-else class="input__holder">
     <input
       class="input--field"
       :placeholder="props.placeholder"
@@ -21,6 +27,18 @@ const props = defineProps<{
 </template>
 
 <style lang="scss" scoped>
+.input__bordered {
+  @apply border rounded flex;
+  .prepend, .append {
+    @apply bg-light-1 py-1.5 px-3 text-muted;
+  }
+  .prepend {
+    @apply border-r;
+  }
+  .append {
+    @apply border-l;
+  }
+}
 .input__holder {
     @apply w-full;
 }

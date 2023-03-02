@@ -2,7 +2,9 @@
 import UserProfileCard from '@/components/Elements/UserProfileCard.vue';
 import MainLayout from '@/layout/MainLayout.vue'
 import Button from '@/components/Elements/Button.vue';
+import Input from '@/components/Elements/Form/Input.vue';
 import { faker } from '@faker-js/faker';
+import Separator from '@/components/Elements/Separator.vue';
 
 const avatar = faker.internet.avatar()
 const cover = faker.image.image()
@@ -23,9 +25,88 @@ const cover = faker.image.image()
 					</div>
 				</div>
 			</template>
-			<div class="mt-10">
-				<h2>Profile</h2>
-			</div>
+			<form class="form mt-12 py-3">
+				<div class="form__item">
+					<div class="form__label">Username</div>
+					<div class="form__input-wrapper">
+						<Input class="form__input" />
+					</div>
+				</div>	
+				<Separator class="my-5" />
+				<div class="form__item">
+					<div class="form__label">Username</div>
+					<div class="form__input-wrapper">
+						<Input class="form__input" />
+					</div>
+				</div>
+				<Separator class="my-5" />
+				<div class="form__item">
+					<div class="form__label">Username</div>
+					<div class="form__input-wrapper">
+						<Input class="form__input" />
+					</div>
+				</div>
+				<Separator class="my-5" />
+				<div class="form__item">
+					<div class="form__label">Username</div>
+					<div class="form__input-wrapper">
+						<Input class="form__input" />
+					</div>
+				</div>
+				<Separator class="my-5" />
+				<div class="form__item">
+					<div class="form__label">Username</div>
+					<div class="form__input-wrapper">
+						<Input class="form__input" />
+					</div>
+				</div>
+				<Separator class="my-5" />
+				<div class="form__item">
+					<div class="form__label">Username</div>
+					<div class="form__input-wrapper">
+						<Input class="form__input" />
+					</div>
+				</div>
+				<Separator class="my-5" />
+				<div class="form__item">
+					<div class="form__label">Username</div>
+					<div class="form__input-wrapper">
+						<Input class="form__input" />
+					</div>
+				</div>
+				<Separator class="my-5" />
+				<div class="form__item">
+					<div class="form__label">Username</div>
+					<div class="form__input-wrapper">
+						<Input class="form__input" />
+					</div>
+				</div>
+				<Separator class="my-5" />
+				<div class="form__item">
+					<div class="form__label">Username</div>
+					<div class="form__input-wrapper">
+						<Input class="form__input" />
+					</div>
+				</div>
+			</form>
 		</UserProfileCard>
 	</MainLayout>
 </template>
+
+<style lang="scss" scoped>
+.form {
+	@apply text-base;
+	&__item {
+		@apply flex items-start;
+	}
+	&__label {
+		@apply flex-[1] font-semibold;
+	}
+	&__input-wrapper {
+		@apply flex-[3];
+	}
+	&__input {
+		@apply max-w-xl;
+	}
+}
+</style>

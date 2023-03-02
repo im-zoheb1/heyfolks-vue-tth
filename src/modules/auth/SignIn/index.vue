@@ -14,8 +14,8 @@ import Input from '@/components/Elements/Form/Input.vue'
     </template>
     <!-- FORM SECTION START -->
     <form @submit.prevent="$router.push({ name: 'home' })">
-      <Input class="mb-14" label="Email" placeholder="Email" type="email" required />
-      <Input class="mb-14" label="Password" placeholder="Password" type="password" required />
+      <Input class="mb-14" label="Email" placeholder="Email" type="email" required underlined />
+      <Input class="mb-14" label="Password" placeholder="Password" type="password" required underlined />
       <a class="text-base mb-8 font-bold text-primary text-right cursor-pointer hover:underline block">
         Forgot Password?
       </a>
