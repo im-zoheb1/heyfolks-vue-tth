@@ -9,7 +9,11 @@ import {
 import { MapPinIcon as LocationIcon } from "@heroicons/vue/24/solid";
 import { ref, watch, onMounted } from 'vue'
 
-const { value, tab = 'timeline' } = defineProps<{ value: any, tab?: string}>()
+const { 
+  value, 
+  tab = 'timeline',
+  contentClass = ''
+} = defineProps<{ value: any; tab?: string; contentClass?: string }>()
 
 const emit = defineEmits<{
   (e: 'update:tab', value?: string): void
@@ -38,7 +42,7 @@ onMounted(() => {
         :src="value.cover"
       />
     </div>
-    <div class="px-3">
+    <div class="px-3 mx-auto" :class="[contentClass]">
       <!-- user details: start -->
       <div class="flex items-center mt-[-20px]">
         <Avatar class="ring-offset-4" :src="value.avatar" size="xl" />

@@ -25,7 +25,7 @@ const size = ref<string>(((S: string): string => {
   let [padding, text]: [string, string] = ['', '']
   if (S === 'xl') [padding, text] = ['py-3.5 px-9', 'text-xl']
   if (S === 'lg') [padding] = ['py-2.5 px-5', 'text-lg']
-  if (S === 'md') [padding] = ['py-2 px-3', 'text-base']
+  if (S === 'md') [padding] = ['py-2 px-5', 'text-base']
   if (S === 'sm') [padding] = ['py-1.5 px-3', 'text-md']
   return props.compact ? text : padding + ' ' + text
 })(props.size || 'md'))
