@@ -5,6 +5,7 @@ import Button from '@/components/Elements/Button.vue';
 import Input from '@/components/Elements/Form/Input.vue';
 import Separator from '@/components/Elements/Separator.vue';
 import Avatar from '@/components/Elements/Avatar.vue';
+import Textarea from '@/components/Elements/Form/Textarea.vue';
 import { faker } from '@faker-js/faker';
 import { EnvelopeIcon, PhoneIcon, CalendarIcon } from '@heroicons/vue/24/outline';
 
@@ -71,7 +72,7 @@ const cover = faker.image.image()
 						<p class="text-muted font-normal">Write a short introduction.</p>
 					</div>
 					<div class="form__input-wrapper">
-						<textarea class="form__input w-full outline-0 border rounded-lg p-3 max-w-xl" rows="4"></textarea>
+						<Textarea></Textarea>
 						<p class="text-muted text-sm font-semibold">0 / 150</p>
 					</div>
 				</div>

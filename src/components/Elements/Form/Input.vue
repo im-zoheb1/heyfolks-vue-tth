@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+import { ref } from 'vue'
+
 const props = defineProps<{
   type?: string;
   label?: string;
@@ -8,14 +10,33 @@ const props = defineProps<{
   prepend?: string;
   append?: string;
 }>();
+
+const isFocused = ref<boolean>(false)
+
+const focusInput = (): void => {
+  isFocused.value = true
+}
+
+const blurInput = (): void => {
+  isFocused.value = false
+}
 </script>
 
 <template>
-  <div class="input__bordered" v-if="!underlined">
+  <div 
+    v-if="!underlined"
+    class="input__bordered" 
+    :class="{ 'ring-2 ring-offset-1': isFocused }"
+  >
     <span class="prepend" v-if="prepend || $slots.prepend">
       <slot name="prepend">{{ prepend }}</slot>
     </span>
-    <input class="w-full outline-0 py-1.5 px-2 bg-transparent" :placeholder="placeholder" />
+    <input 
+      class="w-full outline-0 py-1.5 px-2 bg-transparent" 
+      :placeholder="placeholder" 
+      @focus="focusInput" 
+      @blur="blurInput"
+    />
     <span class="append" v-if="append || $slots.append">
       <slot name="append">{{ append }}</slot>
     </span>
