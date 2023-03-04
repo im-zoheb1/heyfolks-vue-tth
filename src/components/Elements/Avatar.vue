@@ -16,7 +16,7 @@ const size = ref<string>(
     sm: "min-w-[3rem] min-h-[3rem] max-w-[3rem] max-h-[3rem]", // w-12
     md: "min-w-[4rem] min-h-[4rem] max-w-[4rem] max-h-[4rem]", // w-16
     lg: "min-w-[5rem] min-h-[5rem] max-w-[5rem] max-h-[5rem]",
-    xl: "min-w-[7rem] min-h-[7rem] max-w-[7rem] max-h-[7rem]",
+    xl: `min-w-[7rem] min-h-[7rem] max-w-[7rem] max-h-[7rem]`,
   }[props.size ?? "md"]
 );
 

@@ -16,7 +16,7 @@ const variant = ref<string>({
   light: "bg-light-1 hover:bg-light-2 text-gray-600",
   flat: "bg-transparent hover:bg-light-1 text-gray-600",
   "light-primary": "bg-light-1 hover:bg-light-2 text-primary",
-  "danger-light": "bg-red-50 hover:bg-red-100 text-muted shadow-xl",
+  "danger-light": "bg-red-50 hover:bg-red-100 text-muted",
 }[props.variant ?? "primary"]);
 
 // const spacing = ''

@@ -5,14 +5,20 @@ const props = defineProps<{
   placeholder?: string;
   required?: boolean;
   underlined?: boolean;
+  prepend?: string;
+  append?: string;
 }>();
 </script>
 
 <template>
   <div class="input__bordered" v-if="!underlined">
-    <span class="prepend">prepend</span>
-    <input class="w-full outline-0 py-1 px-2" />
-    <span class="append">append</span>
+    <span class="prepend" v-if="prepend || $slots.prepend">
+      <slot name="prepend">{{ prepend }}</slot>
+    </span>
+    <input class="w-full outline-0 py-1.5 px-2 bg-transparent" :placeholder="placeholder" />
+    <span class="append" v-if="append || $slots.append">
+      <slot name="append">{{ append }}</slot>
+    </span>
   </div>
   <div v-else class="input__holder">
     <input
@@ -28,9 +34,9 @@ const props = defineProps<{
 
 <style lang="scss" scoped>
 .input__bordered {
-  @apply border rounded flex;
+  @apply border flex rounded-md;
   .prepend, .append {
-    @apply bg-light-1 py-1.5 px-3 text-muted;
+    @apply bg-light-1 py-1.5 px-4 text-muted;
   }
   .prepend {
     @apply border-r;

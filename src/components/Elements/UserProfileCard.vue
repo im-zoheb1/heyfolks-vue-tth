@@ -44,32 +44,35 @@ onMounted(() => {
     </div>
     <div class="px-3 mx-auto" :class="[contentClass]">
       <!-- user details: start -->
-      <div class="flex items-center mt-[-20px]">
+      <div class="flex items-start mt-[-20px]">
         <Avatar class="ring-offset-4" :src="value.avatar" size="xl" />
-        <slot name="title">
-          <div class="flex flex-1 justify-between">
-            <div class="leading-tight ml-4">
-              <h6 class="font-bold text-xl">{{ value.fullname }}</h6>
-              <h6 class="font-semibold text-muted">@{{ value.username }}</h6>
+        <div class="mt-7 flex-1">
+          <slot name="title">
+            <div class="flex justify-between">
+              <div class="leading-tight ml-4">
+                <h6 class="font-bold text-xl">{{ value.fullname }}</h6>
+                <h6 class="font-semibold text-muted">@{{ value.username }}</h6>
+              </div>
+              <div class="flex items-center">
+                <Button 
+                  size="sm" 
+                  variant="light" 
+                  class="flex items-center p-2 xl:px-4" 
+                  compact 
+                  pilled 
+                  @click="() => $router.push({ name: 'profileManage' })"
+                >
+                  <EditIcon class="w-5 inline-block" />
+                  <span class="ml-1 max-xl:hidden">Edit Profile</span>
+                </Button>
+                <!-- <Button size="sm" variant="flat" class="ml-2 hover:[&>*]:rotate-90 p-2" compact pilled>
+                  <SettingsIcon class="w-5 transition-all duration-500" />
+                </Button> -->
+              </div>
             </div>
-            <div class="flex items-center">
-              <Button 
-                size="sm" 
-                variant="light" 
-                class="flex items-center p-2 xl:px-4" 
-                compact 
-                pilled 
-                @click="() => $router.push({ name: 'profileManage' })"
-              >
-                <EditIcon class="w-5 inline-block" />
-                <span class="ml-1 max-xl:hidden">Edit Profile</span>
-              </Button>
-              <!-- <Button size="sm" variant="flat" class="ml-2 hover:[&>*]:rotate-90 p-2" compact pilled>
-                <SettingsIcon class="w-5 transition-all duration-500" />
-              </Button> -->
-            </div>
-          </div>
-        </slot>
+          </slot>
+        </div>
+        
         
       </div>
       <slot>
