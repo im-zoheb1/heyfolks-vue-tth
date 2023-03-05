@@ -1,7 +1,12 @@
 <script lang="ts" setup>
-import { ref } from 'vue'
 import Avatar from './Avatar.vue';
+import Button from './Button.vue';
+import { ref } from 'vue'
 import { faker } from '@faker-js/faker';
+import { 
+  ChatBubbleBottomCenterTextIcon as MessageIcon,
+  MapPinIcon as LocationIcon 
+} from '@heroicons/vue/20/solid';
 
 const tooltipVisible = ref<boolean>(false)
 const position = ref<string>('top-full')
@@ -11,7 +16,8 @@ const data = ref((() => {
   const username = faker.internet.userName(...fullname.split(' '))
   const contacts = faker.random.numeric(2)
   const bio = faker.lorem.sentences(2)
-  return { avatar, fullname, username, contacts, bio }
+  const city: string = faker.address.city() + ', ' + faker.address.country()
+  return { avatar, fullname, username, contacts, bio, city }
 })())
 
 type Position = 'top' | 'bottom'
@@ -48,17 +54,31 @@ const hideTooltip = (e: MouseEvent): void => {
       enter-active-class="transition duration-300 ease-out"
       enter-from-class="transform translate-y-2 opacity-0"
       enter-to-class="transform translate-y-0 opacity-100"
+      leave-active-class="transition duration-200 ease-in"
+      leave-from-class="transform translate-y-0 opacity-100"
+      leave-to-class="transform translate-y-2 opacity-0"
     >
       <div 
         v-if="tooltipVisible"
-        class="absolute bg-main-bg shadow-xl rounded-xl border w-80 p-2"
+        class="absolute bg-main-bg shadow-xl rounded-xl border w-80 p-3 z-popover"
         :class="[position]"
       > 
-        <div class="flex items-center gap-3">
-          <Avatar :src="faker.internet.avatar()" size="lg" />
-          <div>
-            <h3 class="font-semibold">{{ faker.name.fullName() }}</h3>
+        <div class="flex items-start gap-3 mb-2">
+          <Avatar :src="data.avatar" size="lg" />
+          <div class="flex ml-auto">
+            <Button variant="light" pilled>Follow</Button>
+            <Button pilled compact class="ml-2" @click="() => $router.push({ name: 'messages' })">
+              <MessageIcon class="w-5 m-2" />
+            </Button>
           </div>
+        </div>
+        <div>
+          <h3 class="font-bold">{{ data.fullname }}</h3>
+          <h3 class="font-semibold text-muted text-sm">@{{ data.username }}</h3>
+          <p class="mt-2 text-muted flex items-center font-normal text-md">
+            <LocationIcon class="w-5 mr-1 mb-1" /> {{ data.city }}
+          </p>
+          <p class="mt-1 font-normal">{{ data.bio }}</p>
         </div>
       </div>
     </transition>
