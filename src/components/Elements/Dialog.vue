@@ -60,7 +60,7 @@ onMounted(() => {
       </TransitionChild>
 
       <div class="fixed inset-0 overflow-y-auto">
-        <div class="flex min-h-full items-start justify-center p-4 text-center">
+        <div class="flex min-h-full items-center justify-center p-4 text-center">
           <TransitionChild
             as="template"
             enter="duration-300 ease-out"
@@ -71,7 +71,7 @@ onMounted(() => {
             leave-to="opacity-0 -translate-y-10"
           >
             <DialogPanel
-              class="w-full transform rounded-lg bg-main-bg text-left align-middle shadow-xl transition-all max-h-[95vh] overflow-y-auto scroll-smooth"
+              class="w-full transform rounded-lg bg-main-bg text-left align-middle shadow-xl transition-all max-h-[95vh] overflow-y-auto scroll-smooth top-1"
               :class="[
                 size ?? 'max-w-md',
                 { 'p-3': !noPadding }

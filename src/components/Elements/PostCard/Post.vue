@@ -1,6 +1,7 @@
 <script lang="ts" setup>
-import Avatar from '@/components/Elements/Avatar.vue'
-import Separator from '@/components/Elements/Separator.vue';
+import Avatar from '../Avatar.vue';
+import Separator from '../Separator.vue';
+import ProfileTooltip from '../ProfileTooltip.vue';
 import { 
   HeartIcon as LikeIcon, 
   ChatBubbleOvalLeftEllipsisIcon as CommentIcon, 
@@ -50,7 +51,7 @@ const toggleSave = (): void => {
       <div class="flex items-center">
         <Avatar size="sm" :src="data.avatar" />
         <span class="leading-tight ml-3">
-          <div class="text-md">{{ data.fullname }}</div>
+          <ProfileTooltip>{{ data.fullname }}</ProfileTooltip>
           <div class="text-muted text-sm">{{ $moment(data.date).fromNow() }}</div>
         </span>
       </div>
