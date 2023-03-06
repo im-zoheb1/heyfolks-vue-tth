@@ -34,7 +34,7 @@ export const getFakeComment = (level: number = 0): any => {
 
 export const getComments = (): any => {
   const comments = []
-  for (let i = 0; i < Math.floor(Math.random() * 5); i++) {
+  for (let i = 0; i < Math.floor(Math.random() * 9); i++) {
     comments.push(getFakeComment())
   }
   return comments

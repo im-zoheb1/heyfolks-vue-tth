@@ -46,7 +46,7 @@ const hideTooltip = (e: MouseEvent): void => {
 </script>
 
 <template>
-  <a href="#" class="relative font-semibold" @mouseenter="displayTooltip" @mouseleave="hideTooltip">
+  <a href="#" class="relative font-semibold inline-block" @mouseenter="displayTooltip" @mouseleave="hideTooltip">
     <span>
       <slot>Profile Tooltip</slot>
     </span>
@@ -60,7 +60,7 @@ const hideTooltip = (e: MouseEvent): void => {
     >
       <div 
         v-if="tooltipVisible"
-        class="absolute bg-main-bg shadow-xl rounded-xl border w-80 p-3 z-popover"
+        class="absolute bg-main-bg shadow-xl rounded-xl border w-80 p-3 z-tooltip"
         :class="[position]"
       > 
         <div class="flex items-center gap-3 mb-2">
@@ -72,7 +72,7 @@ const hideTooltip = (e: MouseEvent): void => {
           </div> 
         </div>
         <div>
-          <p class="mt-3 text-muted flex items-center font-normal text-md">
+          <p class="mt-3 text-muted flex font-normal text-md">
             <LocationIcon class="w-5 mr-1 mb-1" /> {{ data.city }}
           </p>
           <p class="mt-1 font-normal">{{ data.bio }}</p>

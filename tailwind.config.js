@@ -29,7 +29,8 @@ module.exports = {
         'sidenav': 2000,
         'header-tab': 3000,
         'popover': 4000,
-        'dialog': 10000
+        'dialog': 10000,
+        'tooltip': 10000
       }
     },
   },

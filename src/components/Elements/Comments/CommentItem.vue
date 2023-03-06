@@ -1,6 +1,7 @@
 <script lang="ts" setup>
-import Avatar from "@/components/Elements/Avatar.vue"
-import Button from "@/components/Elements/Button.vue"
+import Avatar from "../Avatar.vue"
+import Button from "../Button.vue"
+import ProfileTooltip from "../ProfileTooltip.vue"
 import { HeartIcon, ChatBubbleLeftEllipsisIcon } from "@heroicons/vue/24/outline"
 import { HeartIcon as HeartIconSolid } from "@heroicons/vue/24/solid"
 
@@ -26,9 +27,13 @@ const countComment = (comments: any): number => {
 
 <template>
   <div class="flex py-1" :class="itemClass">
-    <Avatar size="xs" :src="data.avatar" />
+    <ProfileTooltip>
+      <Avatar size="xs" :src="data.avatar" />
+    </ProfileTooltip>
     <div class="ml-3 text-gray-700">
-      <h3 class="font-semibold">{{ data.fullname }}</h3>
+      <ProfileTooltip>
+        <h3 class="font-semibold">{{ data.fullname }}</h3>
+      </ProfileTooltip>
       <p class="leading-tight">{{ data.text }}</p>
       <div class="flex items-center text-sm text-gray-600 pt-1">
         <Button compact variant="light" size="sm" class="mr-5 p-1" @click="emits('like')">
