@@ -8,6 +8,7 @@ import {
   MapPinIcon as LocationIcon 
 } from '@heroicons/vue/20/solid';
 
+const tooltipTimeout = ref<null | number>(null)
 const tooltipVisible = ref<boolean>(false)
 const position = ref<string>('top-full')
 const data = ref((() => {
@@ -32,9 +33,9 @@ const setPosition = (value: Position): void => {
 const displayTooltip = (e: MouseEvent): void => {
   const wHeight = window.innerHeight // window height
   const wHalf = wHeight / 2 // window half
-  tooltipVisible.value = true
+  tooltipTimeout.value = setTimeout(() => (tooltipVisible.value = true), 500) 
   if (e.clientY < wHalf) { 
-     setPosition('bottom')
+    setPosition('bottom')
   } else { 
     setPosition('top')
   }
@@ -42,6 +43,7 @@ const displayTooltip = (e: MouseEvent): void => {
 
 const hideTooltip = (e: MouseEvent): void => {
   tooltipVisible.value = false
+  if (tooltipTimeout.value) clearTimeout(tooltipTimeout.value)
 }
 </script>
 
