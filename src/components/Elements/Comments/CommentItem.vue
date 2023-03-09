@@ -26,7 +26,7 @@ const countComment = (comments: any): number => {
 </script>
 
 <template>
-  <div class="flex py-1" :class="itemClass">
+  <div class="flex items-start py-1" :class="itemClass">
     <ProfileTooltip>
       <Avatar size="xs" :src="data.avatar" />
     </ProfileTooltip>
@@ -38,7 +38,7 @@ const countComment = (comments: any): number => {
       <div class="flex items-center text-sm text-gray-600 pt-1">
         <Button compact variant="light" size="sm" class="mr-5 p-1" @click="emits('like')">
           <div class="flex">
-            <HeartIconSolid v-if="data.isLiked" class="w-[18px] text-primary" />
+            <HeartIconSolid v-if="data.isLiked" class="w-[18px] text-danger" />
             <HeartIcon v-else class="w-[18px]" />
             <span v-if="data.totalLikes" class="ml-2 text-xs font-bold">
               {{ data.totalLikes }}
