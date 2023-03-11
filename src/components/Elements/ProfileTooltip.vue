@@ -10,7 +10,7 @@ import {
 
 const tooltipTimeout = ref<null | number>(null)
 const tooltipVisible = ref<boolean>(false)
-const position = ref<string>('top-full')
+const position = ref<{ top: string; left: string  }>({ top: '', left: '' })
 const data = ref((() => {
   const avatar = faker.internet.avatar()
   const fullname = faker.name.fullName()
@@ -21,24 +21,11 @@ const data = ref((() => {
   return { avatar, fullname, username, contacts, bio, city }
 })())
 
-type Position = 'top' | 'bottom'
-const setPosition = (value: Position): void => {
-  if (value === 'top') {
-    position.value = 'bottom-full'
-  } else {
-    position.value = 'top-full'
-  }
-}
-
 const displayTooltip = (e: MouseEvent): void => {
   const wHeight = window.innerHeight // window height
   const wHalf = wHeight / 2 // window half
+  position.value = { top: e.clientY + 'px', left: e.clientX + 'px' }
   tooltipTimeout.value = setTimeout(() => (tooltipVisible.value = true), 500) 
-  if (e.clientY < wHalf) { 
-    setPosition('bottom')
-  } else { 
-    setPosition('top')
-  }
 }
 
 const hideTooltip = (e: MouseEvent): void => {
@@ -52,18 +39,13 @@ const hideTooltip = (e: MouseEvent): void => {
     <span>
       <slot>Profile Tooltip</slot>
     </span>
-    <transition
-      enter-active-class="transition duration-300 ease-out"
-      enter-from-class="transform translate-y-2 opacity-0"
-      enter-to-class="transform translate-y-0 opacity-100"
-      leave-active-class="transition duration-200 ease-in"
-      leave-from-class="transform translate-y-0 opacity-100"
-      leave-to-class="transform translate-y-2 opacity-0"
-    >
+    <Teleport to="body">
       <div 
-        v-if="tooltipVisible"
-        class="absolute bg-main-bg shadow-xl rounded-xl border w-80 p-3 z-tooltip"
-        :class="[position]"
+        class="fixed bg-main-bg shadow-xl rounded-xl border w-80 p-3 z-tooltip top-0 right-0 -translate-x-[50%] hover:visible"
+        :class="{ 'hidden': !tooltipVisible }"
+        :style="position"
+        @mouseenter="tooltipVisible = true" 
+        @mouseleave="hideTooltip"
       > 
         <div class="flex items-center gap-3 mb-2">
           <Avatar :src="data.avatar" size="lg" />
@@ -86,6 +68,6 @@ const hideTooltip = (e: MouseEvent): void => {
           </Button>
         </div>
       </div>
-    </transition>
+    </Teleport>
   </a>
 </template>
