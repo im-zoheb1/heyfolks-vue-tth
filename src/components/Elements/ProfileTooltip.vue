@@ -33,7 +33,7 @@ const setPosition = (P: Position, E: MouseEvent): void => {
   const { top, left, bottom } = el.getBoundingClientRect()
 	if (P === 'top') { 
     position.value = { 
-      bottom: bottom + el.offsetHeight + 'px', 
+      bottom: (window.innerHeight - top) + 'px', 
       left: left + 'px', 
       top: 'auto'
     }
@@ -70,7 +70,7 @@ const hideTooltip = (e: MouseEvent): void => {
     <Teleport to="body">
 			<div 
 				v-if="tooltipVisible"
-				class="fixed bg-main-bg shadow-xl rounded-xl border w-96 p-3 z-tooltip top-0 right-0"
+				class="fixed bg-main-bg shadow-xl rounded-xl border w-96 p-3 z-tooltip -translate-x-[20%]"
 				:style="position"
 				@mouseenter="tooltipVisible = true" 
 				@mouseleave="hideTooltip"
