@@ -48,7 +48,7 @@ const setPosition = (P: Position, E: MouseEvent): void => {
 const displayTooltip = (E: MouseEvent): void => {
   const wHeight = window.innerHeight // window height
   const wHalf = wHeight / 2 // window half
-	if (wHalf > (E.target as HTMLDivElement).offsetTop) {
+	if (wHalf > E.clientY) {
 		setPosition('bottom', E)
 	} else {
 		setPosition('top', E)
@@ -70,7 +70,7 @@ const hideTooltip = (e: MouseEvent): void => {
     <Teleport to="body">
 			<div 
 				v-if="tooltipVisible"
-				class="fixed bg-main-bg shadow-xl rounded-xl border w-96 p-3 z-tooltip -translate-x-[20%]"
+				class="fixed bg-main-bg shadow-xl rounded-xl border w-96 p-3 z-tooltip"
 				:style="position"
 				@mouseenter="tooltipVisible = true" 
 				@mouseleave="hideTooltip"
