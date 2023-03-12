@@ -14,7 +14,7 @@ interface PositionStyleInterface {
 	bottom?: string;  
 }
 
-const tooltipTimeout = ref<null | number>(null)
+const tooltipTimeout = ref<number>()
 const tooltipVisible = ref<boolean>(false)
 const position = ref<PositionStyleInterface>({ top: '', left: '', bottom: '' })
 const data = ref((() => {
