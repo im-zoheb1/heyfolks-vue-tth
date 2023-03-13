@@ -154,7 +154,8 @@ onMounted(() => {
 
 <style lang="scss" scoped>
 .chat {
-  height: calc(100svh - 66px);
+  height: calc(100dvh-66px);
+  height: calc(100vh-66px);
   @apply bg-main-bg flex items-stretch;
 	&__list {
 		@apply block flex-[1];
