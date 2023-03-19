@@ -15,7 +15,8 @@ module.exports = {
         'danger': '#E85A71',
         'success': '#03C988',
         'muted': '#777777',
-        'main-bg': '#ffffff'
+        'main-bg': '#ffffff',
+        'skeleton': '#999999'
       },
       backgroundImage: {
         'folks': `linear-gradient(to right bottom, rgba(59, 130, 246, 0.5), rgba(124, 58, 237, 0.3)), url('@/assets/img/folks-bg.png')`,
@@ -31,6 +32,15 @@ module.exports = {
         'popover': 4000,
         'dialog': 10000,
         'tooltip': 10000
+      },
+      keyframes: {
+        skeleton: {
+          '0%, 100%': { opacity: 1 },
+          '50%': { opacity: 0.5 }
+        }
+      },
+      animation: {
+        skeleton: 'skeleton 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;'
       }
     },
   },
