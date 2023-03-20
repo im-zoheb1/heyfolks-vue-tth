@@ -44,7 +44,7 @@ onMounted(() => {
 				:value="post" 
 			/>
       <template v-if="isLoading">
-        <PostsSkeleton v-for="i in 4" />
+        <PostsSkeleton v-for="i in 5" />
       </template>
     </div>
     <div v-if="!isLoading" class="h-24 grid place-content-center">
