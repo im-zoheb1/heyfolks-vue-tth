@@ -3,6 +3,7 @@ import { createPinia } from 'pinia'
 
 import App from './App.vue'
 import router from './router'
+import http from './config/http'
 import moment from 'moment'
 import injectKey from './config/injectKey'
 import '@/assets/scss/main.scss'
@@ -29,6 +30,7 @@ const app = createApp(App)
 
 app.provide(injectKey.router, router)
 app.provide(injectKey.moment, moment)
+app.provide(injectKey.$http, http)
 
 app.config.globalProperties.$moment = moment
 
