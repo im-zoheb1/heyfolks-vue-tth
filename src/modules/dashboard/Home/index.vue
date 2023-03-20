@@ -3,10 +3,29 @@ import MainLayout from "@/layout/MainLayout.vue";
 import CreatePost from "@/components/Elements/CreatePost/index.vue";
 import PostCard from "@/components/Elements/PostCard/index.vue"
 import SeekingLoader from '@/components/Elements/Loaders/Seeking.vue'
-import { ref } from "vue";
-import { getPosts } from "@/generator/posts";
+import PostsSkeleton from "@/components/Skeleton/PostsSkeleton.vue";
+import { ref, inject, onMounted } from "vue";
+import injectKey from "@/config/injectKey";
 
-const posts = ref<any[]>(getPosts());
+const $http = inject(injectKey.$http)
+const posts = ref<any[]>([])
+const isLoading = ref<boolean>(true)
+
+const fetchData = async function (): Promise<void> {
+  try {
+    const res = await $http?.get('post/list')
+    const data = res?.data.data
+    posts.value.push(...data)
+  }
+  catch(err) { }
+  finally {
+    isLoading.value = false
+  }
+}
+
+onMounted(() => {
+  fetchData()
+})
 </script>
 
 <template>
@@ -24,8 +43,11 @@ const posts = ref<any[]>(getPosts());
 				:key="`home-post-card-${index}`"
 				:value="post" 
 			/>
+      <template v-if="isLoading">
+        <PostsSkeleton v-for="i in 5" />
+      </template>
     </div>
-    <div class="h-24 grid place-content-center">
+    <div v-if="!isLoading" class="h-24 grid place-content-center">
       <SeekingLoader />
     </div>
   </MainLayout>
