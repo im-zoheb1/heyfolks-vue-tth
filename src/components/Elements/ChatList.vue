@@ -1,11 +1,11 @@
 <script lang="ts" setup>
 import SearchBox from "./SearchBox.vue";
 import Avatar from "./Avatar.vue";
-import Button from "./Button.vue";
-import { ref } from "vue";
+import ChatListSkeleton from "../Skeleton/ChatListSkeleton.vue";
+import { ref, inject, onMounted } from "vue";
 import { getMessages } from "@/generator/messages";
 import { PerfectScrollbar } from 'vue3-perfect-scrollbar'
-import { ArrowSmallLeftIcon as BackIcon } from "@heroicons/vue/24/outline";
+import injectKey from "@/config/injectKey";
 
 const props = defineProps<{
   goBack?: boolean
@@ -15,11 +15,29 @@ const emit = defineEmits<{
   (e: 'open-chat', value?: any): void
 }>()
 
-const messages = ref<any[]>(getMessages());
+const messages = ref<any[]>([]);
+const isLoading = ref<boolean>(true)
+const $http = inject(injectKey.$http)
 
 const openChat = (): void => {
   emit('open-chat')
 }
+
+const fetchData = async (): Promise<void> => {
+  try {
+    const res = await $http?.get('chat/list')
+    const data = res?.data.data
+    messages.value?.push(...data)
+  } catch (err) {
+    console.log(err)
+  } finally {
+    isLoading.value = false
+  }
+}
+
+onMounted(() => {
+  fetchData()
+})
 </script>
 
 <template>
@@ -29,7 +47,9 @@ const openChat = (): void => {
       <SearchBox class="flex-1 overflow-hidden rounded-t-lg" />
     </div>
     <div>
+      <ChatListSkeleton v-if="isLoading" />
       <a
+        v-else
         href="#"
         v-for="(message, index) in messages"
 				:key="`chat-list-message-${index}`"

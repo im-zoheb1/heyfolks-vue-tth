@@ -8,15 +8,15 @@ import { ref, inject, onMounted } from "vue";
 import { getNotifications } from "@/generator/notifications";
 import injectKey from "@/config/injectKey";
 
-const notifications = ref<any[]>(getNotifications());
+const notifications = ref<any[]>([]);
 const isLoading = ref<boolean>(true)
 const $http = inject(injectKey.$http)
 
 const fetchData = async (): Promise<void> => {
   try {
-    const res = await $http?.get('notification/list')
+    const res = await $http?.get('/notification/list')
     const data = res?.data.data
-    data.value.push(...data)
+    notifications.value.push(...data)
   } catch (err) {
     console.log(err)
   } finally {
