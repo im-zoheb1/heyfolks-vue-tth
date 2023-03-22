@@ -52,7 +52,7 @@ onMounted(() => {
     <div class="relative flex flex-col">
       <Post :data="data" />
       <Separator />
-      <Comments class="flex-1" :data="data.responses" />
+      <Comments class="flex-1" />
     </div>
   </Dialog>
 </template>
