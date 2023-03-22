@@ -2,11 +2,31 @@
 import Button from "@/components/Elements/Button.vue";
 import Separator from "@/components/Elements/Separator.vue";
 import Avatar from "@/components/Elements/Avatar.vue";
+import NotificationsSkeleton from "@/components/Skeleton/NotificationsSkeleton.vue"
 import { CheckIcon } from "@heroicons/vue/20/solid";
-import { ref } from "vue";
+import { ref, inject, onMounted } from "vue";
 import { getNotifications } from "@/generator/notifications";
+import injectKey from "@/config/injectKey";
 
 const notifications = ref<any[]>(getNotifications());
+const isLoading = ref<boolean>(true)
+const $http = inject(injectKey.$http)
+
+const fetchData = async (): Promise<void> => {
+  try {
+    const res = await $http?.get('notification/list')
+    const data = res?.data.data
+    data.value.push(...data)
+  } catch (err) {
+    console.log(err)
+  } finally {
+    isLoading.value = false
+  }
+}
+
+onMounted(() => {
+  fetchData()
+})
 </script>
 
 <template>
@@ -23,7 +43,9 @@ const notifications = ref<any[]>(getNotifications());
       <Separator />
     </div>
     <div class="p-2 flex-1">
+      <NotificationsSkeleton v-if="isLoading" />
       <a
+        v-else
         href="#"
         v-for="(notification, index) in notifications"
         class="flex p-3 pr-8 hover:bg-light-2 hover:border-transparent transition duration-300 relative"
