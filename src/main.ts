@@ -6,11 +6,12 @@ import router from './router'
 import http from './config/http'
 import moment from 'moment'
 import injectKey from './config/injectKey'
+import VueProgressBar from "@aacassandra/vue3-progressbar";
+import MasonryWall from '@yeger/vue-masonry-wall'
 import '@/assets/scss/main.scss'
 import 'vue3-emoji-picker/css'
 import 'vue3-perfect-scrollbar/dist/vue3-perfect-scrollbar.css'
 import 'animate.css'
-import VueProgressBar from "@aacassandra/vue3-progressbar";
 
 const progressBarOptions = {
   color: "#5372EB",
@@ -37,5 +38,6 @@ app.config.globalProperties.$moment = moment
 app.use(createPinia())
 app.use(router)
 app.use(VueProgressBar, progressBarOptions)
+app.use(MasonryWall)
 
 app.mount('#app')

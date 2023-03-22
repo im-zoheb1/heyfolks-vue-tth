@@ -17,6 +17,7 @@
     "@heroicons/vue": "^2.0.13",
     "@tailwindcss/line-clamp": "^0.4.2",
     "@types/": "aacassandra/vue3-progressbar",
+    "@yeger/vue-masonry-wall": "^3.4.4",
     "animate.css": "^4.1.1",
     "autoprefixer": "^10.4.13",
     "axios": "^1.3.4",
