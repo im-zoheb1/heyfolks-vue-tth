@@ -5,9 +5,10 @@ import ChatList from "@/components/Elements/ChatList.vue";
 import CommentInput from "@/components/Elements/Comments/CommentInput.vue";
 import Avatar from "@/components/Elements/Avatar.vue";
 import Button from "@/components/Elements/Button.vue";
+import SpinningLoader from "@/components/Elements/Loaders/Spinning.vue";
 import { getChat } from "@/generator/conversation";
 import { PerfectScrollbar } from "vue3-perfect-scrollbar";
-import { ref, onMounted } from "vue";
+import { ref, inject, onMounted } from "vue";
 import {
   EllipsisHorizontalIcon as EllipsisIcon,
   BellIcon as MuteIcon,
@@ -15,8 +16,11 @@ import {
 	XMarkIcon as CancelIcon,
 	ArrowSmallLeftIcon as BackIcon
 } from "@heroicons/vue/24/outline";
+import injectKey from "@/config/injectKey";
 
+const $http = inject(injectKey.$http)
 const message = ref<string>("")
+const isLoadingConversation = ref<boolean>(true)
 const conversation = ref(getChat())
 const isConversationOpen = ref<boolean>(false)
 const isChatSearchMode = ref<boolean>()
@@ -47,16 +51,25 @@ const closeChatSearch = (): void => {
 
 const openChatSearch = (): void => {
   isChatSearchMode.value = true
-	// setTimeout(() => searchChatInputRef.value?.focus(), 0)
+	setTimeout(() => searchChatInputRef.value?.focus(), 0)
 }
 
 const openChatList = (): void => {
   isConversationOpen.value = false
 }
 
-const openConversation = (): void => {
-  isConversationOpen.value = true
+const openConversation = async (): Promise<void> => {
   scrollToBottom()
+  isConversationOpen.value = true
+  isLoadingConversation.value = true
+  try {
+    const res = await $http?.get('/chat/list')
+    const data = res?.data.data
+  } catch (error) {
+    console.log(error) 
+  } finally {
+    isLoadingConversation.value = false
+  }
 }
 
 onMounted(() => {
@@ -118,7 +131,7 @@ onMounted(() => {
 					>
 						<div v-if="isChatSearchMode" class="chat__search-box">
 							<SearchIcon class="w-6" />
-							<input ref="searchChatInputRef" class="outline-none ml-3 text-base flex-1 bg-transparent" type="text" placeholder="Search chat" />
+							<input ref="searchChatInputRef" class="outline-none ml-3 text-base flex-1 bg-transparent focus:ring-1" type="text" placeholder="Search chat" />
 							<Button class="p-1.5 ml-3 bg-light-1" variant="light" compact pilled @click.prevent="closeChatSearch">
 								<CancelIcon class="w-4" />
 							</Button>
@@ -127,6 +140,7 @@ onMounted(() => {
         </div>
         <PerfectScrollbar id="scroller" ref="scrollerRef" class="chat__content">
           <div class="chat__messages">
+            <SpinningLoader v-if="isLoadingConversation" class="mx-auto my-3" />
             <div 
               v-for="(message, index) in conversation.messages"
               class="chat__message"

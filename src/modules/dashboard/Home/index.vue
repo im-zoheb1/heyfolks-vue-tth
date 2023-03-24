@@ -2,7 +2,6 @@
 import MainLayout from "@/layout/MainLayout.vue";
 import CreatePost from "@/components/Elements/CreatePost/index.vue";
 import PostCard from "@/components/Elements/PostCard/index.vue"
-import SeekingLoader from '@/components/Elements/Loaders/Seeking.vue'
 import PostsSkeleton from "@/components/Skeleton/PostsSkeleton.vue";
 import { ref, inject, computed, onMounted } from "vue";
 import injectKey from "@/config/injectKey";
