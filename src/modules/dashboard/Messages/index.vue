@@ -35,8 +35,10 @@ const isLastType = (index: number): boolean => {
 }
 
 const scrollToBottom = (): void => {
-  const el = document.getElementById('scroller')
-  if (el) el.scrollTop = el.scrollHeight
+  setTimeout(() => {
+    const el = document.getElementById('scroller')
+    if (el) el.scrollTop = el.scrollHeight
+  }, 0)
 }
 
 const closeChatSearch = (): void => {
@@ -45,7 +47,7 @@ const closeChatSearch = (): void => {
 
 const openChatSearch = (): void => {
   isChatSearchMode.value = true
-	setTimeout(() => searchChatInputRef.value?.focus(), 0)
+	// setTimeout(() => searchChatInputRef.value?.focus(), 0)
 }
 
 const openChatList = (): void => {
@@ -54,6 +56,7 @@ const openChatList = (): void => {
 
 const openConversation = (): void => {
   isConversationOpen.value = true
+  scrollToBottom()
 }
 
 onMounted(() => {
