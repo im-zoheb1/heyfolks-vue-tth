@@ -2,10 +2,12 @@
 import MainLayout from "@/layout/MainLayout.vue";
 import ProfileCard from "@/components/Elements/ProfileCard.vue";
 import SearchBox from "@/components/Elements/SearchBox.vue";
+import ProfileCardSkeleton from "@/components/Skeleton/ProfileCardSkeleton.vue";
 import { getFakeFriends } from "@/generator/friends";
 import { ref } from "vue";
 
 const friends = ref(getFakeFriends());
+const loading = ref<boolean>(true)
 </script>
 
 <template>
@@ -16,7 +18,9 @@ const friends = ref(getFakeFriends());
         <SearchBox class="w-80" popover-class="right-0" />
       </div>
       <div class="grid gap-3 md:grid-cols-2">
+        <ProfileCardSkeleton v-if="loading" />
         <ProfileCard 
+          v-else
 					v-for="(friend, index) in friends" 
 					:key="`friends-profile-card-${index}`"
 					:data="friend"
