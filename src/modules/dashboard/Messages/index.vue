@@ -175,7 +175,7 @@ onMounted(() => {
     @apply flex flex-col;
   }
   &__message {
-    @apply mt-2 flex items-end;
+    @apply mt-1.5 flex items-end;
     &__avatar-wrapper {
       @apply mx-2 cursor-pointer hidden sm:inline-block;
     }
@@ -187,7 +187,7 @@ onMounted(() => {
     @apply invisible opacity-0;
   }
   &__message__content {
-    @apply inline-block border py-2 px-4 max-w-xs lg:max-w-lg bg-primary text-light-1 rounded-2xl;
+    @apply inline-block border py-2 px-4 max-w-xs lg:max-w-lg bg-primary text-light-1 rounded-3xl;
   }
   &__message.is-last-type &__message__content {
     @apply rounded-bl-none;
@@ -196,7 +196,7 @@ onMounted(() => {
     @apply bg-light-1 text-gray-600 text-left;
   }
   &__message.is-self.is-last-type &__message__content {
-    @apply rounded-2xl rounded-br-none;
+    @apply rounded-3xl rounded-br-none;
   }
   &__message__footer {
     @apply text-right text-[12px] font-semibold text-light-2;

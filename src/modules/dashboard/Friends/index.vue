@@ -3,7 +3,6 @@ import MainLayout from "@/layout/MainLayout.vue";
 import ProfileCard from "@/components/Elements/ProfileCard.vue";
 import SearchBox from "@/components/Elements/SearchBox.vue";
 import ProfileCardSkeleton from "@/components/Skeleton/ProfileCardSkeleton.vue";
-import { getFakeFriends } from "@/generator/friends";
 import { ref, inject, onMounted } from "vue";
 import injectKey from "@/config/injectKey";
 
