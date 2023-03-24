@@ -4,10 +4,27 @@ import ProfileCard from "@/components/Elements/ProfileCard.vue";
 import SearchBox from "@/components/Elements/SearchBox.vue";
 import ProfileCardSkeleton from "@/components/Skeleton/ProfileCardSkeleton.vue";
 import { getFakeFriends } from "@/generator/friends";
-import { ref } from "vue";
+import { ref, inject, onMounted } from "vue";
+import injectKey from "@/config/injectKey";
 
-const friends = ref(getFakeFriends());
+const friends = ref<any[]>([]);
 const loading = ref<boolean>(true)
+const $http = inject(injectKey.$http)
+
+const fetchData = async (): Promise<void> => {
+  loading.value = true
+  try {
+    const res = await $http?.get('connection/list')
+    const data = res?.data.data
+    friends.value = data
+  } catch (error) {
+    console.log(error) 
+  } finally {
+    loading.value = false
+  }
+}
+
+onMounted(fetchData)
 </script>
 
 <template>
