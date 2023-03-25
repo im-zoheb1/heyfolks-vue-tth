@@ -108,77 +108,82 @@ onMounted(() => {
       </ChatList>
       <Separator is-vertical />
       <div class="chat__conversation">
-        <div class="chat__header">
-          <ConversationHeaderSkeleton v-if="isLoadingConversation" />
-          <template v-else>
-            <Button class="mr-2 p-2 lg:hidden" variant="flat" compact pilled @click="openChatList">
-              <BackIcon class="w-6" />
-            </Button>
-            <div class="flex items-center">
-              <Avatar :src="conversation.userInfo.avatar" size="sm" />
-              <div class="ml-3 leading-tight">
-                <div class="font-semibold">{{ conversation.userInfo.name }}</div>
-                <div class="text-muted text-sm font-semibold">
-                  @{{ conversation.userInfo.username }}
+        <template v-if="selectedChat">
+          <div class="chat__header">
+            <ConversationHeaderSkeleton v-if="isLoadingConversation" />
+            <template v-else>
+              <Button class="mr-2 p-2 lg:hidden" variant="flat" compact pilled @click="openChatList">
+                <BackIcon class="w-6" />
+              </Button>
+              <div class="flex items-center">
+                <Avatar :src="conversation.userInfo.avatar" size="sm" />
+                <div class="ml-3 leading-tight">
+                  <div class="font-semibold">{{ conversation.userInfo.name }}</div>
+                  <div class="text-muted text-sm font-semibold">
+                    @{{ conversation.userInfo.username }}
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="flex ml-auto">
-              <Button variant="flat" pilled compact class="p-2" @click.prevent="openChatSearch">
-                <SearchIcon class="w-6" />
-              </Button>
-              <Button variant="flat" pilled compact class="p-2">
-                <MuteIcon class="w-6" />
-              </Button>
-              <Button variant="flat" pilled compact class="p-2">
-                <EllipsisIcon class="w-6" />
-              </Button>
-            </div>
-          </template>
-					<transition
-						enter-active-class="transition duration-100 ease-out"
-						enter-from-class="transform scale-95 opacity-0"
-						enter-to-class="transform scale-100 opacity-100"
-						leave-active-class="transition duration-75 ease-in"
-						leave-from-class="transform scale-100 opacity-100"
-						leave-to-class="transform scale-95 opacity-0"
-					>
-						<div v-if="isChatSearchMode" class="chat__search-box">
-							<SearchIcon class="w-6" />
-							<input ref="searchChatInputRef" class="outline-none ml-3 text-base flex-1 bg-transparent" type="text" placeholder="Search chat" />
-							<Button class="p-1.5 ml-3 bg-light-1" variant="light" compact pilled @click.prevent="closeChatSearch">
-								<CancelIcon class="w-4" />
-							</Button>
-						</div>
-					</transition>
-        </div>
-        <PerfectScrollbar id="scroller" ref="scrollerRef" class="chat__content">
-          <div class="chat__messages">
-            <SpinningLoader v-if="isLoadingConversation" class="mx-auto my-3" />
-            <div 
-              v-for="(message, index) in conversation.messages"
-              class="chat__message"
-              :class="{ 
-                'is-self': isSelf(message),
-                'is-last-type': isLastType(index)
-              }"
-              :key="`chat-conversation-message-${index}`"
-            >
-              <div v-if="!isSelf(message)" class="chat__message__avatar-wrapper">
-                <Avatar :src="message.sender.avatar" size="xs" no-ring />
+              <div class="flex ml-auto">
+                <Button variant="flat" pilled compact class="p-2" @click.prevent="openChatSearch">
+                  <SearchIcon class="w-6" />
+                </Button>
+                <Button variant="flat" pilled compact class="p-2">
+                  <MuteIcon class="w-6" />
+                </Button>
+                <Button variant="flat" pilled compact class="p-2">
+                  <EllipsisIcon class="w-6" />
+                </Button>
               </div>
-              <div class="chat__message__content">
-                <div class="chat__message__text">{{ message.content }}</div>
-                <div class="chat__message__footer">{{ $moment(message.timestamp).format('LT') }}</div>
-              </div> 
-            </div>
+            </template>
+            <transition
+              enter-active-class="transition duration-100 ease-out"
+              enter-from-class="transform scale-95 opacity-0"
+              enter-to-class="transform scale-100 opacity-100"
+              leave-active-class="transition duration-75 ease-in"
+              leave-from-class="transform scale-100 opacity-100"
+              leave-to-class="transform scale-95 opacity-0"
+            >
+              <div v-if="isChatSearchMode" class="chat__search-box">
+                <SearchIcon class="w-6" />
+                <input ref="searchChatInputRef" class="outline-none ml-3 text-base flex-1 bg-transparent" type="text" placeholder="Search chat" />
+                <Button class="p-1.5 ml-3 bg-light-1" variant="light" compact pilled @click.prevent="closeChatSearch">
+                  <CancelIcon class="w-4" />
+                </Button>
+              </div>
+            </transition>
           </div>
-        </PerfectScrollbar>
-        <Separator />
-        <div class="chat__footer">
-          <CommentInput v-model="message" :disabled="isLoadingConversation" />
+          <PerfectScrollbar id="scroller" ref="scrollerRef" class="chat__content">
+            <div class="chat__messages">
+              <SpinningLoader v-if="isLoadingConversation" class="mx-auto my-3" />
+              <div 
+                v-for="(message, index) in conversation.messages"
+                class="chat__message"
+                :class="{ 
+                  'is-self': isSelf(message),
+                  'is-last-type': isLastType(index)
+                }"
+                :key="`chat-conversation-message-${index}`"
+              >
+                <div v-if="!isSelf(message)" class="chat__message__avatar-wrapper">
+                  <Avatar :src="message.sender.avatar" size="xs" no-ring />
+                </div>
+                <div class="chat__message__content">
+                  <div class="chat__message__text">{{ message.content }}</div>
+                  <div class="chat__message__footer">{{ $moment(message.timestamp).format('LT') }}</div>
+                </div> 
+              </div>
+            </div>
+          </PerfectScrollbar>
+          <Separator />
+          <div class="chat__footer">
+            <CommentInput v-model="message" :disabled="isLoadingConversation" />
+          </div>
+        </template>
+        <div class="grid place-content-center h-full" v-else>
+          <img class="w-72" src="@/assets/illustration/conversation-2.svg" />
         </div>
-      </div>
+      </div> 
     </div>
   </ChatLayout>
 </template>
