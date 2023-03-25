@@ -65,6 +65,7 @@ const openConversation = async (): Promise<void> => {
   scrollToBottom()
   isConversationOpen.value = true
   isLoadingConversation.value = true
+  isChatSearchMode.value = false
   conversation.value = { userInfo: '', messages: [] }
   try {
     const res = await $http?.get('/chat/messages')
@@ -171,7 +172,7 @@ onMounted(() => {
         </PerfectScrollbar>
         <Separator />
         <div class="chat__footer">
-          <CommentInput v-model="message" />
+          <CommentInput v-model="message" :disabled="isLoadingConversation" />
         </div>
       </div>
     </div>
@@ -203,7 +204,7 @@ onMounted(() => {
   &__message {
     @apply mt-1.5 flex items-end;
     &__avatar-wrapper {
-      @apply mx-2 cursor-pointer hidden sm:inline-block;
+      @apply mr-2 cursor-pointer hidden sm:inline-block;
     }
   }
   &__message.is-self {

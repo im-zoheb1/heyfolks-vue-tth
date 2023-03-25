@@ -7,6 +7,7 @@ import { faker } from '@faker-js/faker';
 
 const props = defineProps<{
   modelValue: string;
+  disabled?: boolean;
 }>()
 
 const emits = defineEmits<{
@@ -46,12 +47,13 @@ onMounted(() => {
     >
       <input 
         ref="commentInputRef"
-        class="w-full outline-none text-base rounded-lg px-2 bg-transparent" 
+        class="w-full outline-none text-base rounded-lg px-2 bg-transparent disabled:opacity-70" 
         placeholder="Share your thoughts" 
-        @focus="isCommentActive = true" 
-        @blur="isCommentActive = false" 
+        :disabled="disabled"
+        @focus="() => isCommentActive = true" 
+        @blur="() => isCommentActive = false" 
       />
-      <Button compact pilled class="p-1.5">
+      <Button compact pilled :disabled="disabled" class="p-1.5">
         <PaperAirplaneIcon class="h-6" />
       </Button>
     </a>

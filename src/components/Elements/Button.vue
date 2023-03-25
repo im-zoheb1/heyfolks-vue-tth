@@ -9,6 +9,7 @@ const props = defineProps<{
   size?: "sm" | "md" | "lg" | "xl";
   transformOnHover?: boolean;
   noPointerEvents?: boolean;
+  disabled?: boolean;
 }>();
 
 const variant = ref<string>({
@@ -39,7 +40,7 @@ const border = ref<string>({
 
 const transform = ref<string>(props.transformOnHover ? "hover:translate-y-[-4px] active:translate-y-[4px]" : "");
 
-const defaultStyles = "inline-block font-bold transition duration-300 ease-in-out focus:outline-0";
+const defaultStyles = "inline-block font-bold transition duration-300 ease-in-out focus:outline-0 disabled:opacity-70";
 
 const style = ref<string>(`${variant.value} ${size.value} ${border.value} ${defaultStyles} ${transform.value} ${pointerEvents.value}`);
 </script>

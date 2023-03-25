@@ -28,6 +28,7 @@ const fetchData = async (): Promise<void> => {
     const res = await $http?.get('chat/list')
     const data = res?.data.data
     messages.value?.push(...data)
+    emit('open-chat', messages.value[0])
   } catch (err) {
     console.log(err)
   } finally {
