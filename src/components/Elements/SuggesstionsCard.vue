@@ -4,7 +4,7 @@ import injectKey from "@/config/injectKey";
 import { ref, inject, onMounted } from "vue";
 import Avatar from "./Avatar.vue";
 import Button from "./Button.vue";
-import SpinningLoader from "./Loaders/Spinning.vue";
+import SuggestionSkeleton from '@/components/Skeleton/SuggesstionsSkeleton.vue'
 // import { getFakeSuggesstions } from "@/generator/suggesstions";
 
 const $http = inject(injectKey.$http)
@@ -32,9 +32,7 @@ onMounted(() => {
   <Card class="flex-1 bg-main-bg shadow-sm p-3">
     <h3 class="font-bold text-xl mb-3">Suggesstions</h3>
     <div>
-      <div class="flex justify-center" v-if="loading">
-        <SpinningLoader />
-      </div>
+      <SuggestionSkeleton v-if="loading" />
       <div
         v-else
         v-for="(suggesstion, index) in suggesstions"
