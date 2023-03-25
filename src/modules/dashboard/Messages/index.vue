@@ -18,18 +18,22 @@ import {
 } from "@heroicons/vue/24/outline";
 import injectKey from "@/config/injectKey";
 
+// inject: START
 const $http = inject(injectKey.$http)
+// inject: END
+
+// varaibles: START
 const message = ref<string>("")
+const conversation = ref<any>({ userInfo: {}, messages: [] })
+const selectedChat = ref<any>(null)
 const isLoadingConversation = ref<boolean>(true)
-const conversation = ref<any>({ 
-  userInfo: {}, 
-  messages: [] 
-})
 const isConversationOpen = ref<boolean>(false)
 const isChatSearchMode = ref<boolean>()
 const scrollerRef = ref<HTMLDivElement | null>(null)
 const searchChatInputRef = ref<HTMLInputElement | null>(null)
+// variables: END
 
+// methods: START
 const isSelf = (message: any): boolean => {
   return message.sender.id === 1
 }
@@ -61,12 +65,12 @@ const openChatList = (): void => {
   isConversationOpen.value = false
 }
 
-const openConversation = async (): Promise<void> => {
-  scrollToBottom()
+const openConversation = async (chat: any): Promise<void> => {
+  conversation.value = { userInfo: '', messages: [] }
+  selectedChat.value = chat
   isConversationOpen.value = true
   isLoadingConversation.value = true
   isChatSearchMode.value = false
-  conversation.value = { userInfo: '', messages: [] }
   try {
     const res = await $http?.get('/chat/messages')
     const data = res?.data.data
@@ -78,10 +82,13 @@ const openConversation = async (): Promise<void> => {
     isLoadingConversation.value = false
   }
 }
+// methods: END
 
+// mounted: START
 onMounted(() => {
   scrollToBottom() 
 })
+// mounted: END
 </script>
 
 <template>
@@ -92,10 +99,7 @@ onMounted(() => {
         { 'is-conversation-open': isConversationOpen } 
       ]"
     >
-			<ChatList 
-        class="chat__list" 
-        @open-chat="openConversation"
-      >
+			<ChatList class="chat__list" @open-chat="openConversation">
         <template #search-prepend>
           <Button class="mr-2 p-2 lg:hidden" variant="flat" compact pilled @click="$router.push({ name: 'home' })">
             <BackIcon class="w-6" />

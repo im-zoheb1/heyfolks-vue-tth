@@ -19,8 +19,8 @@ const messages = ref<any[]>([]);
 const isLoading = ref<boolean>(true)
 const $http = inject(injectKey.$http)
 
-const openChat = (): void => {
-  emit('open-chat')
+const openChat = (value: any): void => {
+  emit('open-chat', value)
 }
 
 const fetchData = async (): Promise<void> => {
@@ -28,7 +28,6 @@ const fetchData = async (): Promise<void> => {
     const res = await $http?.get('chat/list')
     const data = res?.data.data
     messages.value?.push(...data)
-    emit('open-chat', messages.value[0])
   } catch (err) {
     console.log(err)
   } finally {
@@ -56,7 +55,7 @@ onMounted(() => {
 				:key="`chat-list-message-${index}`"
         class="flex items-center p-4 transition duration-300 hover:bg-light-2"
         :class="{ 'bg-light-1': message.unread }"
-        @click="openChat"
+        @click="openChat(message)"
       >
         <Avatar :src="message.avatar" size="sm" />
         <span class="ml-3">
