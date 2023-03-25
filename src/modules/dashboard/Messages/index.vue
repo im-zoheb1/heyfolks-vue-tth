@@ -6,7 +6,7 @@ import CommentInput from "@/components/Elements/Comments/CommentInput.vue";
 import Avatar from "@/components/Elements/Avatar.vue";
 import Button from "@/components/Elements/Button.vue";
 import SpinningLoader from "@/components/Elements/Loaders/Spinning.vue";
-import { getChat } from "@/generator/conversation";
+import ConversationHeaderSkeleton from '@/components/Skeleton/ConversationHeaderSkeleton.vue'
 import { PerfectScrollbar } from "vue3-perfect-scrollbar";
 import { ref, inject, onMounted } from "vue";
 import {
@@ -21,7 +21,10 @@ import injectKey from "@/config/injectKey";
 const $http = inject(injectKey.$http)
 const message = ref<string>("")
 const isLoadingConversation = ref<boolean>(true)
-const conversation = ref(getChat())
+const conversation = ref<any>({ 
+  userInfo: {}, 
+  messages: [] 
+})
 const isConversationOpen = ref<boolean>(false)
 const isChatSearchMode = ref<boolean>()
 const scrollerRef = ref<HTMLDivElement | null>(null)
@@ -62,9 +65,12 @@ const openConversation = async (): Promise<void> => {
   scrollToBottom()
   isConversationOpen.value = true
   isLoadingConversation.value = true
+  conversation.value = { userInfo: '', messages: [] }
   try {
-    const res = await $http?.get('/chat/list')
+    const res = await $http?.get('/chat/messages')
     const data = res?.data.data
+    conversation.value = data
+    scrollToBottom()
   } catch (error) {
     console.log(error) 
   } finally {
@@ -98,29 +104,32 @@ onMounted(() => {
       <Separator is-vertical />
       <div class="chat__conversation">
         <div class="chat__header">
-					<Button class="mr-2 p-2 lg:hidden" variant="flat" compact pilled @click="openChatList">
-						<BackIcon class="w-6" />
-					</Button>
-          <div class="flex items-center">
-            <Avatar :src="conversation.userInfo.avatar" size="sm" />
-            <div class="ml-3 leading-tight">
-              <div class="font-semibold">{{ conversation.userInfo.name }}</div>
-              <div class="text-muted text-sm font-semibold">
-                @{{ conversation.userInfo.username }}
+          <ConversationHeaderSkeleton v-if="isLoadingConversation" />
+          <template v-else>
+            <Button class="mr-2 p-2 lg:hidden" variant="flat" compact pilled @click="openChatList">
+              <BackIcon class="w-6" />
+            </Button>
+            <div class="flex items-center">
+              <Avatar :src="conversation.userInfo.avatar" size="sm" />
+              <div class="ml-3 leading-tight">
+                <div class="font-semibold">{{ conversation.userInfo.name }}</div>
+                <div class="text-muted text-sm font-semibold">
+                  @{{ conversation.userInfo.username }}
+                </div>
               </div>
             </div>
-          </div>
-          <div class="flex ml-auto">
-            <Button variant="flat" pilled compact class="p-2" @click.prevent="openChatSearch">
-              <SearchIcon class="w-6" />
-            </Button>
-            <Button variant="flat" pilled compact class="p-2">
-              <MuteIcon class="w-6" />
-            </Button>
-            <Button variant="flat" pilled compact class="p-2">
-              <EllipsisIcon class="w-6" />
-            </Button>
-          </div>
+            <div class="flex ml-auto">
+              <Button variant="flat" pilled compact class="p-2" @click.prevent="openChatSearch">
+                <SearchIcon class="w-6" />
+              </Button>
+              <Button variant="flat" pilled compact class="p-2">
+                <MuteIcon class="w-6" />
+              </Button>
+              <Button variant="flat" pilled compact class="p-2">
+                <EllipsisIcon class="w-6" />
+              </Button>
+            </div>
+          </template>
 					<transition
 						enter-active-class="transition duration-100 ease-out"
 						enter-from-class="transform scale-95 opacity-0"
@@ -131,7 +140,7 @@ onMounted(() => {
 					>
 						<div v-if="isChatSearchMode" class="chat__search-box">
 							<SearchIcon class="w-6" />
-							<input ref="searchChatInputRef" class="outline-none ml-3 text-base flex-1 bg-transparent focus:ring-1" type="text" placeholder="Search chat" />
+							<input ref="searchChatInputRef" class="outline-none ml-3 text-base flex-1 bg-transparent" type="text" placeholder="Search chat" />
 							<Button class="p-1.5 ml-3 bg-light-1" variant="light" compact pilled @click.prevent="closeChatSearch">
 								<CancelIcon class="w-4" />
 							</Button>
