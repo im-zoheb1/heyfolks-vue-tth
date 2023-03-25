@@ -1,27 +1,38 @@
 <script lang="ts" setup>
 import Card from "./Card.vue";
+import ActiveContactsSkeleton from '@/components/Skeleton/ActiveContactsSkeleton.vue'
 import { PerfectScrollbar } from "vue3-perfect-scrollbar";
-import { faker } from "@faker-js/faker";
-import { ref, onMounted } from "vue";
+import { ref, inject, onMounted } from "vue";
 import Avatar from "./Avatar.vue";
+import injectKey from "@/config/injectKey";
 
+const $http = inject(injectKey.$http)
 const activeContacts = ref<any[]>([])
+const loading = ref<boolean>(false)
+
+const fetchData = async (): Promise<void> => {
+  loading.value = true
+  try {
+    const res = await $http?.get('connection/active')
+    activeContacts.value = res?.data.data
+  } catch (error) {
+    console.log(error) 
+  } finally {
+    loading.value = false
+  }
+}
 
 onMounted((): void => {
-  for (let i = 0; i < 20; i++) {
-    activeContacts.value.push({
-      fullname: faker.name.fullName(),
-      avatar: faker.internet.avatar()
-    })
-  }
+  fetchData()
 })
 </script>
 
 <template>
   <Card class="p-3">
     <PerfectScrollbar ref="friendsScrollRef" class="h-[calc(100vh-110px)]">
-      <h5 class="text-xl font-bold">Contacts</h5>
-      <div class="mt-3">
+      <h5 class="text-xl font-bold mb-3">Contacts</h5>
+      <ActiveContactsSkeleton v-if="loading" />
+      <div v-else>
         <div 
 					v-for="(contact, index) in activeContacts" 
 					:key="`active-contacts-${index}`"

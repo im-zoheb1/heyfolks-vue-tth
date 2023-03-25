@@ -16,7 +16,7 @@ module.exports = {
         'success': '#03C988',
         'muted': '#777777',
         'main-bg': '#ffffff',
-        'skeleton': '#f3f4f6'
+        'skeleton': '#e5e7eb'
       },
       backgroundImage: {
         'folks': `linear-gradient(to right bottom, rgba(59, 130, 246, 0.5), rgba(124, 58, 237, 0.3)), url('@/assets/img/folks-bg.png')`,

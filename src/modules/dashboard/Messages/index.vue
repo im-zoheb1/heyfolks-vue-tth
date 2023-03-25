@@ -182,7 +182,7 @@ onMounted(() => {
         </template>
         <div class="grid place-content-center place-items-center h-full text-center" v-else>
           <img class="w-64" src="@/assets/illustration/messaging.svg" />
-          <h2 class="text-xl font-bold mt-4">Everyone needs a good chat once in a while.</h2>
+          <h2 class="text-xl font-semibold mt-8">Need someone to talk to?</h2>
           <h3 class="text-lg mt-1 max-w-sm">Pick a person from the left menu and start chatting!</h3>
         </div>
       </div> 
