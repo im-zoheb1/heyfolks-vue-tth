@@ -180,8 +180,10 @@ onMounted(() => {
             <CommentInput v-model="message" :disabled="isLoadingConversation" />
           </div>
         </template>
-        <div class="grid place-content-center h-full" v-else>
-          <img class="w-72" src="@/assets/illustration/conversation-2.svg" />
+        <div class="grid place-content-center place-items-center h-full text-center" v-else>
+          <img class="w-64" src="@/assets/illustration/messaging.svg" />
+          <h2 class="text-xl font-bold mt-4">Everyone needs a good chat once in a while.</h2>
+          <h3 class="text-lg mt-1 max-w-sm">Pick a person from the left menu and start chatting!</h3>
         </div>
       </div> 
     </div>
