@@ -1,18 +1,42 @@
 <script lang="ts" setup>
 import Card from "@/components/Elements/Card.vue";
-import { ref } from "vue";
-import { getFakeSuggesstions } from "@/generator/suggesstions";
+import injectKey from "@/config/injectKey";
+import { ref, inject, onMounted } from "vue";
 import Avatar from "./Avatar.vue";
 import Button from "./Button.vue";
+import SpinningLoader from "./Loaders/Spinning.vue";
+// import { getFakeSuggesstions } from "@/generator/suggesstions";
 
-const suggesstions = ref<any>(getFakeSuggesstions());
+const $http = inject(injectKey.$http)
+const suggesstions = ref<any[]>([]);
+const loading = ref<boolean>(true)
+
+const fetchData = async (): Promise<void> => {
+  loading.value = true
+  try {
+    const res = await $http?.get('connection/suggesstions') 
+    suggesstions.value = res?.data.data
+  } catch (error) {
+    console.log(error) 
+  } finally {
+    loading.value = false
+  }
+}
+
+onMounted(() => {
+  fetchData()
+})
 </script>
 
 <template>
   <Card class="flex-1 bg-main-bg shadow-sm p-3">
     <h3 class="font-bold text-xl mb-3">Suggesstions</h3>
     <div>
+      <div class="flex justify-center" v-if="loading">
+        <SpinningLoader />
+      </div>
       <div
+        v-else
         v-for="(suggesstion, index) in suggesstions"
         :key="`friends-suggesstions-${index}`"
         class="flex items-start mt-5 gap-3"
