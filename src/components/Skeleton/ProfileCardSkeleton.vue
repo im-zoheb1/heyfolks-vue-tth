@@ -1,5 +1,14 @@
+<script lang="ts" setup>
+export interface Props {
+  count?: number;
+  skeletonClass?: string;
+}
+
+const { count = 16, skeletonClass = '' } = defineProps<Props>()
+</script>
+
 <template>
-  <div v-for="i in 16" :key="`profile-card-skeleton-${i}`" class="flex items-center animate-skeleton border p-3 rounded-lg">
+  <div v-for="i in count" :key="`profile-card-skeleton-${i}`" class="flex items-center animate-skeleton border p-3 rounded-lg" :class="skeletonClass">
     <div class="min-w-[5rem] min-h-[5rem] max-w-[5rem] max-h-[5rem] bg-skeleton rounded-2xl"></div>
     <div class="ml-3 flex-1">
       <div class="flex-1 flex items-center justify-between">

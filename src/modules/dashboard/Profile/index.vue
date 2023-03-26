@@ -10,6 +10,7 @@ import { getFakeProfile } from "@/generator/profile";
 import { ref, inject, onMounted } from "vue";
 import injectKey from "@/config/injectKey";
 import PostList from "@/components/Lists/PostList.vue";
+import FriendList from "@/components/Lists/FriendList.vue";
 
 const $http = inject(injectKey.$http)
 const tab = ref<'timeline' | 'friends'>('timeline')
@@ -62,12 +63,7 @@ onMounted(() => {
           enter-to-class="transform translate-y-0 opacity-100"
         >
           <Card v-if="tab === 'friends'" class="p-3 mt-3 gap-3 columns-[25rem]">
-            <ProfileCard 
-							v-for="(friend, index) in profile.friends" 
-							:key="`profile-friend-card-${index}`"
-							:data="friend" 
-							class="mb-3"
-						></ProfileCard>
+            <FriendList />
           </Card>
         </transition>
         <!-- CONNECTIONS: END -->
