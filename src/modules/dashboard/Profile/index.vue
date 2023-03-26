@@ -1,6 +1,5 @@
 <script lang="ts" setup>
 import MainLayout from "@/layout/MainLayout.vue";
-import SuggesstionsCard from "@/components/Elements/SuggesstionsCard.vue";
 import Card from "@/components/Elements/Card.vue";
 import PostCard from '@/components/Elements/PostCard/index.vue'
 import ProfileCard from "@/components/Elements/ProfileCard.vue";
@@ -9,8 +8,8 @@ import { getFakeProfile } from "@/generator/profile";
 import { ref } from "vue";
 import UserProfileCard from "@/components/Elements/UserProfileCard.vue";
 
+const tab = ref<'timeline' | 'friends'>('timeline')
 const profile = ref<any>(getFakeProfile());
-const tab = ref<string>('timeline')
 </script>
 
 <template>
@@ -50,7 +49,6 @@ const tab = ref<string>('timeline')
 
       <!-- right section: start -->
       <div class="flex-[3] max-md:hidden sticky top-[4.75rem]">
-				<!-- <SuggesstionsCard class="flex-1 mb-3" /> -->
         <ActiveConactsCard />
       </div>
       <!-- right section: end -->

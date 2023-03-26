@@ -13,7 +13,7 @@ const {
   value, 
   tab = 'timeline',
   contentClass = ''
-} = defineProps<{ value: any; tab?: string; contentClass?: string }>()
+} = defineProps<{ value: any; tab?: 'timeline' | 'friends'; contentClass?: string }>()
 
 const emit = defineEmits<{
   (e: 'update:tab', value?: string): void
