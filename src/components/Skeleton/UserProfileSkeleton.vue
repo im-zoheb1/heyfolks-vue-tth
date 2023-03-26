@@ -20,8 +20,8 @@ import Avatar from '../Elements/Avatar.vue';
         <div class="text-base mt-2 bg-skeleton h-4 rounded-lg"></div>
       </div>
       <div class="flex">
-        <div class="w-40 h-9 bg-skeleton m-1 rounded-lg"></div>
-        <div class="w-40 h-9 bg-skeleton m-1 rounded-lg"></div>
+        <div class="w-40 h-9 bg-skeleton mb-1 mr-1 rounded-lg"></div>
+        <div class="w-40 h-9 bg-skeleton mb-1 rounded-lg"></div>
       </div>
     </div>
   </Card>
