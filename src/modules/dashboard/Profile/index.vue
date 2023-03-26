@@ -4,19 +4,45 @@ import Card from "@/components/Elements/Card.vue";
 import PostCard from '@/components/Elements/PostCard/index.vue'
 import ProfileCard from "@/components/Elements/ProfileCard.vue";
 import ActiveConactsCard from "@/components/Elements/ActiveContactsCard.vue"
-import { getFakeProfile } from "@/generator/profile";
-import { ref } from "vue";
 import UserProfileCard from "@/components/Elements/UserProfileCard.vue";
+import UserProfileSkeleton from "@/components/Skeleton/UserProfileSkeleton.vue";
+import { getFakeProfile } from "@/generator/profile";
+import { ref, inject, onMounted } from "vue";
+import injectKey from "@/config/injectKey";
 
+const $http = inject(injectKey.$http)
 const tab = ref<'timeline' | 'friends'>('timeline')
 const profile = ref<any>(getFakeProfile());
+const userInfo = ref<any>({})
+const loadingUserInfo = ref<boolean>(true)
+
+const getUserInfo = async (): Promise<void> => {
+  try {
+    const res = await $http?.get('/user/info')
+    userInfo.value = res?.data.data
+  } catch (error) {
+    console.log(error)  
+  } finally {
+    loadingUserInfo.value = false
+  }
+}
+
+onMounted(() => {
+  getUserInfo()
+})
 </script>
 
 <template>
   <MainLayout>
     <div class="flex items-start gap-3 relative">
       <div class="flex-[6]">
-        <UserProfileCard v-model:tab="tab" :value="profile" />
+
+        <!-- USER PROFILE DETAILS: START -->
+        <UserProfileSkeleton v-if="loadingUserInfo" />
+        <UserProfileCard v-else v-model:tab="tab" :value="userInfo" />
+        <!-- USER PROFILE DETAILS: END -->
+
+        <!-- POSTS: START -->
         <transition
           enter-active-class="transition duration-300 ease-out"
           enter-from-class="transform translate-y-5 opacity-0"
@@ -31,6 +57,9 @@ const profile = ref<any>(getFakeProfile());
 						></PostCard>
           </div>
         </transition>
+        <!-- POSTS: END -->
+
+        <!-- CONNECTIONS: START -->
         <transition
           enter-active-class="transition duration-300 ease-out"
           enter-from-class="transform translate-y-5 opacity-0"
@@ -45,13 +74,14 @@ const profile = ref<any>(getFakeProfile());
 						></ProfileCard>
           </Card>
         </transition>
+        <!-- CONNECTIONS: END -->
       </div>
 
-      <!-- right section: start -->
+      <!-- RIGHT: START -->
       <div class="flex-[3] max-md:hidden sticky top-[4.75rem]">
         <ActiveConactsCard />
       </div>
-      <!-- right section: end -->
+      <!-- RIGHT: END -->
     </div>
   </MainLayout>
 </template>
