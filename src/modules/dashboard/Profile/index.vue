@@ -9,6 +9,7 @@ import UserProfileSkeleton from "@/components/Skeleton/UserProfileSkeleton.vue";
 import { getFakeProfile } from "@/generator/profile";
 import { ref, inject, onMounted } from "vue";
 import injectKey from "@/config/injectKey";
+import PostList from "@/components/Lists/PostList.vue";
 
 const $http = inject(injectKey.$http)
 const tab = ref<'timeline' | 'friends'>('timeline')
@@ -49,12 +50,7 @@ onMounted(() => {
           enter-to-class="transform translate-y-0 opacity-100"
         >
           <div v-if="tab === 'timeline'">
-            <PostCard 
-							v-for="(post, index) in profile.timeline" 
-							:key="`profile-post-card-${index}`"
-							:value="post" 
-							class="mt-3"
-						></PostCard>
+            <PostList />
           </div>
         </transition>
         <!-- POSTS: END -->
