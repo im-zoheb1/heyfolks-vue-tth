@@ -34,7 +34,7 @@ onMounted(fetchData)
         <SearchBox class="w-80" popover-class="right-0" />
       </div>
       <div class="grid gap-3 md:grid-cols-2">
-        <ProfileCardSkeleton v-if="loading" />
+        <ProfileCardSkeleton v-if="loading" :count="15" />
         <ProfileCard 
           v-else
 					v-for="(friend, index) in friends" 
