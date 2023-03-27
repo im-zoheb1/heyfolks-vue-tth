@@ -2,7 +2,6 @@
 import PostCard from '../Elements/PostCard/index.vue'
 import PostsSkeleton from '../Skeleton/PostsSkeleton.vue'
 import { ref, inject, onMounted } from 'vue'
-import { getPosts } from '@/generator/posts';
 import injectKey from '@/config/injectKey';
 
 const $http = inject(injectKey.$http)
@@ -13,7 +12,7 @@ const fetchPosts = async (): Promise<void> => {
   try {
     loading.value = true
     const res = await $http?.get('post/list')
-    posts.value = res?.data.data
+		res && posts.value.push(...res.data.data)
   } catch (error) {
     console.log(error) 
   } finally {
@@ -21,7 +20,21 @@ const fetchPosts = async (): Promise<void> => {
   }
 }
 
+const infiniteScroll = function (): void {
+  window.addEventListener('scroll', (): void => {
+    const { 
+      scrollTop, 
+      scrollHeight, 
+      clientHeight 
+    } = document.documentElement
+    if (scrollTop + clientHeight >= scrollHeight - 5) {
+      fetchPosts()
+    }
+  }, { passive: true })
+}
+
 onMounted(() => {
+	infiniteScroll()
   fetchPosts()
 })
 </script>

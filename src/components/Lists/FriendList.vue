@@ -12,15 +12,29 @@ const fetchData = async (): Promise<void> => {
   loading.value = true
   try {
     const res = await $http?.get('connection/list')    
-    friends.value = res?.data.data
+    res && friends.value.push(...res.data.data)
   } catch (error) {
-    console.log(error) 
+    console.log(error)
   } finally {
     loading.value = false
   }
 }
 
+const infiniteScroll = function (): void {
+  window.addEventListener('scroll', (): void => {
+    const { 
+      scrollTop, 
+      scrollHeight, 
+      clientHeight 
+    } = document.documentElement
+    if (scrollTop + clientHeight >= scrollHeight - 5) {
+      fetchData()
+    }
+  }, { passive: true })
+}
+
 onMounted(() => {
+	infiniteScroll()
   fetchData()
 })
 </script>
