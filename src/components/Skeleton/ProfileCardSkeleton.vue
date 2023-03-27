@@ -4,7 +4,7 @@ export interface Props {
   skeletonClass?: string;
 }
 
-const { count = 16, skeletonClass = '' } = defineProps<Props>()
+defineProps<Props>()
 </script>
 
 <template>
@@ -13,12 +13,12 @@ const { count = 16, skeletonClass = '' } = defineProps<Props>()
     <div class="ml-3 flex-1">
       <div class="flex-1 flex items-center justify-between">
         <div>
-          <div class="h-4 w-40 bg-skeleton mb-2 rounded-full"></div>
-          <div class="h-4 w-48 bg-skeleton rounded-full"></div>
+          <div class="h-3 w-40 bg-skeleton mb-2 rounded-full"></div>
+          <div class="h-3 w-48 bg-skeleton rounded-full"></div>
         </div>
-        <div class="w-8 h-8 bg-skeleton rounded-full"></div>
+        <div class="w-8 h-8 bg-skeleton rounded-full mr-3"></div>
       </div>
-      <div class="h-4 w-80 bg-skeleton rounded-full mt-4"></div>
+      <div class="h-3 w-80 bg-skeleton rounded-full mt-4"></div>
     </div>
   </div>
 </template>
