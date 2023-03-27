@@ -32,5 +32,5 @@ onMounted(() => {
     :key="`profile-card-list-${index}`"
     :data="friend"
   ></ProfileCard>
-  <ProfileCardSkeleton v-if="loading" :count="4" skeleton-class="mb-3" />
+  <ProfileCardSkeleton v-if="loading" :count="8" skeleton-class="mb-3" />
 </template>
